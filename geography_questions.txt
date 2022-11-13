@@ -1,0 +1,315 @@
+Geography 
+
+Easy 
+	How many continents are there?
+6
+7*
+8
+5
+	How many oceans are there?
+5*
+7
+6
+3
+	What is the coldest place on earth
+The Arctic
+The Antarctic*
+Siberia 
+Alaska
+	What is the capital of Japan?
+Kyoto
+Asakasa
+Tokyo*
+Yokohama
+	What does the DC in Washington DC stand for?
+District of Columbia *
+District of Christ 
+Domain of Columbia 
+Domain of Christ
+	What is the population of the world? (7.8 b)
+7.8 billion*
+9.1 billion
+978 million
+10 billion
+	What is the largest desert in Africa? (Sahara)
+Gobi 
+Sahara*
+Tundra
+Amazon
+	What is the tallest mountain in the world? 
+Mt Helen
+Mt Fiji
+Mt Everest*
+Mt Rainier
+	Where is the Vatican City located?
+Jerusalem
+Italy*
+Peru
+London
+	Where is Buckingham Palace located?
+England*
+Ireland
+Switzerland
+Germany
+	How many Great Lakes are there in the USA? 
+3
+7
+9
+5*
+	What is the largest ocean? 
+Atlantic
+Antarctic
+Pacific*
+Arctic
+	How much of the Earth is covered in water? 
+25%
+75%*
+80%
+40%
+	What is the largest island in the world?
+Jamaica
+Cuba
+Greenland*
+Iceland
+	What is the term used for the supercontinent that combined all the continents today? 
+Pangea*
+Omnicontinent
+Ubercontinent
+Omnigea 
+	What is the line that runs around the center of the earth at 0 degrees latitude called? (equator)
+Longitude
+Equator*
+Middle line
+Half point
+	What country was Napoleon Bonaparte from?
+Spain
+Ireland
+France*
+Egypt
+	Aloha is a greeting used where?
+Hawaii*
+Korea
+Canada
+Russia
+	What is the name of an area where there are a number of airplane and ship disappearances?
+Devil’s mouth
+Bermuda Triangle*
+Grand Canyon
+Great Barrier Reef
+	How many states are in the USA
+49
+50
+100
+55
+
+
+
+
+
+Medium
+	How many continents border the Pacific Ocean?
+4*
+5
+6
+3
+	Whats the biggest country in the world by land mass?
+China
+USA
+Russia*
+Canada
+	What country has the biggest population?
+Russia
+China*
+India
+USA
+	What country has an industry known as kpop?
+Kazakhstan
+Kyrgyzstan
+North Korea
+South Korea*
+	What is the capital of Sweden? 
+Gothenburg
+Stockholm*
+Uppsala
+Malmo
+	In which country is the Huang He River in? 
+China*
+Korea
+Malaysia
+Thailand
+	What is the longest river in the world? 
+Mississippi River
+Nile River*
+Tiber River
+The Yellow River
+	How many time zones does India have? 
+4
+3
+1
+2*
+	Where is the largest pyramid in the world? 
+Egypt
+Algeria
+Sudan
+Mexico*
+	What is the official currency of Spain? 
+Pound
+Euro*
+Dollar
+Spanish coin
+	How many countries did the Soviet Union contain? 
+10
+12
+50
+15*
+	What river runs through Paris? (Seine)
+Tiber River
+Danube River
+Seine River*
+Po River
+	South Africa is the largest producer of what nut? 
+Almond
+Cashew
+Macademia*
+Pine 
+	What is the largest continent by area?
+North America
+Asia*
+South America
+Antarctica
+	Where is Machu Picchu located? 
+Algeri
+Brazil
+Peru*
+Argentina
+	What city in the USA is also referred to as the ‘Big Apple’?
+Seattle
+New York*
+Los Angeles
+Chicago
+	The Status of Libery was a gift from who?
+Canada
+France*
+England
+Greenland
+	Europe and Africa are separated by what body of water?
+The Mediterranean Sea*
+The Red Sea
+The Atlantic
+Caspian Sea
+	Which of these are not a Great Lake in the USA?
+Superior
+Heron*
+Michigan
+Erie
+	What is the deepest known point in the ocean?
+Mariana Trench
+Dead Sea
+Bermuda Triangle
+Arctic Ocean
+
+
+
+
+
+Hard
+	What is the smallest country in the world by population? 
+South Korea
+The Vatican City*
+Monaco
+Lima
+	What country has the most natural lakes?
+China
+Russia
+Canada*
+USA
+	Which of these states are landlocked in the USA?
+Arizona*
+Georgia
+New York
+Texas
+	Which continent is in all four hemispheres?
+Asia
+Africa*
+Anarctica
+South America
+	What is the capital of Uzebekistan? (Tashkent)
+Tashkent*
+Uzebekistani
+Bukhara
+Smarkand
+	Where is the highest annual rainfall recorded? 
+Seattle
+London
+Hawaii*
+Alaska
+	What body of water has the highest salt content?
+Pacific
+Dead Sea*
+Mediterranean
+Red Sea
+	How many countries are there in the world? 
+201
+195*
+178
+145
+	What country has the longest coastline in the world? 
+Canada*
+USA
+Japan
+Greenland
+	In what country were bananas first grown
+Brazil
+India*
+Egypt
+Mexico
+	Which African country has the most pyramids? 
+Egypt
+Algeria
+Sudan*
+Central African Republic
+	Which of these countries do not use the Euro as their official currency? 
+Germany
+Netherlands
+Austria
+Sweden*
+	How many time zones are there in the world? 
+10
+17
+24*
+35
+	What is the oldest city on the planet? 
+Rome
+Jericho*
+Michigan
+Beijing
+	How long would it take to sail around the world nonstop? 
+100 days*
+5 years
+500 days
+7 years
+	Where is the largest desert located? 
+China
+America
+Antarctica*
+Africa
+	Which city in Europe has more than 1,200 bridges? 
+Paris
+Vienna
+Budapest
+Amsterdam*
+	What country has the abbreviation CH?
+China
+Switzerland*
+Poland
+Chad
+	Where was the first marathon held?
+Athens*
+Madrid
+Santorini
+Portugal
+	How many official time zones are in China?
+5
+3
+1*
+8

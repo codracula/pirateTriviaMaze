@@ -1,0 +1,937 @@
+Questions 
+
+Arithmetic 
+
+Easy 
+	10/2
+10
+2
+5*
+1
+	reciprocal of 5
+-5
+5
+0
+1/5*
+	-7+10
+3*
+-3
+17
+-17
+	|-34|
+-34
+34*
+17
+-17
+	6*90
+270
+640
+540*
+720
+	if a rectangle is 20ft by 7ft, what is the area?
+140*
+350
+100
+70
+	if an angle is 45 degrees, it is
+obtuse
+right
+acute*
+none of the above
+	3^5 is the same as
+5*5*5
+15
+125
+3*3*3*3*3 *
+	8.563 + 4.8292
+13.3922*
+12.9784
+13.4827
+12.7687
+	if an angle is 170 degrees, it is
+obtuse*
+right
+acute
+all of the above
+	2+2=
+1
+2
+3
+4*
+	(5 + 2 * 4 / 12 - 525) * 0 =
+648
+-428
+1
+0*
+	if Martha has 5 cakes and gives away 2, then bakes 7 more, how many cakes does she have
+3
+7
+10*
+5
+	What is the perimeter of a square fence with a length of 6 ft?
+6
+36
+12
+24*
+	-12 - 5 =
+7
+-7
+17
+-17*
+	34 * 3
+102*
+100
+103
+99
+	What is the y intercept in y = 8x - 9?
+8
+9
+-8
+-9*
+	What is the slope of the equation y = 5x + 8?
+8
+5*
+8/5
+5/8
+	What is 4!
+4
+24*
+20
+40
+	If Susie has 5 friends and wants to give them eat 10 pieces of chocolate, how much chocolate does she need?
+5
+10
+50*
+500
+
+Medium
+	Solve (2 + 4)^2 - 2^3 + 1
+29*
+12
+10
+33
+	Find the derivative of x
+X
+1*
+½
+x^2
+	What does the m in pemdas stand for?
+Mean
+Median
+Multiplication *
+Mode 
+	3(x + 5) = 3x + (3*5) is an example of the...
+associative property
+distributive property*
+multiplying property
+commutative property
+	Solve 1/4 + 1/7
+2/11
+2/28
+11/28*
+7/28
+	How many degrees are in a circle?
+90
+180
+270
+360*
+	There is a patch of lily pads on a lake. every day, the patch doubles in size. if it takes 48 days for the patch to vover the entire lake, how long would it take for the patch to cover half the lake?
+48 days
+47 days*
+24 days
+23 days
+	How many feet are in a mile?
+5280*
+6020
+1200
+3652
+	Solve for x -15 + (-5x) = 0
+3
+5
+-3*
+0
+	There is a 10x10 board with a 2x7 hole cut out of it, what is the area of the board?
+100
+80
+86*
+94
+	What is the least common multiple of 9 and 22?
+9
+22
+13
+198*
+	Given two lines y = 3x - 4 and y = 5x + 2 at what coordinates will they intersect?
+(-3, -13)*
+(3, 13)
+(3, -13)
+(13, 3)
+	What is the pythagorean theorem?
+a^2+b^2=c^2*
+a+b=c^2
+a^2+b^2=c
+a+b=c
+	What is the formula for finding the area of a circle?
+2 * d * r
+pie * r^2 + d
+pi * r^2*
+2 * pi * r
+	A cube has sides that are 3 ft long, what is the surface area?
+9
+18
+54*
+27
+	Solve 352 * 87
+32817
+21479
+30246
+30624*
+	Find the mean of the data set 13, 11, 8, 15, 5, 2
+8
+9*
+8.6
+7.4
+	Find the median of the data set 99, 32, 29, 24, 62, 42, 79, 41
+41
+42
+41.5*
+43
+	Convert 7/8 to a percent
+78%
+78.5%
+87%
+87.5%
+	Convert 3.15 into a fraction in simplest form
+315/100
+63/20*
+3 15/100
+64/20
+
+
+
+Hard
+	Which is the equivalent to 49^(3/2)?
+21
+98
+294
+343
+	Which expression is equivalent to (4i)^3?
+-12i
+12i
+-64i
+64i
+	What is the decimal value of 00101?
+101
+1
+5*
+51
+	If a sweater is $45 and it is currently 15% off sales price, and you use your student discount that is 10% off sales price, how much is the sweater?
+20
+56.25
+35
+33.75*
+	Which is the better deal?
+$40 for 3 cakes*
+$35 for 3 cakes
+$38 for 2 cakes
+20$ for one cake
+	If 6 < |x - 3| < 8 and x < 0, what is one possible value for x?
+4
+-4*
+10
+-10
+	Which function oscillates between -1 and 1 and goes through the origin?
+Cos(x)
+Tan(x)
+Sin(x)*
+Csc(x)
+	If 10 + x is 5 more than 10, what is the value of 2x?
+5
+10*
+25
+50
+	Ali, Ben, and Carla made a total of 20 sandwiches. Ben made 3 times as many as Ali, and Carla made twice as many as Ben. How many sandwiches did Ali make?
+2*
+4
+5
+6
+	Solve for one of the values of x in x^2 + 10x + 9 = 0
+9
+-10
+1*
+-1
+	Solve for one of the values of x in x^2 - x - 56 = 0
+-8
+-7*
+7
+0
+	Which quadrant of the coordinate plane would (-1, 2) be in?
+1
+2*
+3
+4
+	Convert 180 degrees to radians
+pi*
+180pi
+90pi
+90
+	If you're facing south and you turn to face north, how many degrees did you turn?
+180*
+360
+90
+270
+	You need 3 cups of flour for cookies, but you only have a tablespoon. How many times will you have to scoop the flour?
+48*
+12
+36
+3
+	If a pole is 10 ft tall and it casts a shadow that is 15ft long, and a 6ft person is standing next to the pole. What is the length of the person's shadow?
+9ft*
+11ft
+10ft
+12ft
+	If there are 180 questions in this database, and all 3 categories have the same number of questions. What are the chances you received this question?
+1/180
+1/60*
+1/90
+3/180
+	What is the distance between two points at (1,2) and (3,4)
+2.8
+2.9*
+3.1
+4.6
+	What could be a possible value of x if |x - 1|=8
+-8
+-6
+6*
+9
+	If a triangle has two angles that are 47 and 63 what is the degree of the other angle?
+250
+70*
+110
+90
+
+
+
+
+
+Geography 
+
+Easy 
+	How many continents are there?
+6
+7*
+8
+5
+	How many oceans are there?
+5*
+7
+6
+3
+	What is the coldest place on earth
+The Arctic
+The Antarctic*
+Siberia 
+Alaska
+	What is the capital of Japan?
+Kyoto
+Asakasa
+Tokyo*
+Yokohama
+	What does the DC in Washington DC stand for?
+District of Columbia *
+District of Christ 
+Domain of Columbia 
+Domain of Christ
+	What is the population of the world? (7.8 b)
+7.8 billion*
+9.1 billion
+978 million
+10 billion
+	What is the largest desert in Africa? (Sahara)
+Gobi 
+Sahara*
+Tundra
+Amazon
+	What is the tallest mountain in the world? 
+Mt Helen
+Mt Fiji
+Mt Everest*
+Mt Rainier
+	Where is the Vatican City located?
+Jerusalem
+Italy*
+Peru
+London
+	Where is Buckingham Palace located?
+England*
+Ireland
+Switzerland
+Germany
+	How many Great Lakes are there in the USA? 
+3
+7
+9
+5*
+	What is the largest ocean? 
+Atlantic
+Antarctic
+Pacific*
+Arctic
+	How much of the Earth is covered in water? 
+25%
+75%*
+80%
+40%
+	What is the largest island in the world?
+Jamaica
+Cuba
+Greenland*
+Iceland
+	What is the term used for the supercontinent that combined all the continents today? 
+Pangea*
+Omnicontinent
+Ubercontinent
+Omnigea 
+	What is the line that runs around the center of the earth at 0 degrees latitude called? (equator)
+Longitude
+Equator*
+Middle line
+Half point
+	What country was Napoleon Bonaparte from?
+Spain
+Ireland
+France*
+Egypt
+	Aloha is a greeting used where?
+Hawaii*
+Korea
+Canada
+Russia
+	What is the name of an area where there are a number of airplane and ship disappearances?
+Devil’s mouth
+Bermuda Triangle*
+Grand Canyon
+Great Barrier Reef
+	How many states are in the USA
+49
+50
+100
+55
+
+Medium
+	How many continents border the Pacific Ocean?
+4*
+5
+6
+3
+	Whats the biggest country in the world by land mass?
+China
+USA
+Russia*
+Canada
+	What country has the biggest population?
+Russia
+China*
+India
+USA
+	What country has an industry known as kpop?
+Kazakhstan
+Kyrgyzstan
+North Korea
+South Korea*
+	What is the capital of Sweden? 
+Gothenburg
+Stockholm*
+Uppsala
+Malmo
+	In which country is the Huang He River in? 
+China*
+Korea
+Malaysia
+Thailand
+	What is the longest river in the world? 
+Mississippi River
+Nile River*
+Tiber River
+The Yellow River
+	How many time zones does India have? 
+4
+3
+1
+2*
+	Where is the largest pyramid in the world? 
+Egypt
+Algeria
+Sudan
+Mexico*
+	What is the official currency of Spain? 
+Pound
+Euro*
+Dollar
+Spanish coin
+	How many countries did the Soviet Union contain? 
+10
+12
+50
+15*
+	What river runs through Paris? (Seine)
+Tiber River
+Danube River
+Seine River*
+Po River
+	South Africa is the largest producer of what nut? 
+Almond
+Cashew
+Macademia*
+Pine 
+	What is the largest continent by area?
+North America
+Asia*
+South America
+Antarctica
+	Where is Machu Picchu located? 
+Algeri
+Brazil
+Peru*
+Argentina
+	What city in the USA is also referred to as the ‘Big Apple’?
+Seattle
+New York*
+Los Angeles
+Chicago
+	The Status of Libery was a gift from who?
+Canada
+France*
+England
+Greenland
+	Europe and Africa are separated by what body of water?
+The Mediterranean Sea*
+The Red Sea
+The Atlantic
+Caspian Sea
+	Which of these are not a Great Lake in the USA?
+Superior
+Heron*
+Michigan
+Erie
+	What is the deepest known point in the ocean?
+Mariana Trench
+Dead Sea
+Bermuda Triangle
+Arctic Ocean
+
+Hard
+	What is the smallest country in the world by population? 
+South Korea
+The Vatican City*
+Monaco
+Lima
+	What country has the most natural lakes?
+China
+Russia
+Canada*
+USA
+	Which of these states are landlocked in the USA?
+Arizona*
+Georgia
+New York
+Texas
+	Which continent is in all four hemispheres?
+Asia
+Africa*
+Anarctica
+South America
+	What is the capital of Uzebekistan? (Tashkent)
+Tashkent*
+Uzebekistani
+Bukhara
+Smarkand
+	Where is the highest annual rainfall recorded? 
+Seattle
+London
+Hawaii*
+Alaska
+	What body of water has the highest salt content?
+Pacific
+Dead Sea*
+Mediterranean
+Red Sea
+	How many countries are there in the world? 
+201
+195*
+178
+145
+	What country has the longest coastline in the world? 
+Canada*
+USA
+Japan
+Greenland
+	In what country were bananas first grown
+Brazil
+India*
+Egypt
+Mexico
+	Which African country has the most pyramids? 
+Egypt
+Algeria
+Sudan*
+Central African Republic
+	Which of these countries do not use the Euro as their official currency? 
+Germany
+Netherlands
+Austria
+Sweden*
+	How many time zones are there in the world? 
+10
+17
+24*
+35
+	What is the oldest city on the planet? 
+Rome
+Jericho*
+Michigan
+Beijing
+	How long would it take to sail around the world nonstop? 
+100 days*
+5 years
+500 days
+7 years
+	Where is the largest desert located? 
+China
+America
+Antarctica*
+Africa
+	Which city in Europe has more than 1,200 bridges? 
+Paris
+Vienna
+Budapest
+Amsterdam*
+	What country has the abbreviation CH?
+China
+Switzerland*
+Poland
+Chad
+	Where was the first marathon held?
+Athens*
+Madrid
+Santorini
+Portugal
+	How many official time zones are in China?
+5
+3
+1*
+8
+
+
+
+
+
+Riddles
+
+Easy 
+	What is yours but mostly used by others?
+Your name
+Your pencil
+Your car
+Your gum
+	What can you catch but cannot throw?
+A tennis ball
+A cold
+An exception
+A boomerang
+	My hands move but I can’t clap. What am I?
+A baby
+A backscratcher
+A clock
+Someone with one hand
+	You can see me, but I weigh nothing. If you put me in  a bucket of water. I’ll make it lighter. What am I?
+A mop
+Sand
+A hole
+Air
+	What starts with the letter ‘t’, if filled with ‘t’ and ends in ‘t’?
+Tea
+Wok
+Frying Pan
+Teapot
+	What comes down but never goes up?
+Rain
+Glucose levels
+My blood pressure
+My grades
+	The more you take, the more you leave behind. What are they?
+Memories
+Coins
+Candies
+Footsteps
+	Which month has 28 days?
+February
+November
+October
+All of them
+	What is at the end of every rainbow?
+A pot of gold
+The letter 'w'
+Purple
+A storm
+	Everybody has me but i’m impossible to lose. What am I?
+A shadow
+Money
+Hair
+Skin
+	In a house, what room do ghosts avoid?
+The living room
+The study
+The kitchen
+The Bathroom
+	What is as light as a feather but can’t be held by anyone for very long?
+Tissue paper
+A baby
+Your word
+Your breath
+	What runs around a house but does not move?
+A dog
+An alarm
+A garden gnome
+A fence
+	If you have it, you want to share it. If you share it, you don’t have it anymore. What is it?
+Love
+Talent
+A secret
+None of the above
+	Cut me and I won’t cry, but you will. What am I?
+A slug
+Peppermint
+A knife
+An onion
+	Pick me up and scratch my head. I’ll turn red and then black. What am I?
+A match
+A candle
+A caterpillar
+All of the above
+	What has one eye but cannot see?
+A clock
+A needle
+A pin
+Some thread
+	I can be broken without being touched or even being seen. What am I?
+Glass
+A promise
+A window
+Ice
+	What tree do we all carry in our hands?
+Cedar
+Oak
+Willow
+Palm
+	The person who made it doesn’t want it, the person who paid for it doesn’t need it, and the person who needs it doesn’t know it. What is it?
+Fruit cake
+Potpourri
+A meal
+A coffin
+
+Medium
+	If you drop a yellow hat in the Red Sea, what does it become? 
+Yellow
+Red
+Wet
+A hat
+	I go all around the world, but never leave the corner. What am I? 
+A stamp
+Dust
+Knowledge
+A message
+	I have keys but no locks. I have space but no room. You can enter, but can’t go outside. What am I?
+A keyboard
+A computer
+A calculator
+A bedroom
+	What type of lion never roars?
+A dandelion
+A captured lion
+A lion cub
+A mountain lion
+	I have a neck, but I don’t have a head, and I wear a cap. What am I?
+A ghost
+A snake
+A bottle
+A clam
+	What has four legs, one head and one foot?
+A three legged dog
+A chair
+A rabbit
+A bed
+	What is always coming but never arrives?
+Tomorrow
+A train
+A paycheck
+Your amazon package
+	I can’t be seen, but i can be heard. I won’t answer until spoken to. What am I?
+A dream
+An echo
+A voice
+A ghost
+	What has 13 hearts but no other organ?
+A soccer team
+A science lab
+A deck of cards
+An organ transplant center that specializes in heart transplants
+	I am gentle enough to soothe the skin, light enough to caress the sky, hard enough to crack rocks, what am I?
+Water
+Oatmeal
+Liquor
+Sunshine
+	What has branches, but no bark?
+A dog pound
+A library
+A car
+A forest
+	What gets thrown out when it’s needed, but stored away when it’s not?
+A message
+Garbage
+An anchor
+Coupons
+	I will crack if you drop me. If you smile at me, I’ll smile back. What am I?
+An egg
+A mirror
+A nut
+A vase
+	What is it that nobody wants, but nobody wants to lose either?
+Love
+Car keys
+Lawsuit
+Dreams
+	What is never borrowed but often returned?
+Gifts
+A check
+A wish
+Thanks
+	I often run, but I don’t have legs. I don’t need you, but you need me. What am I?
+An athlete
+Water
+A movie
+A ladder
+	I have a head, but I don’t have a body. I have leaves, but no branches. What am I?
+A book
+An oak tree
+A bonsai
+Lettuse
+	I start off dry but emerge wet. I go in light but emerge heavy. What am I?
+Rice
+Powder
+Swimmer
+Tea bag
+	What is something that you are forever leaving behind, but still always have?
+Smell
+Fingerprints
+Wits
+Memory
+	What ten letter word starts with gas?
+Retirement
+Automobile
+Aberration
+Television
+
+
+
+Hard
+	Pointing toward a lady, Anna said, “she is the daughter of the only child of my grandmother.” how is the lady related to Anna?
+Sister
+Niece
+Cousin
+Mother
+	My son was playing with a book and tore out pages 7, 8, 100, 101, 222 and 223. How many pages were torn out?
+6
+3
+5
+4
+	Mr.Smith has 4 daughters. Each of his daughters has a brother. How many children does Mr. Smith have?
+8
+6
+4
+5
+	I am a part of your body. You can hold me in your left hand but not in your right hand. What am I?
+Left leg
+Right hand
+Left hand
+Right leg
+	What has 42 eyes and 12 faces?
+An alien
+A hockey team
+A deck of cards
+A pair of dice
+	If you say my name, then I don’t exist anymore. What am I?
+Leprechaun
+Rumplestilskin
+Silence
+Today
+	I am a mother’s child and a father’s child, but nobody’s son. What am I?
+A grandson
+A daughter
+A father
+An uncle
+	What I get multiplied by any number, the sum of the figures in the product is always me. What am I?
+9
+8
+2
+4
+	Marvin was 13 years old in 1870 and 8 years old in 1875. How is it possible?
+The dates are in AC
+1975 was a leap year
+1870 began on the vernal equinox
+The dates are in BC
+	What flies when it’s born, lies when it’s alive and runs when it’s dead?
+A grain of sand
+An eaglet
+A snowflake
+A fuit fly
+	If POST is 1234 and FLIRT is 56784, what is FROST?
+58234
+58243
+52384
+43285
+	I start with M, end with X, and have a never ending amount of letter. What am I?
+Mix
+Mailbox
+Multiplex
+Matrix
+	What comes once in a minute, twice in a moment, but never in a thousand years?
+31 seconds
+1/1000 of a decade
+1/10 of a century
+The letter 'M'
+	What is 3/7 chicken, ⅔ cat and 2/4 goat?
+Childbirth
+Chiffon
+Chicago
+Chipmunk
+	I am a 7 letter word. I become longer when my third letter is removed. What am I?
+Longing
+Lounger
+Lengthy
+Longine
+	Which word best expresses the meaning of “Reassure”?
+Proffer
+Hearten
+Induce
+Submit
+	Joe’s father had three sons. Two were named snap and crackle. What was the third son’s name?
+Rap
+Joe
+Pop
+Mike
+	What word becomes shorter when you add two letters to it?
+Shorter
+Long
+Short
+Wide
+	A house has 4 walls. All of the walls are facing south and a bear is circling the house. What color is the bear?
+Pink
+Brown
+Black
+White
+	There are 4 floors in a hotel. The higher the floor, the more people live there. Which floor does the elevator go to most often?
+3
+2
+1
+4
