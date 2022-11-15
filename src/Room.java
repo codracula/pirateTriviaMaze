@@ -12,6 +12,7 @@ public class Room {
     public Room(){
 
         setEmpty();
+        setVisited(false);
     }
 
     Room(String theThing){
@@ -41,9 +42,12 @@ public class Room {
     }
 
     protected boolean Isvisited(){
-        return myIsVisited == true ? true: false;
+        return this.myIsVisited;
     }
 
+    public void setVisited(boolean boo){
+        this.myIsVisited = boo;
+    }
     protected void setOccupant(String theName){
         this.myOccupant = theName;
         this.myIsEmpty = false;
@@ -52,16 +56,16 @@ public class Room {
     @Override
     public String toString(){
 
-        return this.myOccupant.toString();
+        return this.myOccupant;
     }
 
-    public int compareTo(Room other) {
-        if (this.myOccupant.compareTo(other.myOccupant) == 0){
-            return 0;
-        } else if (this.myOccupant.compareTo(other.myOccupant) > 0){
-            return 1;
-        } else {
-            return -1;
-        }
-    }
+//    public int compareTo(Room other) {
+//        if (this.myOccupant.compareTo(other.myOccupant) == 0){
+//            return 0;
+//        } else if (this.myOccupant.compareTo(other.myOccupant) > 0){
+//            return 1;
+//        } else {
+//            return -1;
+//        }
+//    }
 }

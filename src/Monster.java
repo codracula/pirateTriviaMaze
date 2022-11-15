@@ -8,11 +8,11 @@ public class Monster {
     private int mBmaxCount;
     private int mCmaxCount;
     protected List mList;
-    public Monster(){
+    public Monster(int mA, int mB, int mC){
 
-        mAmaxCount = 6;
-        mBmaxCount = 2;
-        mCmaxCount = 1;
+        mAmaxCount = mA;
+        mBmaxCount = mB;
+        mCmaxCount = mC;
         populateMonster();
         generateList();
     }
@@ -35,7 +35,7 @@ public class Monster {
             mList.add(myMonsterType.get(2));
         }
         Collections.shuffle(mList);
-        System.out.println(mList);
+        //System.out.println(mList);
     }
     public List<String> getmList(){
         return mList;
