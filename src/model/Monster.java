@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +9,7 @@ public class Monster {
     private int mAmaxCount;
     private int mBmaxCount;
     private int mCmaxCount;
-    protected List mList;
+    private List mList;
     public Monster(int mA, int mB, int mC){
 
         mAmaxCount = mA;
@@ -40,22 +42,5 @@ public class Monster {
     public List<String> getmList(){
         return mList;
     }
-//    public int getAspanwRate(){
-//        return this.mAspawnRate;
-//    }
-//    public int getBspanwRate(){
-//        return this.mBspawnRate;
-//    }
-//    public int getCspanwRate(){
-//        return this.mCspawnRate;
-//    }
-//    public int getAmaxCount(){
-//        return this.mAmaxCount;
-//    }
-//    public int getBmaxCount(){
-//        return this.mBmaxCount;
-//    }
-//    public int getCmaxCount(){
-//        return this.mCmaxCount;
-//    }
+
 }

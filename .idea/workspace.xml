@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52f48e90-1edd-4edc-932c-65d27de4410d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/GameControllerUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/GameModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Maze.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameModel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maze.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Maze.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MazePanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/MutableMaze.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +48,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/My Drive/Document/CS_projects/360_finalproject/pirateTriviaMaze"
+    "last_opened_file_path": "G:/My Drive/Document/CS_projects/Class380_erlang"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -48,6 +56,9 @@
       <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\images" />
       <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\model" />
       <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\testPack" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="model" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -80,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667435815156</updated>
-      <workItem from="1668368073131" duration="29973000" />
+      <workItem from="1668368073131" duration="79469000" />
     </task>
     <servers />
   </component>

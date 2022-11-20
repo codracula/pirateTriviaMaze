@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +12,9 @@ public class Room {
 
 
     public Room(){
-
+        this.myOccupant = "0";
         setEmpty();
-        setVisited(false);
+        myIsVisited = false;
     }
 
     Room(String theThing){
@@ -30,23 +32,19 @@ public class Room {
         return this.myOccupant;
     }
     protected void setEmpty(){
-
+        this.myOccupant = "0";
         this.myIsEmpty = true;
     }
     protected boolean isEmpty(){
-        if (this.myOccupant == null){
-            return true;
-        } else {
-            return false;
-        }
+        return (this.myOccupant == null? true: false);
     }
 
-    protected boolean Isvisited(){
+    protected boolean getVisited(){
         return this.myIsVisited;
     }
 
-    public void setVisited(boolean boo){
-        this.myIsVisited = boo;
+    protected void setVisited(){
+        this.myIsVisited = true;
     }
     protected void setOccupant(String theName){
         this.myOccupant = theName;
@@ -59,7 +57,7 @@ public class Room {
         return this.myOccupant;
     }
 
-//    public int compareTo(Room other) {
+//    public int compareTo(model.Room other) {
 //        if (this.myOccupant.compareTo(other.myOccupant) == 0){
 //            return 0;
 //        } else if (this.myOccupant.compareTo(other.myOccupant) > 0){
