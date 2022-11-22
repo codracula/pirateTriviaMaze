@@ -1,4 +1,3 @@
-import org.sqlite.SQLiteDataSource;
 import java.sql.*;
 import java.util.*;
 
@@ -7,11 +6,40 @@ public class QuestionDatabase {
     private final ArrayList<Question> questionList = new ArrayList<>();
     private static final Random random = new Random();
 
-    public void setQuestion(final String theCategory) {
+    private Connection connect() {
+        String url = "jdbc:sqlite:TriviaQuestions.db";
+        Connection conn = null;
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:TriviaQuestions.db");
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return conn;
+    }
+
+    public void selectAll() {
+        String sql = "SELECT * FROM QUESTIONS";
+        try {
+            Connection conn = this.connect();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM QUESTIONS");
+            ResultSet rs = stmt.executeQuery(sql);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void setQuestionList(final String theCategory, final int theDifficulty) {
+        String sql = "SELECT Category, Difficulty, Question, Choices, Answer FROM Questions WHERE Category = ? AND Difficulty = ?";
+        try {
+            Connection conn = this.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, theCategory);
+            pstmt.setInt(2, theDifficulty);
+            ResultSet rs = pstmt.executeQuery();
             while(rs.next()) {
                 String cate = rs.getString("CATEGORY");
                 int diff = rs.getInt("DIFFICULTY");
@@ -21,11 +49,9 @@ public class QuestionDatabase {
                 Question question = new Question(cate, diff, ques, choices, answer);
                 questionList.add(question);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(0);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-        System.out.println(questionList.toString());
     }
 
     public ArrayList<Question> getQuestionList() {
@@ -45,16 +71,12 @@ public class QuestionDatabase {
         return questionList.get(theIndex).getMyDifficulty();
     }
 
-//    //puts choices into an array
-//    public ArrayList<String> setChoices(final String theChoices) {
-//        String[] elements = theChoices.split(",");
-//        List<String> list = Arrays.asList(elements);
-//        ArrayList<String> choiceArray = new ArrayList<>(list);
-//        return choiceArray;
-//    }
+    public String getQuestion(final int theIndex) {
+        return questionList.get(theIndex).getMyQuestion();
+    }
 
-    public String getChoices(final int theIndex) {
-        return questionList.get(theIndex).getMyChoices();
+    public ArrayList<String> getChoices(final int theIndex) {
+        return questionList.get(theIndex).setChoices();
     }
 
     public String getAnswer(final int theIndex) {

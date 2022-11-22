@@ -30,8 +30,13 @@ public class Question {
         return myQuestion;
     }
 
+    //converts String MyChoices to an Array List and returns it
     public ArrayList<String> setChoices() {
+        //String mySplitChoices = myChoices.replaceAll("\\s", "");
         String[] elements = myChoices.split(",");
+        for (int i = 0; i < elements.length; i++) {
+            elements[i] = elements[i].trim();
+        }
         List<String> list = Arrays.asList(elements);
         ArrayList<String> choiceArray = new ArrayList<>(list);
         return choiceArray;
@@ -46,21 +51,18 @@ public class Question {
     }
 
     public String toString() {
-        System.out.println("Category: " + myCategory);
+        //System.out.println("Category: " + myCategory);
         System.out.println("Difficulty: " + myDifficulty);
         System.out.println("Question: " + myQuestion);
         System.out.println("Choices: ");
         ArrayList<String> choices = setChoices();
-        System.out.println("A) " + choices.get(0));
-        System.out.println("B) " + choices.get(1));
-        System.out.println("C) " + choices.get(2));
-        System.out.println("D) " + choices.get(3));
-        System.out.println("Answer: " + myAnswer);
+        for (int i = 0; i < 4; i++) {
+            System.out.println((i + 1) + ": " + choices.get(i));
+        }
+        //System.out.println("Answer: " + myAnswer);
         System.out.println();
         return null;
     }
 
 
 }
-
-
