@@ -3,19 +3,22 @@ import java.util.Arrays;
 import java.util.Collections;
 public class Character {
     private static int myLives;
-    private final String myName;
     private String myHeroType;
     String[] questions = {"What sound does a duck make?"};
     ArrayList<String> answers = new ArrayList<>();
     String myAnswer;
 //    String answers[] = {"Steven", "Kevin", "Josh", "Molly"};
-    public Character(int theLives, String theName, String theHeroType) {
-        myName = theName;
+    public Character(int theLives, String theHeroType) {
         myHeroType = theHeroType;
         myLives = theLives;
     }
 
-    public String getMyHeroType() {
+    public String myHeroType(){
+
+        return myHeroType;
+    }
+
+    public String HeroType() {
         return myHeroType;
     }
 
@@ -101,7 +104,7 @@ public class Character {
     }
 
     public String toString() {
-        return ("Name: " + myName + ", " + "Lives: " +
+        return ("Name: " + TitleScreen.getName() + ", " + "Lives: " +
                 myLives + ", " + " Hero type: " + myHeroType);
     }
 
@@ -116,6 +119,8 @@ public class Character {
             myHintpassCount = theHintpassCount;
             myKeyCount = theKeyCount;
         }
+
+
 
         public static int getMyKeyCount() {
             return myKeyCount;

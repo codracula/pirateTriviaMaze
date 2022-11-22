@@ -8,6 +8,8 @@ import java.io.IOException;
 
 public class UserFunctions {
 
+
+
     //private static Character character;
     //private static Maze maze;
     static Clip myAudio;
@@ -15,14 +17,19 @@ public class UserFunctions {
     public static void main(String [] args){
         playMusic();
     }
-    private static void stopMusic() {
-        if(myAudio.isActive()){
-            System.out.print("Stopping music... ");
-            myAudio.stop();
+    public static void stopMusic() {
+        try {
+            if(myAudio.isActive()){
+                System.out.print("Stopping music... ");
+                myAudio.stop();
+                new TitleScreen();
+            }
+        }catch (NullPointerException e){
+            System.out.println("There is no music playing currently");
+            new TitleScreen();
         }
-        else{
-            myAudio.start();
-        }
+
+
     }
     public static void playMusic() {
         try {
@@ -33,10 +40,8 @@ public class UserFunctions {
                 myAudio = AudioSystem.getClip();
                 myAudio.open(audioInput);
                 myAudio.start();
+                new TitleScreen();
                 myAudio.loop(Clip.LOOP_CONTINUOUSLY);
-                JOptionPane.showMessageDialog(null, "Press OK to stop playing music.");
-                stopMusic();
-
             } else {
                 System.out.println("An error has occurred.");
             }

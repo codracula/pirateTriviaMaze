@@ -2,7 +2,7 @@ public class Test {
 
     public static void main(String[] args){
 
-       Character obj = new Character(3, "Steven", "Bard");
+       Character obj = new Character(3,  "Bard");
        Character.Inventory test = new Character.Inventory(1, 1);
        System.out.println(obj.toString());
        System.out.println(test.toString());
@@ -13,7 +13,7 @@ public class Test {
        obj.hasLifeline();
        System.out.println("------------------------");
 
-       Character obj2 = new Character(3, "Steven", "Bard");
+       Character obj2 = new Character(3,  "Bard");
        System.out.println(test.toString());
        System.out.println("------------------------");
        System.out.println("Testing useHintpass() if count = 0... \n");
