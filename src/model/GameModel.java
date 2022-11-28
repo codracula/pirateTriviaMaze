@@ -2,6 +2,7 @@ package model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.Random;
 
 public class GameModel {
 
@@ -11,6 +12,9 @@ public class GameModel {
     private String myPlayerName;
     private String myPlayerClass;
     private Maze myMaze;
+    private Character myPlayer;
+    private QuestionDatabase myQuestions;
+    private Monster myMon;
 //    private model.Monster mon;
 //    private int mACount;
 //    private int mBCount;
@@ -18,6 +22,7 @@ public class GameModel {
     public GameModel(){
 
         myMaze = new Maze(4,7, 6,2,1,4);
+        myPlayer = new Character(myLive, myPlayerClass, myQuestions.getQuestionSet(getQuestionIndex()));
         myHintPass = 0;
         myLive = 3;
         myPlayerName = "";
@@ -86,9 +91,18 @@ public class GameModel {
         return myMaze.toString();
     }
 
+    //1 is placeholder in getMonsterType
+    protected void getQuestion() {
+        myMon.setQuestion(myMon.getMonsterType(1), myPlayerClass, myQuestions, getQuestionIndex());
+    }
 
+    protected int getQuestionIndex() {
+        Random random = new Random();
+        return random.nextInt(myQuestions.getQuestionList().size());
+    }
 
-    //get question
-    //notify correct answer
-    //notify out of hintpass
+    protected boolean isCorrect(String userAnswer) {
+        String answer = myQuestions.getAnswer(getQuestionIndex());
+        return userAnswer.equals(answer);
+    }
 }

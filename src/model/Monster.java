@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,19 +47,19 @@ public class Monster {
         return mList;
     }
 
+    public String getMonsterType(int theType) {
+        return (String) myMonsterType.get(theType);
+    }
+
     //set parameter monType to String for now in order to tell which monType
     //probably change in future
     //need to get category information from title screen as well, hardcoded for now
-    public ArrayList<Question> setQuestion(String monType, String category) {
-        QuestionDatabase question = new QuestionDatabase();
+    public ArrayList<Question> setQuestion(String monType, String category, QuestionDatabase question, int index) {
         switch (monType) {
             case "bandit" -> question.setQuestionList(category, 1);
             case "guard" -> question.setQuestionList(category, 2);
             case "gatekeeper" -> question.setQuestionList(category, 3);
         }
-        System.out.println(question.getQuestionList().size());
-        Random rand = new Random();
-        int index = rand.nextInt(15);
         question.getQuestionList().get(index).toString();
 
         //asks the question and takes in user input
