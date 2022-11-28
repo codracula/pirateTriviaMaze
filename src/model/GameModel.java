@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class GameModel {
 
-    private int[] current;
+    private int[] myCurrentPlace;
     private int myHintPass;
     private int myLive;
     private String myPlayerName;
@@ -93,8 +93,8 @@ public class GameModel {
 
     //1 is placeholder in getMonsterType
     protected void getQuestion() {
-        myMon.setQuestion(myMon.getMonsterType(1), myPlayerClass, myQuestions, getQuestionIndex());
-    }
+//myMaze.getMon().setQuestion(myMaze.roomCheckOc(myCurrentPlace[1], myCurrentPlace[2]), myCharacterClass, myQuestions, getQuestionIndex());
+        myMaze.getMon().setQuestion(myMaze.roomCheckOc(getPlayerRow(), getPlayerCol()), myCharacterClass, myQuestions, getQuestionIndex());    }
 
     protected int getQuestionIndex() {
         Random random = new Random();
