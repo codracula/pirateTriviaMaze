@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Monster {
-    List myMonsterType;
+    private List myMonsterType;
     private int MyM_AmaxCount;
     private int MyM_BmaxCount;
     private int MyM_CmaxCount;

@@ -26,7 +26,6 @@ public class GameControllerUI {
         //lauch maze
         System.out.println(ma.m2String());
         System.out.println("end");
-
     }
 
     private void playerClassSelect(){

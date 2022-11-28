@@ -1,7 +1,9 @@
-package model;
+package unitTest;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+import model.Character;
+import model.Monster;
+import model.QuestionDatabase;
+
 import java.util.Random;
 
 public class GameModel {
