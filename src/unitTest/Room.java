@@ -1,33 +1,33 @@
-package model;
+package unitTest;
 
 public class Room {
 
-    protected boolean myIsVisited;
-    protected boolean myIsEmpty;
-    protected boolean myHasKey;
-    protected String myOccupant;
+    boolean myIsVisited;
+    boolean myIsEmpty;
+    boolean myHasKey;
+    String myOccupant;
+
 
     public Room(){
-        this.myOccupant = null;
+
         setEmpty();
         myIsVisited = false;
     }
 
-    Room(String theThing){
+    protected Room(String theThing){
         setOccupant(theThing);
+
     }
     protected void setKey(boolean boo){
         myHasKey = boo;
     }
 
     protected boolean hasKey(){
-        return myIsEmpty == true ? true: false;
+        return myHasKey == true ? true: false;
     }
-    protected String getOccupant(){
-        return this.myOccupant;
-    }
+
     protected void setEmpty(){
-        this.myOccupant = "0";
+        this.myOccupant = null;
         this.myIsEmpty = true;
     }
     protected boolean isEmpty(){
@@ -45,9 +45,13 @@ public class Room {
         this.myOccupant = theName;
         this.myIsEmpty = false;
     }
+    protected String getOccupant(){
+        return this.myOccupant;
+    }
 
     @Override
     public String toString(){
+
         return this.myOccupant;
     }
 
