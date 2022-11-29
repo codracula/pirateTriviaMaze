@@ -2,10 +2,10 @@ package model;
 
 public class Room {
 
-    protected boolean myIsVisited;
-    protected boolean myIsEmpty;
-    protected boolean myHasKey;
-    protected String myOccupant;
+    private boolean myIsVisited;
+    private boolean myIsEmpty;
+    private boolean myHasKey;
+    private String myOccupant;
 
     public Room(){
         this.myOccupant = null;
@@ -27,7 +27,7 @@ public class Room {
         return this.myOccupant;
     }
     protected void setEmpty(){
-        this.myOccupant = "0";
+        this.myOccupant = null;
         this.myIsEmpty = true;
     }
     protected boolean isEmpty(){

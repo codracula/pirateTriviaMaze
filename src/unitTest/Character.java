@@ -1,7 +1,6 @@
-package model;
+package unitTest;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 public class Character {
     private static int myLives;

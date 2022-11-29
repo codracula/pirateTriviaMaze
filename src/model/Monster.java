@@ -8,15 +8,15 @@ import java.util.Scanner;
 
 public class Monster {
     private List myMonsterType;
-    private int MyM_AmaxCount;
-    private int MyM_BmaxCount;
-    private int MyM_CmaxCount;
-    private List mList;
+    private int myM_AmaxCount;
+    private int myM_BmaxCount;
+    private int myM_CmaxCount;
+    private List myMList;
 
     public Monster(int theM_A, int theM_B, int theM_C){
-        MyM_AmaxCount = theM_A;
-        MyM_BmaxCount = theM_B;
-        MyM_CmaxCount = theM_C;
+        myM_AmaxCount = theM_A;
+        myM_BmaxCount = theM_B;
+        myM_CmaxCount = theM_C;
         populateMonster();
         generateList();
     }
@@ -29,25 +29,25 @@ public class Monster {
     }
 
     private void generateList(){
-        mList = new ArrayList<String>(myMonsterType.size());
-        for (int i = MyM_AmaxCount; i > 0; i--){
-            mList.add(myMonsterType.get(0));
+        myMList = new ArrayList<String>(myMonsterType.size());
+        for (int i = myM_AmaxCount; i > 0; i--){
+            myMList.add(myMonsterType.get(0));
         }
-        for (int i = MyM_BmaxCount; i > 0; i--){
-            mList.add(myMonsterType.get(1));
+        for (int i = myM_BmaxCount; i > 0; i--){
+            myMList.add(myMonsterType.get(1));
         }
-        for (int i = MyM_CmaxCount; i > 0; i--){
-            mList.add(myMonsterType.get(2));
+        for (int i = myM_CmaxCount; i > 0; i--){
+            myMList.add(myMonsterType.get(2));
         }
-        Collections.shuffle(mList);
-        System.out.println(mList);
+        Collections.shuffle(myMList);
+        System.out.println(myMList);
     }
 
-    public List<String> getmList(){
-        return mList;
+    protected List<String> getmList(){
+        return myMList;
     }
 
-    public String getMonsterType(int theType) {
+    protected String getMonsterType(int theType) {
         return (String) myMonsterType.get(theType);
     }
 
@@ -62,7 +62,7 @@ public class Monster {
         }
         question.getQuestionList().get(index).toString();
 
-        //asks the question and takes in user input
+        //asks question and takes in user input
         //probably should move somewhere else later
         ArrayList<String> choices = question.getChoices(index);
         Scanner console = new Scanner(System.in);
@@ -81,7 +81,4 @@ public class Monster {
         return question.getQuestionList();
     }
 
-//    public Question getQuestion() {
-//        return
-//    }
 }

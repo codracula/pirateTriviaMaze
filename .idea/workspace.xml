@@ -2,20 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52f48e90-1edd-4edc-932c-65d27de4410d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/unitTest/GameModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unitTest/Maze.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unitTest/Monster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unitTest/MonsterJunitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unitTest/Room.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/unitTest/RoomJunitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pirateTriviaMaze.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pirateTriviaMaze.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameControllerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameControllerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Maze.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/GameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/Maze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/Monster.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +68,9 @@
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="model" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="unitTest" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.MonsterJunitTest">

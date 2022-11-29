@@ -1,8 +1,5 @@
 package unitTest;
 
-import model.Character;
-import model.Monster;
-import model.QuestionDatabase;
 
 import java.util.Random;
 
@@ -92,7 +89,7 @@ public class GameModel {
 
     //1 is placeholder in getMonsterType
     protected void getQuestion() {
-        myMon.setQuestion(myMon.getMonsterType(1), myPlayerClass, myQuestions, getQuestionIndex());
+        myMaze.getMon().setQuestion(myMaze.roomCheckOc(getPlayerRow(), getPlayerCol()), myPlayerClass, myQuestions, getQuestionIndex());
     }
 
     protected int getQuestionIndex() {
