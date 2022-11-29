@@ -93,8 +93,8 @@ public class GameModel {
 
     //1 is placeholder in getMonsterType
     protected void getQuestion() {
-//myMaze.getMon().setQuestion(myMaze.roomCheckOc(myCurrentPlace[1], myCurrentPlace[2]), myCharacterClass, myQuestions, getQuestionIndex());
-        myMaze.getMon().setQuestion(myMaze.roomCheckOc(getPlayerRow(), getPlayerCol()), myCharacterClass, myQuestions, getQuestionIndex());    }
+//myMaze.getMon().setQuestion(myMaze.roomCheckOc(myCurrentPlace[1], myCurrentPlace[2]), myPlayerClass, myQuestions, getQuestionIndex());
+        myMaze.getMon().setQuestion(myMaze.roomCheckOc(getPlayerRow(), getPlayerCol()), myPlayerClass, myQuestions, getQuestionIndex());    }
 
     protected int getQuestionIndex() {
         Random random = new Random();

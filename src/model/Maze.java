@@ -45,6 +45,7 @@ public class Maze {
             }
         }
     }
+
     private void genExit(){
         int exit2gen = 1;
 
@@ -111,7 +112,9 @@ public class Maze {
     protected int getKeyCount(){
         return this.myKeyCount;
     }
-
+    protected Monster getMon() {
+        return mon;
+    }
 
     private void mazeGenerate(){
         myMaze = new Room[myRowCount][myColCount];
