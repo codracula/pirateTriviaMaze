@@ -1,34 +1,43 @@
-//import Model.Character;
-//import Model.Maze;
+package model;
+
 
 import javax.sound.sampled.*;
-import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class UserFunctions {
+    private static Clip myAudio;
 
 
+    public static void loadLastGame() {
+        try{
+            ObjectInputStream in=new ObjectInputStream(new FileInputStream("f.txt"));
+            //maze.loadMaze(in);
+            //myPlayer = new Player(5);
+            //myPlayer.loadPlayer(in);
+            in.close();
+        }catch(Exception e){System.out.println(e);}
+    }
 
-    //private static Character character;
-    //private static Maze maze;
-    static Clip myAudio;
-
-    public static void main(String [] args){
-        playMusic();
+    public static void saveGame(){
+        try {
+            FileOutputStream fout = new FileOutputStream("f.txt");
+            ObjectOutputStream out=new ObjectOutputStream(fout);
+            //maze.saveMaze(out);
+            //myPlayer.savePlayer(out);
+            System.out.println("game saved");
+        } catch(Exception ex){System.out.println("error saving");}
     }
     public static void stopMusic() {
         try {
             if(myAudio.isActive()){
                 System.out.print("Stopping music... ");
                 myAudio.stop();
-                new TitleScreen();
+
             }
         }catch (NullPointerException e){
             System.out.println("There is no music playing currently");
-            new TitleScreen();
-        }
 
+        }
 
     }
     public static void playMusic() {
@@ -40,7 +49,7 @@ public class UserFunctions {
                 myAudio = AudioSystem.getClip();
                 myAudio.open(audioInput);
                 myAudio.start();
-                new TitleScreen();
+
                 myAudio.loop(Clip.LOOP_CONTINUOUSLY);
             } else {
                 System.out.println("An error has occurred.");
