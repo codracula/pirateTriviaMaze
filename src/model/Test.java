@@ -43,14 +43,14 @@ public class Test {
 //       System.out.println("total match elem: " + matchElement);
 ////        model.Maze ma = new model.Maze(6,2,1);
 ////        ma.m2String();
-        int test = 1;
+
         GameModel theModel = new GameModel();
         Controller theController = new Controller(theModel);
         System.out.println(theModel.myPlayer);
         System.out.println("spawnRow: "+theModel.getPlayerRow());
         System.out.println("spawnCol: "+theModel.getPlayerCol());
 
-        while(test > 0) {
+        while(true) {
 
             theController.displayDirections();
             System.out.println(theModel.maze2String());

@@ -1,6 +1,9 @@
 package Controller;
 
-import model.*;
+import model.GameModel;
+import model.Character;
+import model.UserFunctions;
+
 import java.util.Scanner;
 
 public class Controller {
@@ -66,13 +69,9 @@ public class Controller {
     }
     public static void startGame() {
         System.out.print("Let's get started!" + "\n" + "What is your name: ");
-        theModel.myPlayerName = nScan.nextLine();
-        System.out.println("Alright " + theModel.myPlayerName + ", choose a class:");
+        Character.myPlayerName = nScan.nextLine();
+        System.out.println("Alright " + Character.myPlayerName + ", choose a class:");
         playerClassSelect();
-    }
-
-    public static String getName() {
-        return theModel.myPlayerName;
     }
     public static void playerClassSelect() {
         boolean myFlag;
@@ -84,9 +83,9 @@ public class Controller {
         System.out.println("Headhunter \n");
         System.out.println("Please type in the class you want to play as. \n");
 
-        theModel.myPlayerClass = nScan.nextLine();
+        Character.myHeroClass = nScan.nextLine();
 
-            switch (theModel.myPlayerClass.toLowerCase()) {
+            switch (Character.myHeroClass.toLowerCase()) {
                 case "merchant":
                     System.out.println("You've chosen a merchant class, be prepared for arithmetic quest");
                     myFlag = true;
@@ -105,7 +104,6 @@ public class Controller {
 
         }
     }
-
     public static void displayDirections(){
         char myDirection;
 

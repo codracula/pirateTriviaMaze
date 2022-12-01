@@ -4,9 +4,9 @@ import Controller.Controller;
 
 public class GameModel {
 
-    private int[] myCurrentPlace;
+    //private int[] myCurrentPlace;
     private int myHintPass;
-    private int myLive;
+    private int myLives;
     public static String myPlayerName;
     public static String myPlayerClass;
     private Maze myMaze;
@@ -20,9 +20,9 @@ public class GameModel {
 
         myMaze = new Maze(4, 7, 6, 2, 1, 4);
         myHintPass = 0;
-        myLive = 3;
-        myCurrentPlace = new int[10];
-        myPlayer = new Character(myLive, myPlayerClass, myPlayerName);//, myQuestions.getQuestionSet(getQuestionIndex()));
+        myLives = 3;
+        //myCurrentPlace = new int[10];
+        myPlayer = new Character(myLives, myPlayerClass, myPlayerName);//, myQuestions.getQuestionSet(getQuestionIndex()));
         myPlayerName = "";
         myPlayerClass = "";
 
@@ -65,7 +65,7 @@ public class GameModel {
 
     //-----------lives and hintpass-----------------
     protected void decLive() {
-        this.myLive--;
+        this.myLives--;
     }
 
     protected void incHintpass() {

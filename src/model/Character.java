@@ -5,23 +5,19 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Collections;
 public class Character {
-
-    private static GameModel theModel;
+    public static String myHeroClass;
+    public static String myPlayerName;
     private static int myLives;
-    private final String myHeroType;
-    private final String myName;
+
 
     //private final Question question;
 
-    public Character(int theLives, String theHeroType, String theName){//, Question question) {
-        myHeroType = theHeroType;
+    public Character(int theLives, String theHeroClass, String thePlayerName){//, Question question) {
+        myHeroClass = theHeroClass;
         myLives = theLives;
-        myName = theName;
+        myPlayerName = thePlayerName;
        // this.question = question;
     }
-
-
-
 
 
     public void decreaseLives() {
@@ -56,8 +52,16 @@ public class Character {
         return myLives != 0;
     }
 
+    public static String getMyPlayerName(){
+        return myPlayerName;
+    }
+
+    public static String getMyHeroClass(){
+        return myHeroClass;
+    }
+
     public String toString() {
-        return ("Name: " + theModel.myPlayerName + ", " + "Lives: " + myLives + ", " + " Hero type: " + theModel.myPlayerClass);
+        return ("Name: " + myPlayerName + ", " + "Lives: " + myLives + ", " + " Hero type: " + myHeroClass);
     }
 
     public int getLives() {
