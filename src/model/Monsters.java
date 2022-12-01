@@ -3,17 +3,16 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
-public class Monster {
+public class Monsters {
     private List<String> myMonsterType;
     private int myM_AmaxCount;
     private int myM_BmaxCount;
     private int myM_CmaxCount;
     private List myMList;
 
-    public Monster(int theM_A, int theM_B, int theM_C){
+    public Monsters(int theM_A, int theM_B, int theM_C){
         myM_AmaxCount = theM_A;
         myM_BmaxCount = theM_B;
         myM_CmaxCount = theM_C;

@@ -15,7 +15,7 @@ public class Maze {
     private int myPlayerSpawnRow;
     private int myPlayerSpawnCol;
     private Room[][] myMaze;
-    private Monster myMon;
+    private Monsters myMon;
     private int myKeyCount;
 
     private Random myRan;
@@ -29,7 +29,7 @@ public class Maze {
 //        System.out.println("mxn: " + myRowCount + " " + myColCount);
         myRan = new Random();
 
-        myMon = new Monster(theMonsterA,theMonsterB,theMonsterC);
+        myMon = new Monsters(theMonsterA,theMonsterB,theMonsterC);
 
         genMon();
 
@@ -125,7 +125,7 @@ public class Maze {
     int getKeyCount(){
         return this.myKeyCount;
     }
-    Monster getMon() {
+    Monsters getMon() {
         return myMon;
     }
 
