@@ -23,7 +23,7 @@ public class GameModel {
         myLive = 3;
         myCurrentPlace = new int[10];
         myPlayer = new Character(myLive, myPlayerClass, myPlayerName);//, myQuestions.getQuestionSet(getQuestionIndex()));
-        myPlayerName = Controller.getMyPlayerName();
+        myPlayerName = "";
         myPlayerClass = "";
 
     }
