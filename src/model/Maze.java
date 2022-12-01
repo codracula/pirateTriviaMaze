@@ -50,7 +50,7 @@ public class Maze {
         }
     }
 
-    private void genExit(){
+    protected void genExit(){
         int exit2gen = 1;
 
         while (exit2gen > 0) {
@@ -94,10 +94,10 @@ public class Maze {
 
         }
     }
-    protected int getExitPosR(){
+    protected int getExitRow(){
         return this.myExit[0];
     }
-    protected int getExitPosL(){
+    protected int getExitCol(){
         return this.myExit[1];
     }
     protected int getRowPos(){
@@ -106,20 +106,31 @@ public class Maze {
     protected int getColPos(){
         return this.myCurrentLoc[1];
     }
-    protected void setPCurrent(int pos, int value){
-        this.myCurrentLoc[pos] = value;
+    protected void setPCurrent(int thePos, int theValue){
+        this.myCurrentLoc[thePos] = theValue;
     }
+    //----------maze dimension
     protected int getMazeR(){
         return this.myRowCount;
     }
     protected int getMazeC(){
         return this.myColCount;
     }
+
+    //-----------key count to first populate the maze
     protected int getKeyCount(){
         return this.myKeyCount;
     }
     protected Monster getMon() {
         return myMon;
+    }
+
+    protected void setOccupant(int theRow, int theCol, String theOccupant){
+        myMaze[theRow][theCol].setOccupant(theOccupant);
+    }
+
+    protected String getOccupant(int theRow, int theCol){
+        return myMaze[theRow][theCol].getOccupant();
     }
 
     private void mazeGenerate(){

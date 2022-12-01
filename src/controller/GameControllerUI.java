@@ -11,7 +11,7 @@ public class GameControllerUI {
     private int myClass;
     Scanner scan;
     public GameControllerUI(){
-        ma = new Maze(4, 7,6,2,1, 4);
+        ma = new Maze(4, 7,6,2,0, 4);
         scan = new Scanner(System.in);
         menuIntro();
         //add inventory
@@ -39,7 +39,7 @@ public class GameControllerUI {
                 System.out.println("You've chosen a merchant class, be prepared for the quest");
                 break;
             case 2:
-                System.out.println("You're now a sailer..YARRRRR'");
+                System.out.println("You're now a sailer..YARRRRR");
                 break;
             case 3:
                 System.out.println("You are now a headhunter");
