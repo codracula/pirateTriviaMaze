@@ -50,12 +50,10 @@ public class Test {
         System.out.println("spawnRow: "+theModel.getPlayerRow());
         System.out.println("spawnCol: "+theModel.getPlayerCol());
 
-
         while(test > 0) {
 
             theController.displayDirections();
-            theModel.maze2String();
-
+            System.out.println(theModel.maze2String());
 
         }
 

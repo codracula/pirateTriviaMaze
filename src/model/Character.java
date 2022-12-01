@@ -1,21 +1,23 @@
 package model;
 
 import Controller.Controller;
-
+import model.*;
 import java.util.ArrayList;
 import java.util.Collections;
 public class Character {
+
+    private static GameModel theModel;
     private static int myLives;
     private final String myHeroType;
     private final String myName;
 
-   // private final Question question;
+    //private final Question question;
 
-    public Character(int theLives, String theHeroType, String theName) {   //, Question question) {
+    public Character(int theLives, String theHeroType, String theName){//, Question question) {
         myHeroType = theHeroType;
         myLives = theLives;
         myName = theName;
-        //this.question = question;
+       // this.question = question;
     }
 
 
@@ -55,14 +57,14 @@ public class Character {
     }
 
     public String toString() {
-        return ("Name: " + Controller.getMyPlayerName() + ", " + "Lives: " + myLives + ", " + " Hero type: " + myHeroType);
+        return ("Name: " + theModel.myPlayerName + ", " + "Lives: " + myLives + ", " + " Hero type: " + theModel.myPlayerClass);
     }
 
     public int getLives() {
         return myLives;
     }
 
-    private static class Inventory {
+    static class Inventory {
         private static int myHintpassCount; //how many passes does the player start with
         private static int myKeyCount; //how many keys does the player start with
 

@@ -21,17 +21,11 @@ public class GameModel {
         myMaze = new Maze(4, 7, 6, 2, 1, 4);
         myHintPass = 0;
         myLive = 3;
+        myCurrentPlace = new int[10];
         myPlayer = new Character(myLive, myPlayerClass, myPlayerName);//, myQuestions.getQuestionSet(getQuestionIndex()));
         myPlayerName = Controller.getMyPlayerName();
-        myPlayerClass = Controller.getMyPlayerClass();
+        myPlayerClass = "";
 
-    }
-//Used to test of controller passes player name and class name
-    public static String getMyPlayerName() {
-        return myPlayerName;
-    }
-    public static String getMyPlayerClass() {
-        return myPlayerClass;
     }
 
     //-----------maze-----------------
@@ -83,28 +77,74 @@ public class GameModel {
     }
 
     //-----------player control/direction-----------------
-     public void moveLeft() {
+    public void moveLeft(){
+        int tempRow = myMaze.getRowPos();
+        int tempCol = myMaze.getColPos();;
+        int tempCol2 = myMaze.getColPos() - 1;
+
+        //move 1 column to left ----position 1 is col space
         myMaze.setPCurrent(1, myMaze.getColPos() - 1);
+        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
+        myMaze.roomSetEmpty(tempRow, tempCol);
+        myMaze.setOccupant(tempRow, tempCol2, "P");
 
     }
-
-    public void moveRight() {
+    public void moveRight(){
+        int tempRow = myMaze.getRowPos();
+        int tempCol = myMaze.getColPos();
+        int tempCol2 = myMaze.getColPos() + 1;
         //move 1 column to right ----position 1 is col space
         myMaze.setPCurrent(1, myMaze.getColPos() + 1);
-    }
+        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
+        myMaze.roomSetEmpty(tempRow, tempCol);
+        myMaze.setOccupant(tempRow, tempCol2, "P");
 
-    public void moveUp() {
+    }
+    public void moveUp(){
+
+        int tempRow = myMaze.getRowPos();
+        int tempCol = myMaze.getColPos();
+        int tempRow2 = myMaze.getRowPos() - 1;
         //move 1 row up  ------position 0 is row space
-        myMaze.setPCurrent(0, myMaze.getRowPos() - 1);
+        myMaze.setPCurrent(0 , myMaze.getRowPos() - 1);
+        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
+        myMaze.roomSetEmpty(tempRow, tempCol);
+        myMaze.setOccupant(tempRow2, tempCol, "P");
+    }
+    public void moveDown(){
+        int tempRow = myMaze.getRowPos();
+        int tempCol = myMaze.getColPos();
+        int tempRow2 = myMaze.getRowPos() + 1;
+        //move 1 row down  ------position 0 is row space
+        myMaze.setPCurrent(0, myMaze.getRowPos() + 1);
+        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
+        myMaze.roomSetEmpty(tempRow, tempCol);
+        myMaze.setOccupant(tempRow2, tempCol, "P");
     }
 
-    public void moveDown() {
-        myMaze.setPCurrent(0, myMaze.getRowPos() + 1);
+    private void roomActivity(int theRow, int theCol){
+
+        if (myMaze.roomHasKey(theRow, theCol)){
+            Character.Inventory.setMyKeyCount(Character.Inventory.getMyKeyCount() + 1);
+        } else if (myMaze.getOccupant(theRow, theCol) == "bandit"){
+            //activate bandit question set
+
+        } else if (myMaze.getOccupant(theRow, theCol) == "guard"){
+            //activate guard question set
+
+        } else if (myMaze.getOccupant(theRow, theCol) == "gateKeeper"){
+            //activate gateKeeper question set
+
+        } else if (myMaze.getOccupant(theRow, theCol) == "hintPass"){
+            //add hintpass to inventory
+            Character.Inventory.setMyHintpassCount(Character.Inventory.getMyHintpassCount() + 1);
+            myMaze.setOccupant(theRow, theCol, null);
+        }
     }
 
     //-----------display-----------------
     public String maze2String() {
-        return "test" + myMaze.toString() ;
+        return myMaze.m2String();
     }
 
     //1 is placeholder in getMonsterType

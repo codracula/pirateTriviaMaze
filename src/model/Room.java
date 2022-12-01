@@ -27,7 +27,7 @@ public class Room {
         return this.myOccupant;
     }
     protected void setEmpty(){
-        this.myOccupant = "0";
+        this.myOccupant = null;
         this.myIsEmpty = true;
     }
     protected boolean isEmpty(){

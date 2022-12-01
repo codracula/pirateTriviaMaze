@@ -1,8 +1,6 @@
 package Controller;
 
 import model.*;
-import model.UserFunctions;
-
 import java.util.Scanner;
 
 public class Controller {
@@ -31,7 +29,7 @@ public class Controller {
         switch (choice) {
             case 1:
                 startGame();
-                new GameModel();
+                System.out.println(theModel.maze2String());
                 break;
             case 2:
                 System.out.println("Load game");
@@ -125,12 +123,14 @@ public class Controller {
             theModel.moveDown();
             System.out.println("Row: "+theModel.getPlayerRow());
             System.out.println("Col: "+theModel.getPlayerCol());
+
         }
         if(myDirection == 'R'){
             System.out.println("Move Right (R)");
             theModel.moveRight();
             System.out.println("Row: "+theModel.getPlayerRow());
             System.out.println("Col: "+theModel.getPlayerCol());
+
         }
         if(myDirection == 'U'){
             System.out.println("Move Up (U)");
@@ -138,12 +138,14 @@ public class Controller {
             System.out.println("Row: "+theModel.getPlayerRow());
             System.out.println("Col: "+theModel.getPlayerCol());
 
+
         }
         if(myDirection == 'L'){
             System.out.println("Move Left (L)");
             theModel.moveLeft();
             System.out.println("Row: "+theModel.getPlayerRow());
             System.out.println("Col: "+theModel.getPlayerCol());
+            System.out.println(theModel.maze2String());
         }
     }
     public static String getMyPlayerClass(){

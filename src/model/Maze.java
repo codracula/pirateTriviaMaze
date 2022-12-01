@@ -15,7 +15,7 @@ public class Maze {
     private Random myRan;
     public Maze(int theRow, int theCol, int theMonsterA, int theMonsterB,
                 int theMonsterC, int theKeyCount){
-
+        myCurrentLoc = new int[10];
         myRowCount = theRow;
         myColCount = theCol;
         myKeyCount = theKeyCount;
@@ -94,14 +94,14 @@ public class Maze {
     protected int getExitPosL(){
         return this.myExit[1];
     }
-    protected int getRowPos(){
-        return this.myCurrentLoc[0];
+    protected int getRowPos() {
+            return this.myCurrentLoc[0];
     }
     protected int getColPos(){
         return this.myCurrentLoc[1];
     }
-    protected void setPCurrent(int pos, int value){
-        this.myCurrentLoc[pos] = value;
+    protected void setPCurrent(int thePos, int theValue){
+        this.myCurrentLoc[thePos] = theValue;
     }
     protected int getMazeR(){
         return this.myRowCount;
@@ -125,6 +125,16 @@ public class Maze {
         }
         //System.out.println("maze length: " + myMaze.length);
     }
+    protected String getOccupant(int theRow, int theCol){
+        return myMaze[theRow][theCol].getOccupant();
+    }
+    protected void setOccupant(int theRow, int theCol, String theOccupant){
+        myMaze[theRow][theCol].setOccupant(theOccupant);
+    }
+
+    protected boolean roomHasKey(int theRow, int theCol){
+        return myMaze[theRow][theCol].hasKey();
+    }
     public String roomCheckOc(int theRow, int theCol){
         return myMaze[theRow][theCol].getOccupant();
     }
@@ -141,6 +151,7 @@ public class Maze {
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
     }
+
     protected void roomRemoveKey(int theRow, int theCol){
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
@@ -153,9 +164,13 @@ public class Maze {
         final StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < myMaze.length; i++){
+            sb.append ("___________________________________________\n");
+            sb.append("|     |     |     |     |     |     |     |\n");
+            sb.append("|  ");
             for (int j = 0 ; j < myMaze[i].length; j++) {
+
                 if (myMaze[i][j].getOccupant() == null){
-                    sb.append("0");
+                    sb.append(" ");
                 } else if (myMaze[i][j].getOccupant() == "bandit"){
                     sb.append("1");
                 } else if (myMaze[i][j].getOccupant() == "guard"){
@@ -165,10 +180,15 @@ public class Maze {
                 } else {
                     sb.append(myMaze[i][j].getOccupant().toString());
                 }
+                sb.append("  |  ");
             }
             sb.append("\n");
+            sb.append("|     |     |     |     |     |     |     |\n");
 
         }
+        sb.append ("___________________________________________\n");
+        sb.append("P = player, E = exit, 1 = bandit, 2 = guard, 3 = gatekeeper, K = key\n");
+
         return sb.toString();
     }
 
