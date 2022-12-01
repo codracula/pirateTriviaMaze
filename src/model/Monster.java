@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Monster {
-    private List myMonsterType;
+    private List<String> myMonsterType;
     private int myM_AmaxCount;
     private int myM_BmaxCount;
     private int myM_CmaxCount;
@@ -23,7 +23,7 @@ public class Monster {
     }
 
     private void populateMonster(){
-        myMonsterType = new ArrayList<String>();
+        myMonsterType = new ArrayList();
         myMonsterType.add("bandit");
         myMonsterType.add("guard");
         myMonsterType.add("gateKeeper");

@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Monster {
-    private List myMonsterType;
-    private int myM_AmaxCount;
-    private int myM_BmaxCount;
-    private int myM_CmaxCount;
-    private List myMList;
+    protected List myMonsterType;
+    protected int myM_AmaxCount;
+    protected int myM_BmaxCount;
+    protected int myM_CmaxCount;
+    protected List myMList;
 
     public Monster(int theM_A, int theM_B, int theM_C){
         myM_AmaxCount = theM_A;
@@ -23,14 +23,14 @@ public class Monster {
         generateList();
     }
 
-    private void populateMonster(){
+    protected void populateMonster(){
         myMonsterType = new ArrayList<String>();
         myMonsterType.add("bandit");
         myMonsterType.add("guard");
         myMonsterType.add("gateKeeper");
     }
 
-    private void generateList(){
+    protected void generateList(){
         myMList = new ArrayList<String>(myMonsterType.size());
         for (int i = myM_AmaxCount; i > 0; i--){
             myMList.add(myMonsterType.get(0));

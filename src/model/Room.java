@@ -8,7 +8,7 @@ public class Room {
     private String myOccupant;
 
     public Room(){
-        this.myOccupant = null;
+        myOccupant = null;
         setEmpty();
         myIsVisited = false;
     }
@@ -16,7 +16,7 @@ public class Room {
     Room(String theThing){
         setOccupant(theThing);
     }
-    protected void setKey(boolean boo){
+    protected void setKey(final boolean boo){
         myHasKey = boo;
     }
 
@@ -24,31 +24,31 @@ public class Room {
         return myIsEmpty == true ? true: false;
     }
     protected String getOccupant(){
-        return this.myOccupant;
+        return myOccupant;
     }
     protected void setEmpty(){
-        this.myOccupant = null;
-        this.myIsEmpty = true;
+        myOccupant = null;
+        myIsEmpty = true;
     }
     protected boolean isEmpty(){
-        return (this.myOccupant == null? true: false);
+        return (myOccupant == null? true: false);
     }
 
     protected boolean getVisited(){
-        return this.myIsVisited;
+        return myIsVisited;
     }
 
     protected void setVisited(){
-        this.myIsVisited = true;
+        myIsVisited = true;
     }
     protected void setOccupant(String theName){
-        this.myOccupant = theName;
-        this.myIsEmpty = false;
+        myOccupant = theName;
+        myIsEmpty = false;
     }
 
     @Override
     public String toString(){
-        return this.myOccupant;
+        return myOccupant;
     }
 
 }

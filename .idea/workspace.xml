@@ -3,9 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="52f48e90-1edd-4edc-932c-65d27de4410d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameControllerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameControllerUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GameModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Maze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/GameModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/Maze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/MonsterJunitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/MonsterJunitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/QuestionDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/QuestionDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTest/RoomJunitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/RoomJunitTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,28 +43,29 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/My Drive/Document/CS_projects/Test_",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/My Drive/Document/CS_projects/Test_&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\unitTest" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src" />
       <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze" />
       <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\images" />
       <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\model" />
@@ -140,8 +151,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.MonsterJunitTest" />
         <item itemvalue="JUnit.RoomJunitTest" />
+        <item itemvalue="JUnit.MonsterJunitTest" />
         <item itemvalue="JUnit.MonsterJunitTest.testMList" />
         <item itemvalue="JUnit.RoomJunitTest.testEmpty" />
       </list>

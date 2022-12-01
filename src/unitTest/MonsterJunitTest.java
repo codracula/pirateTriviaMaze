@@ -15,12 +15,10 @@ public class MonsterJunitTest {
         /* default */ void testConstructor() {
         Monster mon = new Monster(5,4,3);
 
-        assertEquals(5, mon.mAmaxCount, "monster count not match");
-        assertEquals(4, mon.mBmaxCount, "monster count not match");
-        assertEquals(3, mon.mCmaxCount, "monster count not match");
-        //test populate and generate monster in here
-//        assertTrue(room.isEmpty(), "room is not empty");
-//        assertFalse(room.myIsVisited, "room has been visited");
+        assertEquals(5, mon.myM_AmaxCount, "monster count not match");
+        assertEquals(4, mon.myM_BmaxCount, "monster count not match");
+        assertEquals(3, mon.myM_CmaxCount, "monster count not match");
+
     }
 
     @Test
@@ -38,30 +36,30 @@ public class MonsterJunitTest {
         mon.populateMonster();
         mon.generateList();
         int countBandit = 0;
-        for (int i = 0; i < mon.mList.size();i++){
-            if (mon.mList.get(i) == "bandit"){
+        for (int i = 0; i < mon.myMList.size();i++){
+            if (mon.myMList.get(i) == "bandit"){
                 countBandit++;
             }
         }
-        assertEquals(countBandit, mon.mAmaxCount, "bandit counts aren't the same");
+        assertEquals(countBandit, mon.myM_AmaxCount, "bandit counts aren't the same");
         //---------------------------------------------------
         int countGuard = 0;
-        for (int i = 0; i < mon.mList.size();i++){
-            if (mon.mList.get(i) == "guard"){
+        for (int i = 0; i < mon.myMList.size();i++){
+            if (mon.myMList.get(i) == "guard"){
                 countGuard++;
             }
         }
-        assertEquals(countGuard, mon.mBmaxCount, "guard counts aren't the same");
+        assertEquals(countGuard, mon.myM_BmaxCount, "guard counts aren't the same");
         //---------------------------------------------------
         int countGateKeeper = 0;
-        for (int i = 0; i < mon.mList.size();i++){
-            if (mon.mList.get(i) == "gateKeeper"){
+        for (int i = 0; i < mon.myMList.size();i++){
+            if (mon.myMList.get(i) == "gateKeeper"){
                 countGateKeeper++;
             }
         }
-        assertEquals(countGateKeeper, mon.mCmaxCount, "gateKeeper counts aren't the same");
+        assertEquals(countGateKeeper, mon.myM_CmaxCount, "gateKeeper counts aren't the same");
 
-        assertEquals(countBandit + countGuard + countGateKeeper, mon.mList.size(),
+        assertEquals(countBandit + countGuard + countGateKeeper, mon.myMList.size(),
                 "monster counts aren't the same");
     }
 
@@ -74,7 +72,7 @@ public class MonsterJunitTest {
         mon.populateMonster();
         mon.generateList();
         assertNotNull(mon.toString(), "list is not null");
-        assertEquals(6, mon.mList.size(), "monster list has correct count");
+        assertEquals(6, mon.myMList.size(), "monster list has correct count");
         int typeA = 0, typeB = 0, typeC = 0;
 
         for (int i = 0; i < testList.size(); i++){
@@ -90,6 +88,6 @@ public class MonsterJunitTest {
             }
         }
 
-        assertEquals(typeA+typeB+typeC, mon.mList.size(), "mList same as testLIst");
+        assertEquals(typeA+typeB+typeC, mon.myMList.size(), "mList same as testLIst");
     }
 }
