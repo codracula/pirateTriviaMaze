@@ -85,7 +85,7 @@ public class GameModel {
     }
     //-----------display-----------------
     public String maze2String(){
-        return myMaze.toString();
+        return myMaze.m2String();
     }
 
     //1 is placeholder in getMonsterType

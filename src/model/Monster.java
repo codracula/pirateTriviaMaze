@@ -19,6 +19,7 @@ public class Monster {
         myM_CmaxCount = theM_C;
         populateMonster();
         generateList();
+
     }
 
     private void populateMonster(){
@@ -40,7 +41,8 @@ public class Monster {
             myMList.add(myMonsterType.get(2));
         }
         Collections.shuffle(myMList);
-        System.out.println(myMList);
+//        System.out.println(myMList);
+
     }
 
     protected List<String> getmList(){
@@ -54,7 +56,8 @@ public class Monster {
     //set parameter monType to String for now in order to tell which monType
     //probably change in future
     //need to get category information from title screen as well, hardcoded for now
-    public ArrayList<Question> setQuestion(String monType, String category, QuestionDatabase question, int index) {
+    protected ArrayList<Question> setQuestion(String monType, String category, QuestionDatabase question, int index) {
+
         switch (monType) {
             case "bandit" -> question.setQuestionList(category, 1);
             case "guard" -> question.setQuestionList(category, 2);
@@ -76,6 +79,7 @@ public class Monster {
             System.out.println("The answer is " + question.getAnswer(index));
             //wrong++;
         }
+
         //don't remove this tho
         question.removeQuestion(index);
         return question.getQuestionList();

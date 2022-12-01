@@ -11,7 +11,7 @@ public class GameControllerUI {
     private int myClass;
     Scanner scan;
     public GameControllerUI(){
-//        ma = new model.Maze(6,2,1,4);
+        ma = new Maze(4, 7,6,2,1, 4);
         scan = new Scanner(System.in);
         menuIntro();
         //add inventory
@@ -25,7 +25,7 @@ public class GameControllerUI {
         playerClassSelect();
         //lauch maze
         System.out.println(ma.m2String());
-        System.out.println("end");
+//        System.out.println("end");
     }
 
     private void playerClassSelect(){
@@ -36,7 +36,7 @@ public class GameControllerUI {
 
         switch (myClass){
             case 1:
-                System.out.println("You've chosen a merchant class, be prepared for arithmetic quest");
+                System.out.println("You've chosen a merchant class, be prepared for the quest");
                 break;
             case 2:
                 System.out.println("You're now a sailer..YARRRRR'");

@@ -22,8 +22,11 @@ public class Maze {
         mazeGenerate();
 //        System.out.println("mxn: " + myRowCount + " " + myColCount);
         myRan = new Random();
+
         myMon = new Monster(theMonsterA,theMonsterB,theMonsterC);
+
         genMon();
+
         genPlayerSpawn();
         genKey();
         //conditional when all keys are found
@@ -35,8 +38,9 @@ public class Maze {
 
         //while the list isn't empty generate ran x, and y and put the monster there
         int monLeft = myMon.getmList().size();
-        //System.out.println("mon size: " + mon.getmList().size());
+//        System.out.println("mon size: " + myMon.getmList().size());
         while (monLeft > 0) {
+
             int ranRow = myRan.nextInt(myRowCount);
             int ranCol = myRan.nextInt(myColCount);
             if (myMaze[ranRow][ranCol].isEmpty()){
@@ -57,8 +61,9 @@ public class Maze {
                 myExit = new int[2];
                 myExit[0] = ranRow;
                 myExit[1] = ranCol;
+                exit2gen--;
             }
-            exit2gen--;
+
         }
     }
     private void genPlayerSpawn(){
@@ -71,8 +76,9 @@ public class Maze {
                 myPlayerSpawn = new int[2];
                 myPlayerSpawn[0] = ranRow;
                 myPlayerSpawn[1] = ranCol;
+                player2Spawn--;
             }
-            player2Spawn--;
+
         }
     }
 
@@ -83,9 +89,9 @@ public class Maze {
             int ranCol = myRan.nextInt(myColCount);
             if (myMaze[ranRow][ranCol].isEmpty()) {
                 myMaze[ranRow][ranCol].setOccupant("K");
-
+                tempKey--;
             }
-            tempKey--;
+
         }
     }
     protected int getExitPosR(){
@@ -120,7 +126,7 @@ public class Maze {
         myMaze = new Room[myRowCount][myColCount];
         for (int i = 0; i < myMaze.length; i++){
             for (int j = 0 ; j < myMaze[i].length; j++) {
-            myMaze[i][j] = new Room(null);
+            myMaze[i][j] = new Room();
             }
         }
         //System.out.println("maze length: " + myMaze.length);
@@ -152,7 +158,7 @@ public class Maze {
     protected String room2String(int theRow, int theCol){
         return myMaze[theRow][theCol].toString();
     }
-    protected String m2String(){
+    public String m2String(){
         final StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < myMaze.length; i++){

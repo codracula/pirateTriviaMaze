@@ -1,9 +1,7 @@
 import controller.GameControllerUI;
-import unitTest.Monster;
+
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -13,8 +11,8 @@ public class Main {
 
         System.out.println("test");
 
-//        GameControllerUI game = new GameControllerUI();
-
+        GameControllerUI game = new GameControllerUI();
+//        System.out.println("after controller UI");
 //        model.Maze ma = new model.Maze(6,2,1);
 //        ma.m2String();
 
