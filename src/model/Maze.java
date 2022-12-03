@@ -3,27 +3,36 @@ package model;
 import java.util.Random;
 
 public class Maze {
-    private final int myRowCount;
+    private final  int myRowCount;
     private final int myColCount;
     private int[] myCurrentLoc;
+    private int myCurrentRow;
+    private int myCurrentCol;
     private int[] myExit;
+    private int myExitRow;
+    private int myExitCol;
     private int[] myPlayerSpawn;
+    private int myPlayerSpawnRow;
+    private int myPlayerSpawnCol;
     private Room[][] myMaze;
-    private Monster mon;
+    private Monsters myMon;
     private int myKeyCount;
 
     private Random myRan;
     public Maze(int theRow, int theCol, int theMonsterA, int theMonsterB,
                 int theMonsterC, int theKeyCount){
-        //myCurrentLoc = new int[10];
+
         myRowCount = theRow;
         myColCount = theCol;
         myKeyCount = theKeyCount;
         mazeGenerate();
 //        System.out.println("mxn: " + myRowCount + " " + myColCount);
         myRan = new Random();
-        mon = new Monster(theMonsterA,theMonsterB,theMonsterC);
+
+        myMon = new Monsters(theMonsterA,theMonsterB,theMonsterC);
+
         genMon();
+
         genPlayerSpawn();
         genKey();
         //conditional when all keys are found
@@ -31,34 +40,34 @@ public class Maze {
         myCurrentLoc = myPlayerSpawn;
         //populate keys
     }
-    private void genMon(){
+    void genMon(){
 
         //while the list isn't empty generate ran x, and y and put the monster there
-        int monLeft = mon.getmList().size();
-        //System.out.println("mon size: " + mon.getmList().size());
+        int monLeft = myMon.getmList().size();
+//        System.out.println("mon size: " + myMon.getmList().size());
         while (monLeft > 0) {
+
             int ranRow = myRan.nextInt(myRowCount);
             int ranCol = myRan.nextInt(myColCount);
             if (myMaze[ranRow][ranCol].isEmpty()){
-                myMaze[ranRow][ranCol].setOccupant((String) mon.getmList().get(monLeft - 1));
+                myMaze[ranRow][ranCol].setOccupant((String) myMon.getmList().get(monLeft - 1));
                 monLeft--;
             }
         }
     }
 
-    private void genExit(){
+    void genExit(){
         int exit2gen = 1;
-
         while (exit2gen > 0) {
             int ranRow = myRan.nextInt(myRowCount);
             int ranCol = myRan.nextInt(myColCount);
             if (myMaze[ranRow][ranCol].isEmpty()){
                 myMaze[ranRow][ranCol].setOccupant("E");
-                myExit = new int[2];
-                myExit[0] = ranRow;
-                myExit[1] = ranCol;
+                myExitRow = ranRow;
+                myExitCol = ranCol;
+                exit2gen--;
             }
-            exit2gen--;
+
         }
     }
     private void genPlayerSpawn(){
@@ -68,11 +77,11 @@ public class Maze {
             int ranCol = myRan.nextInt(myColCount);
             if (myMaze[ranRow][ranCol].isEmpty()) {
                 myMaze[ranRow][ranCol].setOccupant("P");
-                myPlayerSpawn = new int[2];
-                myPlayerSpawn[0] = ranRow;
-                myPlayerSpawn[1] = ranCol;
+                myPlayerSpawnRow = ranRow;
+                myPlayerSpawnCol = ranCol;
+                player2Spawn--;
             }
-            player2Spawn--;
+
         }
     }
 
@@ -83,81 +92,85 @@ public class Maze {
             int ranCol = myRan.nextInt(myColCount);
             if (myMaze[ranRow][ranCol].isEmpty()) {
                 myMaze[ranRow][ranCol].setOccupant("K");
-
+                tempKey--;
             }
-            tempKey--;
+
         }
     }
-    protected int getExitPosR(){
-        return this.myExit[0];
+    int getExitRow(){
+        return myExitRow;
     }
-    protected int getExitPosL(){
-        return this.myExit[1];
+    int getExitCol(){
+        return myExitRow;
     }
-    protected int getRowPos() {
-        return this.myCurrentLoc[0];
+    int getRowPos(){
+        return myCurrentRow;
     }
-    protected int getColPos(){
-        return this.myCurrentLoc[1];
+    int getColPos(){
+        return myCurrentCol;
     }
-    protected void setPCurrent(int thePos, int theValue){
-        this.myCurrentLoc[thePos] = theValue;
+    void setPCurrent(int theRow, int theCol){
+        myCurrentRow = theRow;
+        myCurrentCol = theCol;
     }
-    protected int getMazeR(){
-        return this.myRowCount;
+    //----------maze dimension
+    int getMazeR(){
+        return myRowCount;
     }
-    protected int getMazeC(){
-        return this.myColCount;
-    }
-    protected int getKeyCount(){
-        return this.myKeyCount;
-    }
-    protected Monster getMon() {
-        return mon;
+    int getMazeC(){
+        return myColCount;
     }
 
-    void mazeGenerate(){
+    //-----------key count to first populate the maze
+    int getKeyCount(){
+        return this.myKeyCount;
+    }
+    Monsters getMon() {
+        return myMon;
+    }
+
+    void setOccupant(int theRow, int theCol, String theOccupant){
+        myMaze[theRow][theCol].setOccupant(theOccupant);
+    }
+
+    String getOccupant(int theRow, int theCol){
+        return myMaze[theRow][theCol].getOccupant();
+    }
+
+    private void mazeGenerate(){
         myMaze = new Room[myRowCount][myColCount];
         for (int i = 0; i < myMaze.length; i++){
             for (int j = 0 ; j < myMaze[i].length; j++) {
-            myMaze[i][j] = new Room(null);
+            myMaze[i][j] = new Room();
             }
         }
         //System.out.println("maze length: " + myMaze.length);
     }
-    protected String getOccupant(int theRow, int theCol){
+    String roomCheckOc(int theRow, int theCol){
         return myMaze[theRow][theCol].getOccupant();
     }
-    protected void setOccupant(int theRow, int theCol, String theOccupant){
-        myMaze[theRow][theCol].setOccupant(theOccupant);
-    }
-
-    protected boolean roomHasKey(int theRow, int theCol){
-        return myMaze[theRow][theCol].hasKey();
-    }
-    public String roomCheckOc(int theRow, int theCol){
-        return myMaze[theRow][theCol].getOccupant();
-    }
-    public boolean roomCheckEmpty(int theRow, int theCol){
+    boolean roomCheckEmpty(int theRow, int theCol){
         return myMaze[theRow][theCol].isEmpty();
     }
-    public boolean roomCheckVisit(int theRow, int theCol){
+    boolean roomCheckVisit(int theRow, int theCol){
         return myMaze[theRow][theCol].getVisited();
     }
-    public void roomSetVisit(int theRow, int theCol){
+    void roomSetVisit(int theRow, int theCol){
         myMaze[theRow][theCol].setVisited();
     }
-    public void roomSetEmpty(int theRow, int theCol){
+    void roomSetEmpty(int theRow, int theCol){
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
     }
-
-    protected void roomRemoveKey(int theRow, int theCol){
+    boolean roomHasKey(int theRow, int theCol){
+        return myMaze[theRow][theCol].hasKey();
+    }
+    void roomRemoveKey(int theRow, int theCol){
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
         this.myKeyCount--;
     }
-    protected String room2String(int theRow, int theCol){
+    String room2String(int theRow, int theCol){
         return myMaze[theRow][theCol].toString();
     }
     public String m2String(){
@@ -184,14 +197,11 @@ public class Maze {
             }
             sb.append("\n");
             sb.append("|     |     |     |     |     |     |     |\n");
-
         }
         sb.append ("___________________________________________\n");
         sb.append("P = player, E = exit, 1 = bandit, 2 = guard, 3 = gatekeeper, K = key\n");
 
         return sb.toString();
     }
-
-
 
 }
