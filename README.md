@@ -1,2 +1,0 @@
-# pirateTriviaMaze
-trivia maze project
