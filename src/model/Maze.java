@@ -5,13 +5,10 @@ import java.util.Random;
 public class Maze {
     private final  int myRowCount;
     private final int myColCount;
-    private int[] myCurrentLoc;
     private int myCurrentRow;
     private int myCurrentCol;
-    private int[] myExit;
     private int myExitRow;
     private int myExitCol;
-    private int[] myPlayerSpawn;
     private int myPlayerSpawnRow;
     private int myPlayerSpawnCol;
     private Room[][] myMaze;
@@ -19,8 +16,8 @@ public class Maze {
     private int myKeyCount;
 
     private Random myRan;
-    public Maze(int theRow, int theCol, int theMonsterA, int theMonsterB,
-                int theMonsterC, int theKeyCount){
+    public Maze(final int theRow, final int theCol, final int theMonsterA, final int theMonsterB,
+                final int theMonsterC, final int theKeyCount){
 
         myRowCount = theRow;
         myColCount = theCol;
@@ -37,7 +34,8 @@ public class Maze {
         genKey();
         //conditional when all keys are found
         genExit();
-        myCurrentLoc = myPlayerSpawn;
+        myCurrentRow = myPlayerSpawnRow;
+        myCurrentCol = myPlayerSpawnCol;
         //populate keys
     }
     void genMon(){
@@ -123,7 +121,7 @@ public class Maze {
 
     //-----------key count to first populate the maze
     int getKeyCount(){
-        return this.myKeyCount;
+        return myKeyCount;
     }
     Monsters getMon() {
         return myMon;
@@ -168,7 +166,7 @@ public class Maze {
     void roomRemoveKey(int theRow, int theCol){
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
-        this.myKeyCount--;
+        myKeyCount--;
     }
     String room2String(int theRow, int theCol){
         return myMaze[theRow][theCol].toString();

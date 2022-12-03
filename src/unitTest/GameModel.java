@@ -1,11 +1,12 @@
-package model;
+package unitTest;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+
 import java.util.Random;
 
 public class GameModel {
 
+//    private int[] myCurrentPlace;
+//    private int myHintPass;
     private int myLive;
     private String myPlayerName;
     private String myPlayerClass;
@@ -190,10 +191,10 @@ public class GameModel {
     }
 
     //1 is placeholder in getMonsterType
-    void getQuestion() {
-
-        myMaze.getMon().setQuestion(myMaze.roomCheckOc(getPlayerRow(), getPlayerCol()), myPlayerClass, myQuestions, getQuestionIndex());
-    }
+//    void getQuestion() {
+//
+//        myMaze.getMon().setQuestion(myMaze.roomCheckOc(getPlayerRow(), getPlayerCol()), myPlayerClass, myQuestions, getQuestionIndex());
+//    }
 
     int getQuestionIndex() {
         Random random = new Random();
