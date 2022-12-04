@@ -1,21 +1,22 @@
 package Controller;
 
-import model.GameModel;
 import model.Character;
+import model.GameModel;
+
 import model.UserFunctions;
 
 import java.util.Scanner;
 
 public class Controller {
-    private static final Scanner nScan = new Scanner(System.in);
-    private static GameModel theModel;
+    private final Scanner nScan = new Scanner(System.in);
+    private GameModel theModel;
     public Controller(GameModel theModel) {
         this.theModel = theModel;
         promptTitle();
         menu();
 
     }
-    public static void promptTitle() {
+    public void promptTitle() {
         System.out.println("Welcome to Trivia Maze!");
         System.out.println("=================================");
         System.out.println("Please select an option by entering an integer.");
@@ -24,7 +25,7 @@ public class Controller {
         System.out.println("3) Options");
         System.out.println("4) Quit \n");
     }
-    public static void menu() {
+    public void menu() {
 
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -53,9 +54,9 @@ public class Controller {
                 System.out.println("Not a valid option.");
         }
     }
-    public static void optionMenu() {
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+    public void optionMenu() {
+
+        int choice = nScan.nextInt();
         switch (choice) {
             case 1:
                 UserFunctions.stopMusic();
@@ -67,13 +68,13 @@ public class Controller {
                 System.out.println("Not a valid option.");
         }
     }
-    public static void startGame() {
+    public void startGame() {
         System.out.print("Let's get started!" + "\n" + "What is your name: ");
-        Character.myPlayerName = nScan.nextLine();
-        System.out.println("Alright " + Character.myPlayerName + ", choose a class:");
+        theModel.setMyPlayerName(nScan.nextLine());
+        System.out.println("Alright " + theModel.getMyPlayerName() + ", choose a class:");
         playerClassSelect();
     }
-    public static void playerClassSelect() {
+    public void playerClassSelect() {
         boolean myFlag;
         myFlag = false;
 
@@ -83,9 +84,10 @@ public class Controller {
         System.out.println("Headhunter \n");
         System.out.println("Please type in the class you want to play as. \n");
 
-        Character.myHeroClass = nScan.nextLine();
+        theModel.setMyPlayerClass(nScan.nextLine());
 
-            switch (Character.myHeroClass.toLowerCase()) {
+            switch (theModel.getMyPlayerClass().toLowerCase()) {
+
                 case "merchant":
                     System.out.println("You've chosen a merchant class, be prepared for arithmetic quest");
                     myFlag = true;
@@ -104,7 +106,7 @@ public class Controller {
 
         }
     }
-    public static void displayDirections(){
+    public void movePlayer(){
         char myDirection;
 
         System.out.println("Choose which direction you would like to move");
@@ -121,6 +123,7 @@ public class Controller {
             theModel.moveDown();
             System.out.println("Row: "+theModel.getPlayerRow());
             System.out.println("Col: "+theModel.getPlayerCol());
+
 
         }
         if(myDirection == 'R'){
@@ -146,10 +149,5 @@ public class Controller {
             System.out.println(theModel.maze2String());
         }
     }
-    public static String getMyPlayerClass(){
-        return theModel.myPlayerClass;
-    }
-    public static String getMyPlayerName(){
-        return theModel.myPlayerName;
-    }
+
 }

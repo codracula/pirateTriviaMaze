@@ -46,13 +46,15 @@ public class Test {
 
         GameModel theModel = new GameModel();
         Controller theController = new Controller(theModel);
-        System.out.println(theModel.myPlayer);
+
+        System.out.println("myPlayerName: " + theModel.getMyPlayerName());
+        System.out.println("myPlayerClassName: " + theModel.getMyPlayerClass());
         System.out.println("spawnRow: "+theModel.getPlayerRow());
         System.out.println("spawnCol: "+theModel.getPlayerCol());
 
         while(true) {
 
-            theController.displayDirections();
+            theController.movePlayer();
             System.out.println(theModel.maze2String());
 
         }

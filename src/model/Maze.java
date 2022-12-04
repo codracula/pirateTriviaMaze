@@ -15,7 +15,7 @@ public class Maze {
     private Random myRan;
     public Maze(int theRow, int theCol, int theMonsterA, int theMonsterB,
                 int theMonsterC, int theKeyCount){
-        myCurrentLoc = new int[10];
+        //myCurrentLoc = new int[10];
         myRowCount = theRow;
         myColCount = theCol;
         myKeyCount = theKeyCount;
@@ -95,7 +95,7 @@ public class Maze {
         return this.myExit[1];
     }
     protected int getRowPos() {
-            return this.myCurrentLoc[0];
+        return this.myCurrentLoc[0];
     }
     protected int getColPos(){
         return this.myCurrentLoc[1];

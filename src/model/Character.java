@@ -1,27 +1,30 @@
 package model;
 
-import Controller.Controller;
-import model.*;
 import java.util.ArrayList;
 import java.util.Collections;
 public class Character {
-    public static String myHeroClass;
-    public static String myPlayerName;
-    private static int myLives;
+    private String myPlayerClass;
+    private String myPlayerName;
+    private int myLives;
 
 
     //private final Question question;
 
-    public Character(int theLives, String theHeroClass, String thePlayerName){//, Question question) {
-        myHeroClass = theHeroClass;
+    public Character(int theLives, String thePlayerClass, String thePlayerName){//, Question question) {
+        myPlayerClass = thePlayerClass;
         myLives = theLives;
         myPlayerName = thePlayerName;
        // this.question = question;
     }
 
+    public int getLives() {
+        return myLives;
+    }
 
     public void decreaseLives() {
-        myLives--;
+        if(myLives > 0) {
+            myLives--;
+        }
     }
 
 //    public void hasLifeline(){
@@ -48,27 +51,18 @@ public class Character {
         return tempArray;
     }
 
-    public static boolean isAlive() {
+    public boolean isAlive() {
         return myLives != 0;
     }
 
-    public static String getMyPlayerName(){
-        return myPlayerName;
-    }
-
-    public static String getMyHeroClass(){
-        return myHeroClass;
-    }
 
     public String toString() {
-        return ("Name: " + myPlayerName + ", " + "Lives: " + myLives + ", " + " Hero type: " + myHeroClass);
+        return ("Name: " + myPlayerName + ", " + "Lives: " + myLives + ", " + " Class: " + myPlayerClass);
     }
 
-    public int getLives() {
-        return myLives;
-    }
 
-    static class Inventory {
+
+    class Inventory {
         private static int myHintpassCount; //how many passes does the player start with
         private static int myKeyCount; //how many keys does the player start with
 
