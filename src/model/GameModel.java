@@ -142,42 +142,52 @@ public final class GameModel {
 
     //-----------player control/direction-----------------
     public void moveLeft() {
+        if (myMaze.getColPos() == 0){
+            throw new IllegalArgumentException("Out of bound");
+        }
         final int tempRow = myMaze.getRowPos();
         final int tempCol = myMaze.getColPos();
+        myMaze.roomSetEmpty(tempRow, tempCol);
         //move 1 column to left ----position 1 is col space
         myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() - 1);
         roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.roomSetEmpty(tempRow, tempCol);
         myMaze.setOccupant(myMaze.getColPos(), myMaze.getRowPos(), "P");
-
     }
     public void moveRight() {
+        if (myMaze.getColPos() == myMaze.getMazeCol()-1){
+            throw new IllegalArgumentException("Out of bound");
+        }
         final int tempRow = myMaze.getRowPos();
         final int tempCol = myMaze.getColPos();
+        myMaze.roomSetEmpty(tempRow, tempCol);
         //move 1 column to right ----position 1 is col space
         myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() + 1);
         roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.roomSetEmpty(tempRow, tempCol);
         myMaze.setOccupant(myMaze.getColPos(), myMaze.getRowPos(), "P");
     }
     public void moveUp() {
-
+        if (myMaze.getRowPos() == 0){
+            throw new IllegalArgumentException("Out of bound");
+        }
         final int tempRow = myMaze.getRowPos();
         final int tempCol = myMaze.getColPos();
+        myMaze.roomSetEmpty(tempRow, tempCol);
         //move 1 row up  ------position 0 is row space
         myMaze.setPCurrent(myMaze.getRowPos() - 1, myMaze.getColPos());
         roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.roomSetEmpty(tempRow, tempCol);
         myMaze.setOccupant(myMaze.getColPos(), myMaze.getRowPos(), "P");
     }
     public void moveDown() {
+        if (myMaze.getRowPos() == myMaze.getMazeRow()-1){
+            throw new IllegalArgumentException("Out of bound");
+        }
+
         final int tempRow = myMaze.getRowPos();
         final int tempCol = myMaze.getColPos();
-        //move 1 row down  ------position 0 is row space
-        myMaze.setPCurrent(myMaze.getRowPos() + 1, myMaze.getColPos());
-        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
         myMaze.roomSetEmpty(tempRow, tempCol);
-
+        //move 1 row down  ------position 0 is row space
+        myMaze.setPCurrent(myMaze.getRowPos() + 1, tempCol);
+        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
         myMaze.setOccupant(myMaze.getColPos(), myMaze.getRowPos(), "P");
     }
 

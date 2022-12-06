@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bd4b562-3be8-4670-a9b1-83f05909018d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyleidea-libs/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pmd-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pmd-idea.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pirateTriviaMaze.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pirateTriviaMaze.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Maze.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/Character.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/GameModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/Maze.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/Monster.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/MonsterJunitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/Question.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/QuestionDatabase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/Room.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/RoomJunitTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
