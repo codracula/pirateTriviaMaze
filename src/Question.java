@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,28 +12,29 @@ public class Question {
     final private String myChoices;
     final private String myAnswer;
 
-    public Question(final String theCategory, final int theDifficulty, final String theQuestion, final String theChoices, final String theAnswer){
+    //might want to check data, set methods. don't want strings to be null
+    Question(final String theCategory, final int theDifficulty, final String theQuestion, final String theChoices, final String theAnswer){
         myCategory = theCategory;
         myDifficulty = theDifficulty;
         myQuestion = theQuestion;
         myChoices = theChoices;
         myAnswer = theAnswer;
     }
-
-    public String getMyCategory() {
+    //change protected
+    String getMyCategory() {
         return myCategory;
     }
 
-    public int getMyDifficulty() {
+    int getMyDifficulty() {
         return myDifficulty;
     }
 
-    public String getMyQuestion() {
+    String getMyQuestion() {
         return myQuestion;
     }
 
     //converts String MyChoices to an Array List and returns it
-    public ArrayList<String> setChoices() {
+    ArrayList<String> setChoices() {
         //String mySplitChoices = myChoices.replaceAll("\\s", "");
         String[] elements = myChoices.split(",");
         for (int i = 0; i < elements.length; i++) {
@@ -42,14 +45,16 @@ public class Question {
         return choiceArray;
     }
 
-    public String getMyChoices() {
+    private String getMyChoices() {
         return myChoices;
     }
 
-    public String getMyAnswer() {
+    String getMyAnswer() {
         return myAnswer;
     }
 
+    //good practice, defensive
+    @Override
     public String toString() {
         //System.out.println("Category: " + myCategory);
         System.out.println("Difficulty: " + myDifficulty);

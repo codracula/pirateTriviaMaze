@@ -1,10 +1,12 @@
+package model;
+
 import java.sql.*;
 import java.util.*;
 
 public class QuestionDatabase {
 
-    private final ArrayList<Question> questionList = new ArrayList<>();
-    private static final Random random = new Random();
+    private final ArrayList<Question> myQuestionList = new ArrayList<>();
+    //private static final Random random = new Random();
 
     private Connection connect() {
         String url = "jdbc:sqlite:TriviaQuestions.db";
@@ -20,7 +22,7 @@ public class QuestionDatabase {
         return conn;
     }
 
-    public void selectAll() {
+    private void selectAll() {
         String sql = "SELECT * FROM QUESTIONS";
         try {
             Connection conn = this.connect();
@@ -32,7 +34,7 @@ public class QuestionDatabase {
         }
     }
 
-    public void setQuestionList(final String theCategory, final int theDifficulty) {
+    void setQuestionList(final String theCategory, final int theDifficulty) {
         String sql = "SELECT Category, Difficulty, Question, Choices, Answer FROM Questions WHERE Category = ? AND Difficulty = ?";
         try {
             Connection conn = this.connect();
@@ -47,7 +49,7 @@ public class QuestionDatabase {
                 String choices = rs.getString("CHOICES");
                 String answer = rs.getString("ANSWER");
                 Question question = new Question(cate, diff, ques, choices, answer);
-                questionList.add(question);
+                myQuestionList.add(question);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -55,32 +57,39 @@ public class QuestionDatabase {
     }
 
     public ArrayList<Question> getQuestionList() {
-        return questionList;
+        return myQuestionList;
     }
 
     //add index value in parameters
-    public void removeQuestion(final int theIndex) {
-        questionList.remove(theIndex);
+    void removeQuestion(final int theIndex) {
+        myQuestionList.remove(theIndex);
     }
 
-    public String getCategory(final int theIndex) {
-        return questionList.get(theIndex).getMyCategory();
+    private String getCategory(final int theIndex) {
+        return myQuestionList.get(theIndex).getMyCategory();
     }
 
-    public int getDifficulty(final int theIndex) {
-        return questionList.get(theIndex).getMyDifficulty();
+    private int getDifficulty(final int theIndex) {
+        return myQuestionList.get(theIndex).getMyDifficulty();
     }
 
-    public String getQuestion(final int theIndex) {
-        return questionList.get(theIndex).getMyQuestion();
+    //returns just the question as a string
+    private String getQuestion(final int theIndex) {
+        return myQuestionList.get(theIndex).getMyQuestion();
+    }
+
+    //returns the question object that contains question, choices, etc
+    Question getQuestionSet(final int theIndex) {
+        return myQuestionList.get(theIndex);
     }
 
     public ArrayList<String> getChoices(final int theIndex) {
-        return questionList.get(theIndex).setChoices();
+        return myQuestionList.get(theIndex).setChoices();
     }
 
     public String getAnswer(final int theIndex) {
-        return questionList.get(theIndex).getMyAnswer();
+        return myQuestionList.get(theIndex).getMyAnswer();
     }
 
 }
+
