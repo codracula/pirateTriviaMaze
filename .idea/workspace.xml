@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a3e12d7e-b970-43f6-9c70-883463b0ad04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+    <list default="true" id="2bd4b562-3be8-4670-a9b1-83f05909018d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyleidea-libs/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pmd-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pmd-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pirateTriviaMaze.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pirateTriviaMaze.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Maze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/Character.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/GameModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/Maze.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/Monster.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/MonsterJunitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/Question.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/QuestionDatabase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unitTest/RoomJunitTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,46 +37,27 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2H0xTZT30ceEO19fujrP1jsfYI9" />
+  <component name="ProjectId" id="2IVg9zFbQlMnHuAjHdTXgyAdmyy" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-    <option name="showMembers" value="true" />
-    <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/My Drive/Document/CS_projects/tcss305_checkstyle_sameline.xml",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.infernus.idea.checkstyle.CheckStyleConfigurable"
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\unitTest" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src" />
-      <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze" />
-      <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\images" />
-      <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\model" />
-      <recent name="G:\My Drive\Document\CS_projects\360_finalproject\pirateTriviaMaze\src\testPack" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="model" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="unitTest" />
     </key>
@@ -70,37 +66,6 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="pirateTriviaMaze" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MonsterJunitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pirateTriviaMaze" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="unitTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="unitTest" />
-      <option name="MAIN_CLASS_NAME" value="unitTest.MonsterJunitTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MonsterJunitTest.testMList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pirateTriviaMaze" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="unitTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="unitTest" />
-      <option name="MAIN_CLASS_NAME" value="unitTest.MonsterJunitTest" />
-      <option name="METHOD_NAME" value="testMList" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -120,59 +85,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RoomJunitTest.testEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pirateTriviaMaze" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="unitTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="unitTest" />
-      <option name="MAIN_CLASS_NAME" value="unitTest.RoomJunitTest" />
-      <option name="METHOD_NAME" value="testEmpty" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="pirateTriviaMaze" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="pirateTriviaMaze" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.RoomJunitTest" />
-        <item itemvalue="JUnit.MonsterJunitTest" />
-        <item itemvalue="JUnit.MonsterJunitTest.testMList" />
-        <item itemvalue="JUnit.RoomJunitTest.testEmpty" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="52f48e90-1edd-4edc-932c-65d27de4410d" name="Changes" comment="" />
-      <created>1667435815156</created>
+      <changelist id="2bd4b562-3be8-4670-a9b1-83f05909018d" name="Changes" comment="" />
+      <created>1670272022128</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1667435815156</updated>
-      <workItem from="1668368073131" duration="106182000" />
+      <updated>1670272022128</updated>
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -184,26 +113,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/pirateTriviaMaze$RoomJunitTest.ic" NAME="RoomJunitTest Coverage Results" MODIFIED="1669441731322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>unitTest.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/pirateTriviaMaze$MonsterJunitTest.ic" NAME="MonsterJunitTest Coverage Results" MODIFIED="1669604602757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>unitTest.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/pirateTriviaMaze$RoomJunitTest_testConstructor.ic" NAME="RoomJunitTest.testConstructor Coverage Results" MODIFIED="1669441643339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>unitTest.*</FILTER>
-    </SUITE>
   </component>
 </project>

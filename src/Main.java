@@ -1,4 +1,5 @@
-import controller.GameControllerUI;
+import controller.GameController;
+import model.GameModel;
 
 
 import java.io.IOException;
@@ -6,16 +7,20 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-//        controller.GameController game = new controller.GameController();
-//        game.createAndShowUI();
+        GameModel theModel = new GameModel();
+        GameController theController = new GameController(theModel);
 
-        System.out.println("test");
+        System.out.println("myPlayerName: " + theModel.getMyPlayerName());
+        System.out.println("myPlayerClassName: " + theModel.getMyPlayerClass());
+        System.out.println("spawnRow: "+theModel.getPlayerRow());
+        System.out.println("spawnCol: "+theModel.getPlayerCol());
 
-        GameControllerUI game = new GameControllerUI();
-//        System.out.println("after controller UI");
-//        model.Maze ma = new model.Maze(6,2,1);
-//        ma.m2String();
+        while(true) {
 
+            theController.movePlayer();
+            System.out.println(theModel.maze2String());
+
+        }
     }
 
 }

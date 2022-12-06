@@ -216,7 +216,6 @@ public final class Maze {
     }
 
     //-----------key count to first populate the maze
-
     /**
      *  get the key count.
      * @return  key count.
@@ -234,12 +233,24 @@ public final class Maze {
     }
 
     /**
+     *  check if the parameters are in the range of the maze.
+     * @param theRow    row position
+     * @param theCol    col position
+     */
+    private void checkRoomRange(final int theRow, final int theCol) {
+        if (theRow < 0 && theRow >= myRowCount
+                || theCol < 0 && theCol >= myColCount) {
+            throw new IllegalArgumentException("Numbers not in range");
+        }
+    }
+    /**
      *  set occupant for the given room position.
      * @param theRow    row position.
      * @param theCol    col position.
      * @param theOccupant   set the occupant String.
      */
     void setOccupant(final int theRow, final int theCol, final String theOccupant) {
+        checkRoomRange(theRow, theCol);
         myMaze[theRow][theCol].setOccupant(theOccupant);
     }
 
@@ -250,6 +261,7 @@ public final class Maze {
      * @return  return the occupant of the room.
      */
     String getOccupant(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].getOccupant();
     }
 
@@ -272,6 +284,7 @@ public final class Maze {
      * @return  occupant of the given room.
      */
     String roomCheckOc(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].getOccupant();
     }
 
@@ -282,29 +295,79 @@ public final class Maze {
      * @return  boolean true if the room is empty.
      */
     boolean roomCheckEmpty(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].isEmpty();
     }
+
+    /**
+     *  check if the given room has been visited.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     * @return  boolean true if the room has been visited.
+     */
     boolean roomCheckVisit(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].getVisited();
     }
+
+    /**
+     *  set the room to true once visited.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     */
     void roomSetVisit(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         myMaze[theRow][theCol].setVisited();
     }
+
+    /**
+     *  set the room to empty.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     */
     void roomSetEmpty(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
     }
+
+    /**
+     *  check room if has key.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     * @return  return true if the room has key.
+     */
     boolean roomHasKey(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].hasKey();
     }
+
+    /**
+     *  remove key from the room and reduce keyCount.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     */
     void roomRemoveKey(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
-        myKeyCount--;
     }
+
+    /**
+     *  print occupant of the room.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     * @return  room's occupant string.
+     */
     String room2String(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].toString();
     }
+
+    /**
+     *  print maze to string.
+     * @return  the whole maze string output.
+     */
     public String m2String() {
         final StringBuilder sb = new StringBuilder();
         final String breakLine = "___________________________________________\n";

@@ -1,5 +1,7 @@
 package controller;
+
 import java.util.Scanner;
+
 import model.Character;
 import model.GameModel;
 import model.UserFunctions;

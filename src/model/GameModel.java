@@ -35,13 +35,16 @@ public final class GameModel {
      *  initialize static random.
      */
     private static Random myRandom;
+    /**
+     *  variable for total key count to populate the maze.
+     */
     private final int myMaxKeyCount;
 //    private Monster myMon;
 
     /**
      *  constructor to set values for instance variables.
      */
-    private GameModel() {
+    public GameModel() {
         myMaxKeyCount = 4;
         final int mazeRow = 4;
         final int mazeCol = 7;
@@ -62,10 +65,10 @@ public final class GameModel {
         gameStart();
     }
 
-    /** Start the game by create a character.
+    /** Start the game set condition to each room.
      *
      */
-    void gameStart() {
+    private void gameStart() {
 
         //if collect all 4 keys spawn the exit
         if (Character.Inventory.getMyHintpassCount() == myMaxKeyCount) {
@@ -76,7 +79,7 @@ public final class GameModel {
         //spawn another town with a gateKeeper, reset key collected, reset room explored.
         if (myMaze.getColPos() == myMaze.getExitCol() && myMaze.getRowPos() == myMaze.getExitRow()) {
             Character.Inventory.setMyKeyCount(0);
-            myMaze = new Maze(4,7, 6,2,1,4);
+            myMaze = new Maze(4, 7, 6, 2, 1, 4);
         }
 
         //once collected all keys, spawn the exit
@@ -94,44 +97,24 @@ public final class GameModel {
             //reset stats (hintpass, live, key, explored room)
         }
     }
+
     //-----------maze-----------------
-    int getPlayerRow() {
+    /**
+     *  get player row position
+     * @return row position
+     */
+    public int getPlayerRow() {
         return myMaze.getRowPos();
     }
 
-    int getPlayerCol() {
+    /**
+     *  get player col position.
+     * @return  col position
+     */
+    public int getPlayerCol() {
         return myMaze.getColPos();
     }
-    //-----------room-----------------
-    //check room occupant
-    String roomCheck(final int theRow, final int theCol) {
-        return myMaze.roomCheckOc(theRow, theCol);
-    }
-    //remove monster, set empty
-    void roomSetEmpty(final int theRow, final int theCol) {
-        myMaze.roomSetEmpty(theRow, theCol);
-    }
-    //reveal room, set visited to true
-    void roomSetVisit(final int theRow, final int theCol) {
-        myMaze.roomSetVisit(theRow, theCol);
-    }
-    //remove key from the room
-    void roomRemoveKey(final int theRow, final int theCol) {
-        myMaze.roomRemoveKey(theRow, theCol);
-    }
-    //check condition if room has been visited  --> to adjust fog of war
-    boolean roomCheckVisited(final int theRow, final int theCol) {
-        return myMaze.roomCheckVisit(theRow, theCol);
-    }
-    //-----------lives and hintpass-----------------
-    void decLive() {
-        if (myLive > 1) {
-            myLive--;
-        } else if (myLive == 1) {
-            gameOver();
-        }
 
-    }
     void gameOver() {
         //TODO for Steve
         //do something when game over
@@ -143,7 +126,6 @@ public final class GameModel {
     public void setMyPlayerName(final String theName) {
 
         myPlayerName = Objects.requireNonNull(theName);
-
     }
 
     public String getMyPlayerName() {
@@ -151,9 +133,7 @@ public final class GameModel {
     }
 
     public void setMyPlayerClass(final String theClass) {
-
         myPlayerClass = Objects.requireNonNull(theClass);
-
     }
 
     public String getMyPlayerClass() {
