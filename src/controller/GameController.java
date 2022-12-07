@@ -1,6 +1,5 @@
 package controller;
 import java.util.Scanner;
-import model.Character;
 import model.GameModel;
 import model.Maze;
 import model.UserFunctions;
@@ -12,18 +11,11 @@ public class GameController {
     private Maze myMaze;
     public GameController(GameModel theModel) {
         //myMaxKeyCount = 4;
-        final int mazeRow = 4;
-        final int mazeCol = 7;
-        final int monsterA_count = 6;
-        final int monsterB_count = 2;
-        final int monsterC_count = 0;
-        final int keyCount = 4;
 
         //TODO by Steve
         //use getplayer name and getplayer class method to update myPlayerName, myPlayerClass
         //before initialize Character class.
 
-        myMaze = new Maze(mazeRow, mazeCol, monsterA_count, monsterB_count, monsterC_count, keyCount);
         //added by Juno
        // myPlayer = new Character(myLive, myPlayerClass);
         myModel = theModel;
@@ -90,6 +82,7 @@ public class GameController {
         playerClassSelect();
     }
     public void playerClassSelect() {
+
         boolean myFlag;
         myFlag = false;
 
@@ -135,7 +128,7 @@ public class GameController {
 
         if(myDirection == 'D'){
             System.out.println("Move down (D)");
-            moveDown();
+            myModel. moveDown();
             System.out.println("Row: "+myModel.getPlayerRow());
             System.out.println("Col: "+myModel.getPlayerCol());
 
@@ -143,14 +136,14 @@ public class GameController {
         }
         if(myDirection == 'R'){
             System.out.println("Move Right (R)");
-            moveRight();
+            myModel. moveRight();
             System.out.println("Row: "+myModel.getPlayerRow());
             System.out.println("Col: "+myModel.getPlayerCol());
 
         }
         if(myDirection == 'U'){
             System.out.println("Move Up (U)");
-            moveUp();
+            myModel.moveUp();
             System.out.println("Row: "+myModel.getPlayerRow());
             System.out.println("Col: "+myModel.getPlayerCol());
 
@@ -158,59 +151,14 @@ public class GameController {
         }
         if(myDirection == 'L'){
             System.out.println("Move Left (L)");
-            moveLeft();
+            myModel.moveLeft();
             System.out.println("Row: "+myModel.getPlayerRow());
             System.out.println("Col: "+myModel.getPlayerCol());
             System.out.println(myModel.maze2String());
         }
     }
 
-    public void moveLeft() {
 
-
-        if (myMaze.getColPos() == 0){
-            throw new IllegalArgumentException("Out of bound");
-        }
-        final int tempRow = myMaze.getRowPos();
-        final int tempCol = myMaze.getColPos();
-        myMaze.roomSetEmpty(tempRow, tempCol);
-        //move 1 column to left ----position 1 is col space
-        myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() - 1);
-        myModel.roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
-
-        System.out.println("ROWS2: " + myMaze.getMyCurrentRow());
-        System.out.println("COLS2: " + myMaze.getMyCurrentCol());
-
-    }
-    public void moveRight() {
-        final int tempRow = myMaze.getRowPos();
-        final int tempCol = myMaze.getColPos();
-        //move 1 column to right ----position 1 is col space
-        myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() + 1);
-        myModel.roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.roomSetEmpty(tempRow, tempCol);
-        myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
-    }
-    public void moveUp() {
-
-        final int tempRow = myMaze.getRowPos();
-        final int tempCol = myMaze.getColPos();
-        //move 1 row up  ------position 0 is row space
-        myMaze.setPCurrent(myMaze.getRowPos() - 1, myMaze.getColPos());
-        myModel.roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.roomSetEmpty(tempRow, tempCol);
-        myMaze.setOccupant(tempRow, tempCol, "P");
-    }
-    public void moveDown() {
-        final int tempRow = myMaze.getRowPos();
-        final int tempCol = myMaze.getColPos();
-        //move 1 row down  ------position 0 is row space
-        myMaze.setPCurrent(myMaze.getRowPos() + 1, myMaze.getColPos());
-        myModel.roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.roomSetEmpty(tempRow, tempCol);
-        myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
-    }
 
     public void setMyMaze(Maze myMaze) {
         this.myMaze = myMaze;
