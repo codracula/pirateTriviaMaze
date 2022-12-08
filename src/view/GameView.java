@@ -6,6 +6,7 @@ import model.QuestionDatabase;
 import controller.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class GameView {
@@ -71,11 +72,11 @@ public class GameView {
 
     public String getCategory() {
         String category = "";
-        if (characterClass == "Merchant") {
+        if (Objects.equals(characterClass, "Merchant")) {
             category = "Arithmetic";
-        } else if (characterClass == "Sailor") {
+        } else if (Objects.equals(characterClass, "Sailor")) {
             category = "Geography";
-        } else if (characterClass == "Headhunter") {
+        } else if (Objects.equals(characterClass, "Headhunter")) {
             category = "Riddles";
         } else {
             category = "";
@@ -89,6 +90,7 @@ public class GameView {
         System.out.println("R) Right");
         System.out.println("U) Up");
         System.out.println("L) Left");
+        System.out.println("I) Inventory");
         char direction = console.next().charAt(0);
         return direction;
     }
@@ -146,6 +148,7 @@ public class GameView {
         } else {
             System.out.println("empty room, keep exploring!");
         }
+        theRoom.setOccupant("P");
     }
 
     private void showInventory(final Character thePlayer) {

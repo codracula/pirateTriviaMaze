@@ -72,13 +72,6 @@ public class GameController {
                 System.out.println("Not a valid option.");
         }
     }
-//    private void startGame() {
-//        System.out.print("Let's get started!" + "\n" + "What is your name: ");
-//        //myModel.setMyPlayerName(nScan.nextLine());
-//        String playerName = nScan.nextLine();
-//        System.out.println("Alright " + playerName + ", choose a class:");
-//        setPlayerClass();
-//    }
 
     private void setPlayerClass() {
         characterClass = myView.showCharacterClasses();
@@ -126,6 +119,10 @@ public class GameController {
             System.out.println("Col: "+myModel.getPlayerCol());
             //System.out.println(myModel.maze2String());
         }
+        if(myDirection == 'I') {
+            System.out.println("Opening Inventory");
+            System.out.println("Number of keys: " + myModel.myPlayer.getKeyCount());
+            System.out.println("Number of hintpasses: " + myModel.myPlayer.getHintpassCount());
+        }
     }
-
 }

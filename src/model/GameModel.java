@@ -27,7 +27,7 @@ public final class GameModel {
     /**
      *  initialize character class.
      */
-    private Character myPlayer;
+    public Character myPlayer;///////////////////////////////////////////////made public, is ok???
     /**
      *  initialize question database.
      */
@@ -46,6 +46,9 @@ public final class GameModel {
     private ArrayList<Question> guardQ;
     private ArrayList<Question> gatekeeperQ;
     private GameView myView;
+
+    public int prevCol;
+    public int prevRow;
 
     /**
      *  constructor to set values for instance variables.
@@ -152,52 +155,69 @@ public final class GameModel {
 
     //-----------player control/direction-----------------
     public void moveLeft() {
+
         if (myMaze.getColPos() == 0){
             throw new IllegalArgumentException("Out of bound");
         }
-        final int tempRow = getPlayerRow();
-        final int tempCol = getPlayerCol();
+        final int tempRow = myMaze.getRowPos();
+        final int tempCol = myMaze.getColPos();
         myMaze.roomSetEmpty(tempRow, tempCol);
         //move 1 column to left ----position 1 is col space
-        myMaze.setPCurrent(getPlayerCol(), getPlayerRow() - 1);
+        myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() - 1);
         roomActivity();
-        myMaze.setOccupant(getPlayerRow(), getPlayerCol(), "P");
+        //myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
+
+        System.out.println("ROWS2: " + myMaze.getRowPos());
+        System.out.println("COLS2: " + myMaze.getColPos());
+
     }
     public void moveRight() {
-        if (getPlayerCol() == myMaze.getMazeCol()-1){
+        if (myMaze.getColPos() == myMaze.getMazeCol()-1){
             throw new IllegalArgumentException("Out of bound");
         }
-        final int tempRow = getPlayerRow();
-        final int tempCol = getPlayerCol();
+        final int tempRow = myMaze.getRowPos();
+        final int tempCol = myMaze.getColPos();
         myMaze.roomSetEmpty(tempRow, tempCol);
-        //move 1 column to right ----position 1 is col space
-        myMaze.setPCurrent(getPlayerRow(), getPlayerCol() + 1);
+        //move 1 column to left ----position 1 is col space
+        myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() + 1);
         roomActivity();
-        myMaze.setOccupant(getPlayerRow(), getPlayerCol(), "P");
+        //myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
+
+        System.out.println("ROWS2: " + myMaze.getRowPos());
+        System.out.println("COLS2: " + myMaze.getColPos());
+
     }
     public void moveUp() {
-        if (getPlayerRow() == myMaze.getMazeRow()){
+
+        if (myMaze.getRowPos() == 0){
             throw new IllegalArgumentException("Out of bound");
         }
-        final int tempRow = getPlayerRow();
-        final int tempCol = getPlayerCol();
+        final int tempRow = myMaze.getRowPos();
+        final int tempCol = myMaze.getColPos();
         myMaze.roomSetEmpty(tempRow, tempCol);
-        //move 1 row up  ------position 0 is row space
-        myMaze.setPCurrent(getPlayerRow() + 1, getPlayerCol());
+        //move 1 column to left ----position 1 is col space
+        myMaze.setPCurrent(myMaze.getRowPos()-1, myMaze.getColPos());
         roomActivity();
-        myMaze.setOccupant(getPlayerRow(), getPlayerCol(), "P");
+        //myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
+
+        System.out.println("ROWS2: " + myMaze.getRowPos());
+        System.out.println("COLS2: " + myMaze.getColPos());
+
     }
     public void moveDown() {
-        if (getPlayerRow() == 0) {
+        if (myMaze.getRowPos() == myMaze.getMazeRow()-1){
             throw new IllegalArgumentException("Out of bound");
         }
-        final int tempRow = getPlayerRow();
-        final int tempCol = getPlayerCol();
+        final int tempRow = myMaze.getRowPos();
+        final int tempCol = myMaze.getColPos();
         myMaze.roomSetEmpty(tempRow, tempCol);
-        //move 1 row down  ------position 0 is row space
-        myMaze.setPCurrent(getPlayerRow() - 1, tempCol);
+        //move 1 column to left ----position 1 is col space
+        myMaze.setPCurrent(myMaze.getRowPos()+1, myMaze.getColPos());
         roomActivity();
-        myMaze.setOccupant(getPlayerRow(), getPlayerCol(), "P");
+        //myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
+
+        System.out.println("ROWS2: " + myMaze.getRowPos());
+        System.out.println("COLS2: " + myMaze.getColPos());
     }
 
     /** method to activate room acitvivity based on the room location of row/col
@@ -212,15 +232,15 @@ public final class GameModel {
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()).equals("bandit")) {
             //activate bandit question set
             getQuestion(banditQ);
-            myView.showQuestion(myQuestions, getQuestionIndex());
+            myView.showQuestion(myQuestions, getQuestionIndex(banditQ));
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()).equals("guard")) {
             //activate guard question set
             getQuestion(guardQ);
-            myView.showQuestion(myQuestions, getQuestionIndex());
+            myView.showQuestion(myQuestions, getQuestionIndex(guardQ));
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()).equals("gateKeeper")) {
             //activate gateKeeper question set
             getQuestion(gatekeeperQ);
-            myView.showQuestion(myQuestions, getQuestionIndex());
+            myView.showQuestion(myQuestions, getQuestionIndex(gatekeeperQ));
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()).equals("hintPass")) {
             //add hintpass to inventory
             Character.Inventory.setMyHintpassCount(Character.Inventory.getMyHintpassCount() + 1);
@@ -234,35 +254,35 @@ public final class GameModel {
 
     public void setQuestion() {
         myQuestions = new QuestionDatabase();
-        banditQ =  myMaze.getMon().setQuestion("bandit", myView.getCategory(), myQuestions);
+        banditQ = myMaze.getMon().setQuestion("bandit", myView.getCategory(), myQuestions);
+        //banditQ = myQuestions.getQuestionList();
         guardQ = myMaze.getMon().setQuestion("guard", myView.getCategory(), myQuestions);
+        //guardQ = myQuestions.getQuestionList();
         gatekeeperQ = myMaze.getMon().setQuestion("gatekeeper", myView.getCategory(), myQuestions);
-        System.out.println(banditQ);
-        System.out.println(guardQ);
-        System.out.println(gatekeeperQ);
+        //gatekeeperQ = myQuestions.getQuestionList();
     }
 
     private Question getQuestion(final ArrayList<Question> monsterQ) {
         return myMaze.getMon().getQuestion(monsterQ);
     }
 
-    int getQuestionIndex() {
+    int getQuestionIndex(final ArrayList<Question> monsterQ) {
         myRandom = new Random();
-        return myRandom.nextInt(myQuestions.getQuestionList().size());
+        return myRandom.nextInt(monsterQ.size());
     }
 
-    boolean isCorrect(final String theUserAnswer) {
-        final String answer = myQuestions.getAnswer(getQuestionIndex());
-        return theUserAnswer.equals(answer);
-    }
+//    boolean isCorrect(final String theUserAnswer) {
+//        final String answer = myQuestions.getAnswer(getQuestionIndex());
+//        return theUserAnswer.equals(answer);
+//    }
 
     private void bossFight() {
-        String placeholder="";
-        for (int i = 0; i < 3; i++) {
-            myMaze.getMon().getQuestion(gatekeeperQ); //asking difficult questions
-            if (!isCorrect(placeholder)) {
-                //decLive();
-            }
-        }
+//        String placeholder="";
+//        for (int i = 0; i < 3; i++) {
+//            myMaze.getMon().getQuestion(gatekeeperQ); //asking difficult questions
+//            if (!isCorrect(placeholder)) {
+//                //decLive();
+//            }
+//        }
     }
 }

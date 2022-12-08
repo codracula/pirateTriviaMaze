@@ -34,7 +34,7 @@ public class QuestionDatabase {
         }
     }
 
-    public void setQuestionList(final String theCategory, final int theDifficulty) {
+    public ArrayList<Question> setQuestionList(final String theCategory, final int theDifficulty) {
         String sql = "SELECT Category, Difficulty, Question, Choices, Answer FROM Questions WHERE Category = ? AND Difficulty = ?";
         try {
             Connection conn = this.connect();
@@ -54,6 +54,7 @@ public class QuestionDatabase {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return questionList;
     }
 
     public ArrayList<Question> getQuestionList() {

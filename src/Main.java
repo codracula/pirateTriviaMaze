@@ -26,11 +26,11 @@ public class Main {
         myView.showTitleScreen();
         myController.menu();
         myModel.setQuestion();
+
         while (myModel.getMyLive() != 0) {
             myView.showMaze(myModel.myMaze);
             myController.movePlayer();
             myView.showRoom(myModel.myMaze.getRoom(myModel.getPlayerRow(), myModel.getPlayerCol()));
-            myModel.roomActivity();
         }
     }
 
