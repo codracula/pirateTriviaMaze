@@ -135,65 +135,70 @@ public class GameView {
 
     public void showRoom(final Room theRoom) {
         System.out.print("You enter the room and encounter a " + theRoom.getOccupant());
-        if (theRoom.getOccupant() == "1") {
+        if (Objects.equals(theRoom.getOccupant(), "B")) {
             System.out.println("bandit! Get ready for a question");
-        } else if (theRoom.getOccupant() == "2") {
+        } else if (Objects.equals(theRoom.getOccupant(), "G")) {
             System.out.println("guard! Get ready for a question");
-        } else if (theRoom.getOccupant() == "3") {
+        } else if (Objects.equals(theRoom.getOccupant(), "R")) {
             System.out.println("gatekeeper! Get ready for a difficult question");
-        } else if (theRoom.getOccupant() == "K") {
+        } else if (Objects.equals(theRoom.getOccupant(), "K")) {
             System.out.println("a key! Better keep it safe");
-        } else if (theRoom.getOccupant() == "E") {
+        } else if (Objects.equals(theRoom.getOccupant(), "E")) {
             System.out.println("a way out! You found the exit!");
         } else {
             System.out.println("empty room, keep exploring!");
         }
-        theRoom.setOccupant("P");
+
     }
 
-    private void showInventory(final Character thePlayer) {
-        System.out.println("Hintpass count: " + thePlayer.getHintpassCount());
-        System.out.println("Key count: " + thePlayer.getKeyCount());
+    public void showMonEnd(final boolean theHintPassChance) {
+        if (theHintPassChance) {
+            System.out.println("The monster drops a hint pass while running away");
+        }
+    }
+
+    public void showInventory(final Character thePlayer) {
+        System.out.println("Opening Inventory");
+        System.out.println("Number of keys: " + thePlayer.getKeyCount());
+        System.out.println("Number of hint passes: " + thePlayer.getHintpassCount());
     }
 
     private boolean canExit(final Character thePlayer) {
         if (thePlayer.getKeyCount() == 4) {
+            System.out.println("You found all four keys!");
+            System.out.println("The exit has appeared");
             return true;
         } else {
             return false;
         }
     }
 
-    public void showQuestion(final QuestionDatabase theQuestion, final int theIndex) {
-        theQuestion.getQuestionList().get(theIndex).toString();
-        //asks question and takes in user input
-        //probably should move somewhere else later
+    public boolean showQuestion(final QuestionDatabase theQuestion, final int theIndex) {
+        System.out.println(theQuestion.getQuestion(theIndex));
         ArrayList<String> choices = theQuestion.getChoices(theIndex);
+        for (int i = 0; i < choices.size(); i++) {
+            System.out.println((i + 1) + ": " + choices.get(i));
+        }
+        boolean correct = false;
         System.out.println("Enter your answer as a number");
         int userAnswer = console.nextInt();
         if (choices.get(userAnswer - 1).equals(theQuestion.getAnswer(theIndex))) {
             System.out.println("Yay, you're correct!");
-            //correct++;
+            correct = true;
         } else {
-            System.out.println("Boo, you're wrong!");
-            System.out.println("The answer is " + theQuestion.getAnswer(theIndex));
-            //wrong++;
+            System.out.println("Boo, you're wrong! -1 life");
+            System.out.println("Try again");
+//            showQuestion(theQuestion, theIndex);
         }
+        return correct;
     }
 
-    private void showExitable() {
-//        if (theKeyCount == 4) {
-//            System.out.println("a way out! You found the exit!");
-//        } else {
-//            System.out.println("a way out! But you can't go through without all the keys");
-//        }
-    }
-
-    private void showGameOver() {
+    public void showGameOver() {
         System.out.println("GAME OVER");
     }
 
     private void showBossFight() {
         System.out.println("You encounter the final boss!");
     }
+
 }

@@ -141,6 +141,10 @@ public final class GameModel {
         myPlayerName = Objects.requireNonNull(theName);
     }
 
+    public void decMyLive() {
+        myPlayer.decreaseLives();
+    }
+
     public String getMyPlayerName() {
         return myPlayerName;
     }
@@ -154,6 +158,9 @@ public final class GameModel {
     }
 
     //-----------player control/direction-----------------
+    public void setCurrentP() {
+        myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
+    }
     public void moveLeft() {
 
         if (myMaze.getColPos() == 0){
@@ -164,12 +171,7 @@ public final class GameModel {
         myMaze.roomSetEmpty(tempRow, tempCol);
         //move 1 column to left ----position 1 is col space
         myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() - 1);
-        roomActivity();
         //myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
-
-        System.out.println("ROWS2: " + myMaze.getRowPos());
-        System.out.println("COLS2: " + myMaze.getColPos());
-
     }
     public void moveRight() {
         if (myMaze.getColPos() == myMaze.getMazeCol()-1){
@@ -180,12 +182,7 @@ public final class GameModel {
         myMaze.roomSetEmpty(tempRow, tempCol);
         //move 1 column to left ----position 1 is col space
         myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() + 1);
-        roomActivity();
         //myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
-
-        System.out.println("ROWS2: " + myMaze.getRowPos());
-        System.out.println("COLS2: " + myMaze.getColPos());
-
     }
     public void moveUp() {
 
@@ -197,12 +194,7 @@ public final class GameModel {
         myMaze.roomSetEmpty(tempRow, tempCol);
         //move 1 column to left ----position 1 is col space
         myMaze.setPCurrent(myMaze.getRowPos()-1, myMaze.getColPos());
-        roomActivity();
         //myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
-
-        System.out.println("ROWS2: " + myMaze.getRowPos());
-        System.out.println("COLS2: " + myMaze.getColPos());
-
     }
     public void moveDown() {
         if (myMaze.getRowPos() == myMaze.getMazeRow()-1){
@@ -213,11 +205,7 @@ public final class GameModel {
         myMaze.roomSetEmpty(tempRow, tempCol);
         //move 1 column to left ----position 1 is col space
         myMaze.setPCurrent(myMaze.getRowPos()+1, myMaze.getColPos());
-        roomActivity();
         //myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
-
-        System.out.println("ROWS2: " + myMaze.getRowPos());
-        System.out.println("COLS2: " + myMaze.getColPos());
     }
 
     /** method to activate room acitvivity based on the room location of row/col
@@ -226,21 +214,37 @@ public final class GameModel {
      //     * @param theCol the col position
      //     */
     public void roomActivity() {
-
+        boolean correct;
+        int index;
         if (myMaze.roomHasKey(getPlayerRow(), getPlayerCol())) {
             Character.Inventory.setMyKeyCount(Character.Inventory.getMyKeyCount() + 1);
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()).equals("bandit")) {
             //activate bandit question set
+            index = getQuestionIndex(banditQ);
             getQuestion(banditQ);
-            myView.showQuestion(myQuestions, getQuestionIndex(banditQ));
+            correct = myView.showQuestion(myQuestions, index);
+            if (!correct) {
+                decMyLive();
+                myView.showQuestion(myQuestions, index);
+            }
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()).equals("guard")) {
             //activate guard question set
+            index = getQuestionIndex(guardQ);
             getQuestion(guardQ);
-            myView.showQuestion(myQuestions, getQuestionIndex(guardQ));
+            correct = myView.showQuestion(myQuestions, index);
+            if (!correct) {
+                decMyLive();
+                myView.showQuestion(myQuestions, index);
+            }
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()).equals("gateKeeper")) {
             //activate gateKeeper question set
+            index = getQuestionIndex(gatekeeperQ);
             getQuestion(gatekeeperQ);
-            myView.showQuestion(myQuestions, getQuestionIndex(gatekeeperQ));
+            correct = myView.showQuestion(myQuestions, index);
+            if (!correct) {
+                decMyLive();
+                myView.showQuestion(myQuestions, index);
+            }
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()).equals("hintPass")) {
             //add hintpass to inventory
             Character.Inventory.setMyHintpassCount(Character.Inventory.getMyHintpassCount() + 1);

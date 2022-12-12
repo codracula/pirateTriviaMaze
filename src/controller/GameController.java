@@ -77,52 +77,27 @@ public class GameController {
         characterClass = myView.showCharacterClasses();
     }
 
-//    private String getCategory() {
-//        String category;
-//        if (characterClass.equals("Merchant")) {
-//            category = "Arithmetic";
-//        } else if (characterClass.equals("Sailor")) {
-//            category = "Geography";
-//        } else if (characterClass.equals("Headhunter")) {
-//            category = "Riddles";
-//        } else {
-//            category = "";
-//        }
-//        return category;
-//    }
-
-
     public void movePlayer(){
         char myDirection = myView.showMoves();
         if(myDirection == 'D'){
-            System.out.println("Move down (D)");
             myModel.moveDown();
-            System.out.println("Row: "+myModel.getPlayerRow());
-            System.out.println("Col: "+myModel.getPlayerCol());
         }
         if(myDirection == 'R'){
-            System.out.println("Move Right (R)");
             myModel.moveRight();
-            System.out.println("Row: "+myModel.getPlayerRow());
-            System.out.println("Col: "+myModel.getPlayerCol());
         }
         if(myDirection == 'U') {
-            System.out.println("Move Up (U)");
             myModel.moveUp();
-            System.out.println("Row: " + myModel.getPlayerRow());
-            System.out.println("Col: " + myModel.getPlayerCol());
         }
         if(myDirection == 'L'){
-            System.out.println("Move Left (L)");
             myModel.moveLeft();
-            System.out.println("Row: "+myModel.getPlayerRow());
-            System.out.println("Col: "+myModel.getPlayerCol());
-            //System.out.println(myModel.maze2String());
         }
         if(myDirection == 'I') {
-            System.out.println("Opening Inventory");
-            System.out.println("Number of keys: " + myModel.myPlayer.getKeyCount());
-            System.out.println("Number of hintpasses: " + myModel.myPlayer.getHintpassCount());
+            myView.showInventory(myModel.myPlayer);
         }
     }
+
+    private void decLives() {
+        myModel.decMyLive();
+    }
+
 }
