@@ -5,31 +5,33 @@ import java.util.Arrays;
 import java.util.Collections;
 public class Character {
     private static int myLives;
-    private final String myHeroType;
+    // private final String myHeroType;
 
-    public Character(String theHeroType) {
-        myHeroType = theHeroType;
-        myLives = 4;
+    public Character() {
+        //   myHeroType = "ahhh";
+        myLives = 3;
+        setHintpassCount(0);
+        setKeyCount(0);
     }
 
-    public String myHeroType() {
-        return myHeroType;
-    }
-
-    public String HeroType() {
-        return myHeroType;
-    }
+//    public String myHeroType() {
+//        return myHeroType;
+//    }
+//
+//    public String HeroType() {
+//        return myHeroType;
+//    }
 
     public void decreaseLives() {
         myLives--;
     }
 
     public ArrayList<String> useHintpass(Question question) {
-        String Myanswer = question.getMyAnswer();
+        String answer = question.getMyAnswer();
         ArrayList<String> answers = question.setChoices();
         ArrayList<String> tempArray = new ArrayList<>();
-        tempArray.add(Myanswer);
-        answers.remove(Myanswer);
+        tempArray.add(answer);
+        answers.remove(answer);
         tempArray.add(answers.get(0));
         Collections.shuffle(tempArray);
         model.Character.Inventory.myHintpassCount--;
@@ -40,12 +42,6 @@ public class Character {
         return myLives != 0;
     }
 
-    public String toString() {
-        //return ("Name: " + TitleScreen.getName() + ", " + "Lives: " +
-        //myLives + ", " + " Hero type: " + myHeroType);
-        return "name";
-    }
-
     public int getLives() {
         return myLives;
     }
@@ -54,8 +50,20 @@ public class Character {
         return model.Character.Inventory.getMyHintpassCount();
     }
 
+    public void setHintpassCount(final int theHintpassCount) {
+        model.Character.Inventory.setMyHintpassCount(theHintpassCount);
+    }
+
     public int getKeyCount() {
         return model.Character.Inventory.getMyKeyCount();
+    }
+
+    public void setKeyCount(final int theKeyCount) {
+        model.Character.Inventory.setMyKeyCount(theKeyCount);
+    }
+
+    public void setMyLives(final int theLive) { //check??????????????????????????????????????????????
+        myLives = theLive;
     }
 
     static class Inventory {
@@ -63,8 +71,8 @@ public class Character {
         private static int myKeyCount; //how many keys does the player start with
 
         public Inventory(final int theHintpassCount, final int theKeyCount){
-            myHintpassCount = theHintpassCount;
-            myKeyCount = theKeyCount;
+            myHintpassCount = setMyHintpassCount(theHintpassCount);
+            myKeyCount = setMyKeyCount(theKeyCount);
         }
 
         public static int getMyKeyCount() {
@@ -75,12 +83,20 @@ public class Character {
         }
 
         public static int setMyHintpassCount(final int theHintpassCount) {
-            model.Character.Inventory.myHintpassCount = myHintpassCount;
+            if (getMyHintpassCount() >= 0) {
+                myHintpassCount = theHintpassCount;
+            } else {
+                myHintpassCount = 0;
+            }
             return myHintpassCount;
         }
 
-        public static int setMyKeyCount(final int myKeyCount) {
-            model.Character.Inventory.myKeyCount = myKeyCount;
+        public static int setMyKeyCount(final int theKeyCount) {
+            if (getMyKeyCount() >= 0) {
+                myKeyCount = theKeyCount;
+            } else {
+                myKeyCount = 0;
+            }
             return myKeyCount;
         }
 
