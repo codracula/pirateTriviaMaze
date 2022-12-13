@@ -1,37 +1,22 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import model.*;
 import model.Character;
-import model.GameModel;
-import model.UserFunctions;
 import view.GameView;
-
 
 public class GameController {
     private final Scanner nScan = new Scanner(System.in);
-    private GameModel myModel;
-    private GameView myView;
+    private final GameModel myModel;
+    private final GameView myView;
     private String characterClass;
 
     public GameController(GameModel theModel, GameView theView) {
-        //public GameController(GameModel theModel) {
         myModel = theModel;
         myView = theView;
-        //myView.showTitleScreen();
-        //promptTitle();
-        //menu();
-
     }
-//    private void promptTitle() {
-//        System.out.println("Welcome to Trivia Maze!");
-//        System.out.println("=================================");
-//        System.out.println("Please select an option by entering an integer.");
-//        System.out.println("1) Start game");
-//        System.out.println("2) Load game");
-//        System.out.println("3) Options");
-//        System.out.println("4) Quit \n");
-//    }
 
     public void menu() {
         int choice = nScan.nextInt();
@@ -77,27 +62,76 @@ public class GameController {
         characterClass = myView.showCharacterClasses();
     }
 
-    public void movePlayer(){
-        char myDirection = myView.showMoves();
-        if(myDirection == 'D'){
+    public void movePlayer() {
+        char action = myView.showMoves(myModel.getMyMaze());
+        if (action == 'D') {
             myModel.moveDown();
-        }
-        if(myDirection == 'R'){
+        } else if (action == 'R') {
             myModel.moveRight();
-        }
-        if(myDirection == 'U') {
+        } else if (action == 'U') {
             myModel.moveUp();
-        }
-        if(myDirection == 'L'){
+        } else if (action == 'L') {
             myModel.moveLeft();
-        }
-        if(myDirection == 'I') {
+        } else if (action == 'I') {
             myView.showInventory(myModel.myPlayer);
         }
     }
 
-    private void decLives() {
-        myModel.decMyLive();
+    public void setUp() {
+        myView.showTitleScreen();
+        menu();
+        myModel.setQuestion();
     }
 
+    public void playGame() {
+        setUp();
+        while (myModel.myPlayer.getKeyCount() != 4) {
+            traverse();
+        }
+        canExit();
+        while (!myModel.doBossFight()) {
+            traverse();
+        }
+        myView.winnerWinnerChickenDinner(myModel.getMyPlayer());
+
+    }
+
+    private void traverse() {
+        myView.showMaze(myModel.myMaze);
+        movePlayer();
+        myView.showRoom(myModel.myMaze.getRoom(myModel.getPlayerRow(), myModel.getPlayerCol()));
+        myModel.roomActivity();
+        myModel.setCurrentP();
+    }
+
+    private void canExit() {
+        myView.canExit();
+        myModel.getExit();
+    }
+
+    private void loseRestart() {
+        char choice = myView.showGameOver(myModel.getMyPlayer());
+        if (choice == 'y' || choice == 'Y') {
+            setUp();
+            playGame();
+        } else {
+            System.exit(1);
+        }
+    }
+
+    private void winRestart() {
+        char choice = myView.winnerWinnerChickenDinner(myModel.getMyPlayer());
+        if(choice == 'Y' || choice == 'y') {
+            resetStats();
+        } else {
+            System.exit(1);
+        }
+    }
+
+    private void resetStats() {
+        myModel.myPlayer.setHintpassCount(0);
+        myModel.myPlayer.setKeyCount(0);
+        myModel.myPlayer.setMyLives(3);
+    }
 }
+
