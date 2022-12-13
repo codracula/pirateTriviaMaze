@@ -6,6 +6,7 @@ import model.QuestionDatabase;
 import controller.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -13,6 +14,9 @@ public class GameView {
 
     private final Scanner console = new Scanner(System.in);
     private String characterClass;
+    private String playerName;
+    private int qCorrect;
+    private int qWrong;
 
     public void showTitleScreen() {
         System.out.println("Welcome to Trivia Maze!");
@@ -33,8 +37,7 @@ public class GameView {
 
     public void showStart() {
         System.out.print("Let's get started!" + "\n" + "What is your name: ");
-        //myModel.setMyPlayerName(nScan.nextLine());
-        String playerName = console.nextLine();
+        playerName = console.nextLine();
         System.out.println();
         System.out.println("Alright " + playerName + ", choose a class:");
     }
@@ -70,6 +73,13 @@ public class GameView {
         return characterClass;
     }
 
+    private void showInstructions() {
+        System.out.println("Traverse through two mazes to get to the boss!");
+        System.out.println("Find the 4 keys scattered throughout the maze in order to progress");
+        System.out.println("Be careful of bandits, guards and gatekeepers");
+        System.out.println("They'll try to thwart your progress by asking questions");
+    }
+
     public String getCategory() {
         String category = "";
         if (Objects.equals(characterClass, "Merchant")) {
@@ -84,15 +94,23 @@ public class GameView {
         return category;
     }
 
-    public char showMoves() {
-        System.out.println("Which direction would you like to move?");
-        System.out.println("D) Down");
-        System.out.println("R) Right");
-        System.out.println("U) Up");
-        System.out.println("L) Left");
+    public char showMoves(final Maze theMaze) {
+        System.out.println("Which action would you like to take?");
+        if (theMaze.getRowPos() != 3) { //made getRowPos public
+            System.out.println("D) Down");
+        }
+        if (theMaze.getColPos() != 6) {
+            System.out.println("R) Right");
+        }
+        if (theMaze.getRowPos() != 0) {
+            System.out.println("U) Up");
+        }
+        if (theMaze.getColPos() != 0) {
+            System.out.println("L) Left");
+        }
         System.out.println("I) Inventory");
-        char direction = console.next().charAt(0);
-        return direction;
+        char action = console.next().charAt(0);
+        return action;
     }
 
     private void showCharacterInfo(final Character theCharacter) {
@@ -134,71 +152,118 @@ public class GameView {
     }
 
     public void showRoom(final Room theRoom) {
-        System.out.print("You enter the room and encounter a " + theRoom.getOccupant());
-        if (Objects.equals(theRoom.getOccupant(), "B")) {
+        System.out.print("You enter the room and encounter a ");
+        if (Objects.equals(theRoom.getOccupant(), "bandit")) {
             System.out.println("bandit! Get ready for a question");
-        } else if (Objects.equals(theRoom.getOccupant(), "G")) {
+        } else if (Objects.equals(theRoom.getOccupant(), "guard")) {
             System.out.println("guard! Get ready for a question");
-        } else if (Objects.equals(theRoom.getOccupant(), "R")) {
+        } else if (Objects.equals(theRoom.getOccupant(), "gatekeeper")) {
             System.out.println("gatekeeper! Get ready for a difficult question");
         } else if (Objects.equals(theRoom.getOccupant(), "K")) {
-            System.out.println("a key! Better keep it safe");
+            System.out.println("key! Better keep it safe");
         } else if (Objects.equals(theRoom.getOccupant(), "E")) {
-            System.out.println("a way out! You found the exit!");
+            System.out.println("way out! You found the exit!");
+            //System.out.println("Looks like there's another maze in the town over");
+            System.out.println("Oh no! Looks like the big boss is here");
+        }  else if (Objects.equals(theRoom.getOccupant(), "P")) {
+            System.out.println("moment of peace while you sort through your belongings");
+            System.out.println("You're ready to move on now");
         } else {
             System.out.println("empty room, keep exploring!");
         }
-
     }
 
-    public void showMonEnd(final boolean theHintPassChance) {
-        if (theHintPassChance) {
-            System.out.println("The monster drops a hint pass while running away");
-        }
+    public void showMonEnd() {
+        System.out.println("The monster drops a hint pass while running away");
     }
 
     public void showInventory(final Character thePlayer) {
         System.out.println("Opening Inventory");
         System.out.println("Number of keys: " + thePlayer.getKeyCount());
         System.out.println("Number of hint passes: " + thePlayer.getHintpassCount());
+        System.out.println("Lives: " + thePlayer.getLives());
     }
 
-    private boolean canExit(final Character thePlayer) {
-        if (thePlayer.getKeyCount() == 4) {
-            System.out.println("You found all four keys!");
-            System.out.println("The exit has appeared");
-            return true;
-        } else {
-            return false;
-        }
+    public void canExit() {
+        System.out.println("You found all four keys!");
+        System.out.println("The exit has appeared. Find the way out!");
     }
 
-    public boolean showQuestion(final QuestionDatabase theQuestion, final int theIndex) {
-        System.out.println(theQuestion.getQuestion(theIndex));
-        ArrayList<String> choices = theQuestion.getChoices(theIndex);
+    public int showQuestion(final Question theQuestion) {
+        System.out.println(theQuestion.getMyQuestion());
+        ArrayList<String> choices = theQuestion.setChoices();
         for (int i = 0; i < choices.size(); i++) {
             System.out.println((i + 1) + ": " + choices.get(i));
         }
-        boolean correct = false;
+        System.out.println("5: Use a hint pass");
+        int correct = 0;
         System.out.println("Enter your answer as a number");
         int userAnswer = console.nextInt();
-        if (choices.get(userAnswer - 1).equals(theQuestion.getAnswer(theIndex))) {
+        if (userAnswer == 5) {
+            correct = 2;
+        } else if (choices.get(userAnswer - 1).equals(theQuestion.getMyAnswer())) {
             System.out.println("Yay, you're correct!");
-            correct = true;
+            correct = 1;
+            qCorrect++;
         } else {
             System.out.println("Boo, you're wrong! -1 life");
             System.out.println("Try again");
-//            showQuestion(theQuestion, theIndex);
+            qWrong++;
         }
         return correct;
     }
 
-    public void showGameOver() {
-        System.out.println("GAME OVER");
+    public int showHintpassUse(final Question theQuestion, final Character thePlayer) {
+        int correct = 0;
+        System.out.println("You used a hint pass");
+        System.out.println("Half of the answers magically go away leaving you with a 50/50 chance");
+        ArrayList<String> hintPassChoices = thePlayer.useHintpass(theQuestion);
+        for (int i = 0; i < hintPassChoices.size(); i++) {
+            System.out.println((i + 1) + ": " + hintPassChoices.get(i));
+        }
+        System.out.println("Enter your answer as a number");
+        int userAnswer = console.nextInt();
+        if (hintPassChoices.get(userAnswer - 1).equals(theQuestion.getMyAnswer())) {
+            System.out.println("Yay, you're correct!");
+            correct = 1;
+            qCorrect++;
+        } else {
+            System.out.println("Boo, you're wrong! -1 life");
+            System.out.println("Try again");
+            qWrong++;
+        }
+        return correct;
     }
 
-    private void showBossFight() {
-        System.out.println("You encounter the final boss!");
+    private void showSummary(final Character thePlayer) {
+        System.out.println("Name: " + playerName);
+        System.out.println("Class: " + characterClass);
+        System.out.println("Keys collected: " + thePlayer.getKeyCount());
+        System.out.println("Correct answers: " + qCorrect);
+        System.out.println("Incorrect answers: " + qWrong);
+    }
+
+    public char showGameOver(final Character thePlayer) {
+        System.out.println("Unfortunately your adventure ends here...");
+        System.out.println("Better luck next time!"+ "\n");
+        System.out.println("          Your summary");
+        System.out.println("=================================");
+        showSummary(thePlayer);
+        System.out.println("=================================\n");
+        System.out.println("Would you like to begin again?\nEnter Y for yes or any other char to exit the game.");
+        return console.next().charAt(0);
+
+    }
+
+    public char winnerWinnerChickenDinner(final Character thePlayer) {
+        System.out.println("Against all odds you have bested the maze and the boss.");
+        System.out.println("Congratulations!"+ "\n");
+        System.out.println("          Your summary");
+        System.out.println("=================================");
+        showSummary(thePlayer);
+        System.out.println("=================================\n");
+        System.out.println("Would you like to begin again?\nEnter Y for yes or any other char to exit the game.");
+        return console.next().charAt(0);
     }
 
 }
