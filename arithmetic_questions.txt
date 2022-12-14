@@ -1,0 +1,315 @@
+Arithmetic 
+
+Easy 
+	10/2
+10
+2
+5*
+1
+	reciprocal of 5
+-5
+5
+0
+1/5*
+	-7+10
+3*
+-3
+17
+-17
+	|-34|
+-34
+34*
+17
+-17
+	6*90
+270
+640
+540*
+720
+	if a rectangle is 20ft by 7ft, what is the area?
+140*
+350
+100
+70
+	if an angle is 45 degrees, it is
+obtuse
+right
+acute*
+none of the above
+	3^5 is the same as
+5*5*5
+15
+125
+3*3*3*3*3 *
+	8.563 + 4.8292
+13.3922*
+12.9784
+13.4827
+12.7687
+	if an angle is 170 degrees, it is
+obtuse*
+right
+acute
+all of the above
+	2+2=
+1
+2
+3
+4*
+	(5 + 2 * 4 / 12 - 525) * 0 =
+648
+-428
+1
+0*
+	if Martha has 5 cakes and gives away 2, then bakes 7 more, how many cakes does she have
+3
+7
+10*
+5
+	What is the perimeter of a square fence with a length of 6 ft?
+6
+36
+12
+24*
+	-12 - 5 =
+7
+-7
+17
+-17*
+	34 * 3
+102*
+100
+103
+99
+	What is the y intercept in y = 8x - 9?
+8
+9
+-8
+-9*
+	What is the slope of the equation y = 5x + 8?
+8
+5*
+8/5
+5/8
+	What is 4!
+4
+24*
+20
+40
+	If Susie has 5 friends and wants to give them eat 10 pieces of chocolate, how much chocolate does she need?
+5
+10
+50*
+500
+
+
+
+
+
+Medium
+	Solve (2 + 4)^2 - 2^3 + 1
+29*
+12
+10
+33
+	Find the derivative of x
+X
+1*
+½
+x^2
+	What does the m in pemdas stand for?
+Mean
+Median
+Multiplication *
+Mode 
+	3(x + 5) = 3x + (3*5) is an example of the...
+associative property
+distributive property*
+multiplying property
+commutative property
+	Solve 1/4 + 1/7
+2/11
+2/28
+11/28*
+7/28
+	How many degrees are in a circle?
+90
+180
+270
+360*
+	There is a patch of lily pads on a lake. every day, the patch doubles in size. if it takes 48 days for the patch to vover the entire lake, how long would it take for the patch to cover half the lake?
+48 days
+47 days*
+24 days
+23 days
+	How many feet are in a mile?
+5280*
+6020
+1200
+3652
+	Solve for x -15 + (-5x) = 0
+3
+5
+-3*
+0
+	There is a 10x10 board with a 2x7 hole cut out of it, what is the area of the board?
+100
+80
+86*
+94
+	What is the least common multiple of 9 and 22?
+9
+22
+13
+198*
+	Given two lines y = 3x - 4 and y = 5x + 2 at what coordinates will they intersect?
+(-3, -13)*
+(3, 13)
+(3, -13)
+(13, 3)
+	What is the pythagorean theorem?
+a^2+b^2=c^2*
+a+b=c^2
+a^2+b^2=c
+a+b=c
+	What is the formula for finding the area of a circle?
+2 * d * r
+pie * r^2 + d
+pi * r^2*
+2 * pi * r
+	A cube has sides that are 3 ft long, what is the surface area?
+9
+18
+54*
+27
+	Solve 352 * 87
+32817
+21479
+30246
+30624*
+	Find the mean of the data set 13, 11, 8, 15, 5, 2
+8
+9*
+8.6
+7.4
+	Find the median of the data set 99, 32, 29, 24, 62, 42, 79, 41
+41
+42
+41.5*
+43
+	Convert 7/8 to a percent
+78%
+78.5%
+87%
+87.5%
+	Convert 3.15 into a fraction in simplest form
+315/100
+63/20*
+3 15/100
+64/20
+
+
+
+
+
+Hard
+	Which is the equivalent to 49^(3/2)?
+21
+98
+294
+343
+	Which expression is equivalent to (4i)^3?
+-12i
+12i
+-64i
+64i
+	What is the decimal value of 00101?
+101
+1
+5*
+51
+	If a sweater is $45 and it is currently 15% off sales price, and you use your student discount that is 10% off sales price, how much is the sweater?
+20
+56.25
+35
+33.75*
+	Which is the better deal?
+$40 for 3 cakes*
+$35 for 3 cakes
+$38 for 2 cakes
+20$ for one cake
+	If 6 < |x - 3| < 8 and x < 0, what is one possible value for x?
+4
+-4*
+10
+-10
+	Which function oscillates between -1 and 1 and goes through the origin?
+Cos(x)
+Tan(x)
+Sin(x)*
+Csc(x)
+	If 10 + x is 5 more than 10, what is the value of 2x?
+5
+10*
+25
+50
+	Ali, Ben, and Carla made a total of 20 sandwiches. Ben made 3 times as many as Ali, and Carla made twice as many as Ben. How many sandwiches did Ali make?
+2*
+4
+5
+6
+	Solve for one of the values of x in x^2 + 10x + 9 = 0
+9
+-10
+1*
+-1
+	Solve for one of the values of x in x^2 - x - 56 = 0
+-8
+-7*
+7
+0
+	Which quadrant of the coordinate plane would (-1, 2) be in?
+1
+2*
+3
+4
+	Convert 180 degrees to radians
+pi*
+180pi
+90pi
+90
+	If you're facing south and you turn to face north, how many degrees did you turn?
+180*
+360
+90
+270
+	You need 3 cups of flour for cookies, but you only have a tablespoon. How many times will you have to scoop the flour?
+48*
+12
+36
+3
+	If a pole is 10 ft tall and it casts a shadow that is 15ft long, and a 6ft person is standing next to the pole. What is the length of the person's shadow?
+9ft*
+11ft
+10ft
+12ft
+	If there are 180 questions in this database, and all 3 categories have the same number of questions. What are the chances you received this question?
+1/180
+1/60*
+1/90
+3/180
+	What is the distance between two points at (1,2) and (3,4)
+2.8
+2.9*
+3.1
+4.6
+	What could be a possible value of x if |x - 1|=8
+-8
+-6
+6*
+9
+	If a triangle has two angles that are 47 and 63 what is the degree of the other angle?
+250
+70*
+110
+90

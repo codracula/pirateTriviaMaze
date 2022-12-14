@@ -2,6 +2,10 @@ package model;
 
 import java.util.Random;
 
+/**
+ *  Maze class
+ * @author  Jeep Naarkom
+ */
 public final class Maze {
     /**
      *  reusable random object.
@@ -82,7 +86,6 @@ public final class Maze {
         genMon();
         genPlayerSpawn();
         genKey();
-//        genExit();
     }
 
     /**
@@ -174,7 +177,7 @@ public final class Maze {
      *  get row of current position.
      * @return  row of current position.
      */
-    int getRowPos() {
+    public int getRowPos() {
         return myCurrentRow;
     }
 
@@ -182,7 +185,7 @@ public final class Maze {
      *  get col of current position.
      * @return  col of current position.
      */
-    int getColPos() {
+    public int getColPos() {
         return myCurrentCol;
     }
 
@@ -191,10 +194,14 @@ public final class Maze {
      * @param theRow    the row position.
      * @param theCol    the col position.
      */
+
     void setPCurrent(final int theRow, final int theCol) {
-        if (theRow > 0 && theCol > 0) {
+        if (theRow >= 0 && theRow < myRowCount
+                && theCol >= 0 && theCol < myColCount) {
             myCurrentRow = theRow;
             myCurrentCol = theCol;
+        } else {
+            System.out.println("either row or col is out of bound");
         }
     }
     //----------maze dimension
@@ -365,40 +372,22 @@ public final class Maze {
     }
 
     /**
-     *  print maze to string.
-     * @return  the whole maze string output.
+     *  get 2d array of rooms
+     * @return  myMaze
      */
-    public String m2String() {
-        final StringBuilder sb = new StringBuilder();
-        final String breakLine = "___________________________________________\n";
-        final String breakRoom = "|     |     |     |     |     |     |     |\n";
-        for (Room[] rooms : myMaze) {
-
-            sb.append(breakLine);
-            sb.append(breakRoom);
-            sb.append("|  ");
-            for (Room room : rooms) {
-
-                if (room.getOccupant() == null) {
-                    sb.append(" ");
-                } else if (room.getOccupant().equals("bandit")) {
-                    sb.append("B");
-                } else if (room.getOccupant().equals("guard")) {
-                    sb.append("G");
-                } else if (room.getOccupant().equals("gateKeeper")) {
-                    sb.append("R");
-                } else {
-                    sb.append(room.getOccupant().toString());
-                }
-                sb.append("  |  ");
-            }
-            sb.append("\n");
-            sb.append(breakRoom);
-        }
-        sb.append(breakLine);
-        sb.append("P = player, E = exit, B = bandit, G = guard, R = gatekeeper, K = key\n");
-
-        return sb.toString();
+    public Room[][] getMaze() {
+        return myMaze;
     }
+
+    /**
+     *  get room from coordinates
+     * @param theRow    the row position.
+     * @param theCol    the col position.
+     * @return  room.
+     */
+    public Room getRoom(final int theRow, final int theCol) {
+        return myMaze[theRow][theCol];
+    }
+
 
 }

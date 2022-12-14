@@ -3,24 +3,57 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Random;
 
+/**
+ *  monsters class to populate monsters
+ * @author Jeep Naarkom
+ * @author Juno Lee
+ */
 public class Monsters {
+    /**
+     *  monster type list.
+     */
     private List<String> myMonsterType;
+    /**
+     *  monster A max count.
+     */
     private int myM_AmaxCount;
+    /**
+     *  monster B max count.
+     */
     private int myM_BmaxCount;
+    /**
+     *  monster c max count.
+     */
     private int myM_CmaxCount;
+    /**
+     *  monster list.
+     */
     private List myMList;
+    /**
+     *  static random.
+     */
+    private static Random myRand;
 
+    /**
+     *  constructor
+     * @param theM_A    # of monster A to generate.
+     * @param theM_B    # of monster B to generate.
+     * @param theM_C    # of monster C to generate.
+     */
     public Monsters(final int theM_A, final int theM_B, final int theM_C){
+        myRand = new Random();
         myM_AmaxCount = theM_A;
         myM_BmaxCount = theM_B;
         myM_CmaxCount = theM_C;
         populateMonster();
         generateList();
-
     }
 
+    /**
+     *  populate monsters.
+     */
     private void populateMonster(){
         myMonsterType = new ArrayList();
         myMonsterType.add("bandit");
@@ -28,6 +61,9 @@ public class Monsters {
         myMonsterType.add("gateKeeper");
     }
 
+    /**
+     *  generate all monsters in a list.
+     */
     private void generateList(){
         myMList = new ArrayList<String>(myMonsterType.size());
         for (int i = myM_AmaxCount; i > 0; i--) {
@@ -40,49 +76,56 @@ public class Monsters {
             myMList.add(myMonsterType.get(2));
         }
         Collections.shuffle(myMList);
-//        System.out.println(myMList);
-
     }
 
-    protected List<String> getmList(){
+    /**
+     *  get monster list.
+     * @return  monster list.
+     */
+    List<String> getmList(){
         return myMList;
     }
 
-    protected String getMonsterType(final int theType) {
-        return (String) myMonsterType.get(theType);
-    }
-
-    //set parameter monType to String for now in order to tell which monType
-    //probably change in future
-    //need to get category information from title screen as well, hardcoded for now
-    protected ArrayList<Question> setQuestion(final String theMonType, final String theCategory,
-                                              final QuestionDatabase theQuestion, final int theIndex) {
-
+    /**
+     *  set question
+     * @param theMonType    monster type.
+     * @param theCategory   question category.
+     * @param theQuestion   question database.
+     */
+    void setQuestion(final String theMonType, final String theCategory,
+                                    final QuestionDatabase theQuestion) {
         switch (theMonType) {
             case "bandit" -> theQuestion.setQuestionList(theCategory, 1);
             case "guard" -> theQuestion.setQuestionList(theCategory, 2);
             case "gatekeeper" -> theQuestion.setQuestionList(theCategory, 3);
         }
-        theQuestion.getQuestionList().get(theIndex).toString();
-
-        //asks question and takes in user input
-        //probably should move somewhere else later
-        ArrayList<String> choices = theQuestion.getChoices(theIndex);
-        Scanner console = new Scanner(System.in);
-        System.out.println("Enter your answer as a number");
-        int userAnswer = console.nextInt();
-        if (choices.get(userAnswer - 1).equals(theQuestion.getAnswer(theIndex))) {
-            System.out.println("Yay, you're correct!");
-            //correct++;
-        } else {
-            System.out.println("Boo, you're wrong!");
-            System.out.println("The answer is " + theQuestion.getAnswer(theIndex));
-            //wrong++;
-        }
-
-        //don't remove this tho
-        theQuestion.removeQuestion(theIndex);
-        return theQuestion.getQuestionList();
     }
 
+    /**
+     *  get question
+     * @param theQuestionList   question list.
+     * @return  question.
+     */
+    public Question getQuestion(final ArrayList<Question> theQuestionList) {
+        int random = myRand.nextInt(theQuestionList.size());
+        return theQuestionList.get(random);
+    }
+
+    /**
+     *  hint pass chance
+     * @param theMonType    theMonster type.
+     * @return  boolean.
+     */
+    boolean hintPassChance(final String theMonType) {
+        boolean hintPassChance = false;
+        switch (theMonType) {
+            case "bandit" ->
+                    hintPassChance = myRand.nextInt(100) <= 100; //10% chance
+            case "guard" ->
+                    hintPassChance = myRand.nextInt(100) <= 20;
+            case "gatekeeper" ->
+                    hintPassChance = myRand.nextInt(100) <= 30;
+        }
+        return hintPassChance;
+    }
 }

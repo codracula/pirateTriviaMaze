@@ -1,5 +1,9 @@
 package model;
 
+/**
+ *  Room class
+ * @author Jeep Naarkom
+ */
 public class Room {
     /**
      *  variable to store if is visited.
@@ -9,10 +13,7 @@ public class Room {
      *  variable to store if the room is empty.
      */
     private boolean myIsEmpty;
-    /**
-     *  variable to store if key is in the room.
-     */
-    private boolean myHasKey;
+
     /**
      *  variable to store thing inside the room.
      */
@@ -28,14 +29,6 @@ public class Room {
     }
 
     /**
-     *  set boolean if the room has key.
-     * @param theBool   set true if the room has key
-     */
-    protected void setKey(final boolean theBool) {
-        myHasKey = theBool;
-    }
-
-    /**
      *  check if the room has the key.
      * @return true if the room has the key.
      */
@@ -47,7 +40,7 @@ public class Room {
      *  get occupant from the room.
      * @return  occupant in the room.
      */
-    String getOccupant() {
+    public String getOccupant() {
         return myOccupant;
     }
 
@@ -86,7 +79,7 @@ public class Room {
      *  set occupant to the room.
      * @param theName   occupant name.
      */
-    void setOccupant(final String theName) {
+    public void setOccupant(final String theName) {
         myOccupant = theName;
         myIsEmpty = false;
     }

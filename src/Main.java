@@ -1,26 +1,15 @@
 import controller.GameController;
 import model.GameModel;
-
-
-import java.io.IOException;
+import view.GameView;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        GameModel theModel = new GameModel();
-        GameController theController = new GameController(theModel);
+        GameView myView = new GameView();
+        GameModel myModel = new GameModel(myView);
+        GameController myController = new GameController(myModel, myView);
 
-        System.out.println("myPlayerName: " + theModel.getMyPlayerName());
-        System.out.println("myPlayerClassName: " + theModel.getMyPlayerClass());
-        System.out.println("spawnRow: "+theModel.getPlayerRow());
-        System.out.println("spawnCol: "+theModel.getPlayerCol());
+        myController.playGame();
 
-        while(true) {
-
-            theController.movePlayer();
-            System.out.println(theModel.maze2String());
-
-        }
     }
-
 }

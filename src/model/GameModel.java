@@ -1,32 +1,23 @@
 package model;
 
-//import java.beans.PropertyChangeListener;
-//import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
+import view.*;
 
+/**
+ *  Model class for MVC
+ * @author Jeep Naarkom
+ */
 public final class GameModel {
-    /**
-     *  player starting live count.
-     */
-    private int myLive;
-    /**
-     *  player name.
-     */
-    private String myPlayerName;
-    /**
-     *  player class.
-     */
-    private String myPlayerClass;
+
     /**
      *  initialize maze class.
      */
-    private Maze myMaze;
+    public Maze myMaze;
     /**
      *  initialize character class.
      */
-    private Character myPlayer;
+    public Character myPlayer;
     /**
      *  initialize question database.
      */
@@ -39,12 +30,29 @@ public final class GameModel {
      *  variable for total key count to populate the maze.
      */
     private final int myMaxKeyCount;
-//    private Monster myMon;
+    /**
+     *  bandits list of questions.
+     */
+    private ArrayList<Question> banditQ;
+    /**
+     *  guard's list of questions.
+     */
+    private ArrayList<Question> guardQ;
+    /**
+     *  gatekeeper's list of questions
+     */
+    private ArrayList<Question> gatekeeperQ;
+    /**
+     *  game view.
+     */
+    private final GameView myView;
 
     /**
      *  constructor to set values for instance variables.
+     * @param theView   view model.
      */
-    public GameModel() {
+    public GameModel(GameView theView) {
+        myView = theView;
         myMaxKeyCount = 4;
         final int mazeRow = 4;
         final int mazeCol = 7;
@@ -53,52 +61,41 @@ public final class GameModel {
         final int monsterC_count = 0;
         final int keyCount = 4;
 
-        //TODO by Steve
-        //use getplayer name and getplayer class method to update myPlayerName, myPlayerClass
-        //before initialize Character class.
-
         myMaze = new Maze(mazeRow, mazeCol, monsterA_count, monsterB_count, monsterC_count, keyCount);
-        //added by Juno
-        myPlayer = new Character(myLive, myPlayerClass, myQuestions.getQuestionSet(getQuestionIndex()));
-
-        //initialize inventory
-        gameStart();
+        myPlayer = new Character();
     }
 
-    /** Start the game set condition to each room.
-     *
+    /**
+     *  get Maze
+     * @return  Maze
      */
-    private void gameStart() {
-
-        //if collect all 4 keys spawn the exit
-        if (Character.Inventory.getMyHintpassCount() == myMaxKeyCount) {
-            myMaze.genExit();
-        }
-
-        //if enter the exit then...
-        //spawn another town with a gateKeeper, reset key collected, reset room explored.
-        if (myMaze.getColPos() == myMaze.getExitCol() && myMaze.getRowPos() == myMaze.getExitRow()) {
-            Character.Inventory.setMyKeyCount(0);
-            myMaze = new Maze(4, 7, 6, 2, 1, 4);
-        }
-
-        //once collected all keys, spawn the exit
-        if (Character.Inventory.getMyHintpassCount() == 4) {
-            myMaze.genExit();
-        }
-        //collect another set of keys and enter the exit
-        //activate boss fight
-        if (myMaze.getColPos() == myMaze.getExitCol() && myMaze.getRowPos() == myMaze.getExitRow()) {
-
-            //TODO by Juno
-            //activate boss fight question
-            //TODO by Steve
-            //if win display victorious screen and
-            //reset stats (hintpass, live, key, explored room)
-        }
+    //-----------maze-----------------
+    public Maze getMyMaze() {
+        return myMaze;
     }
 
-    //-----------maze-----------------
+    /**
+     *  generate exit.
+     */
+    public void getExit() {
+        myMaze.genExit();
+    }
+
+    /**
+     *  getExit col position.
+     * @return  exit col position.
+     */
+    public int getExitCol() {
+        return myMaze.getExitCol();
+    }
+
+    /**
+     *  getExit row position.
+     * @return  exit row position.
+     */
+    public int getExitRow() {
+        return myMaze.getExitRow();
+    }
     /**
      *  get player row position
      * @return row position
@@ -115,124 +112,186 @@ public final class GameModel {
         return myMaze.getColPos();
     }
 
-    void gameOver() {
-        //TODO for Steve
-        //do something when game over
-        //display game over message, then press any keys to continue then restart the game menu
-        //reset stats (hintpass, live, key, explored room)
-    }
-
-    //-----------player info-----------------
-    public void setMyPlayerName(final String theName) {
-
-        myPlayerName = Objects.requireNonNull(theName);
-    }
-
-    public String getMyPlayerName() {
-        return myPlayerName;
-    }
-
-    public void setMyPlayerClass(final String theClass) {
-        myPlayerClass = Objects.requireNonNull(theClass);
-    }
-
-    public String getMyPlayerClass() {
-        return myPlayerClass;
-    }
-
-    //-----------player control/direction-----------------
-    public void moveLeft() {
-        if (myMaze.getColPos() == 0){
-            throw new IllegalArgumentException("Out of bound");
-        }
-        final int tempRow = myMaze.getRowPos();
-        final int tempCol = myMaze.getColPos();
-        myMaze.roomSetEmpty(tempRow, tempCol);
-        //move 1 column to left ----position 1 is col space
-        myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() - 1);
-        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.setOccupant(myMaze.getColPos(), myMaze.getRowPos(), "P");
-    }
-    public void moveRight() {
-        if (myMaze.getColPos() == myMaze.getMazeCol()-1){
-            throw new IllegalArgumentException("Out of bound");
-        }
-        final int tempRow = myMaze.getRowPos();
-        final int tempCol = myMaze.getColPos();
-        myMaze.roomSetEmpty(tempRow, tempCol);
-        //move 1 column to right ----position 1 is col space
-        myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() + 1);
-        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.setOccupant(myMaze.getColPos(), myMaze.getRowPos(), "P");
-    }
-    public void moveUp() {
-        if (myMaze.getRowPos() == 0){
-            throw new IllegalArgumentException("Out of bound");
-        }
-        final int tempRow = myMaze.getRowPos();
-        final int tempCol = myMaze.getColPos();
-        myMaze.roomSetEmpty(tempRow, tempCol);
-        //move 1 row up  ------position 0 is row space
-        myMaze.setPCurrent(myMaze.getRowPos() - 1, myMaze.getColPos());
-        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.setOccupant(myMaze.getColPos(), myMaze.getRowPos(), "P");
-    }
-    public void moveDown() {
-        if (myMaze.getRowPos() == myMaze.getMazeRow()-1){
-            throw new IllegalArgumentException("Out of bound");
-        }
-
-        final int tempRow = myMaze.getRowPos();
-        final int tempCol = myMaze.getColPos();
-        myMaze.roomSetEmpty(tempRow, tempCol);
-        //move 1 row down  ------position 0 is row space
-        myMaze.setPCurrent(myMaze.getRowPos() + 1, tempCol);
-        roomActivity(myMaze.getRowPos(), myMaze.getColPos());
-        myMaze.setOccupant(myMaze.getColPos(), myMaze.getRowPos(), "P");
-    }
-
-    /** method to activate room acitvivity based on the room location of row/col
-     *
-     * @param theRow the row position
-     * @param theCol the col position
+    /**
+     *  getMyLive
+     * @return  lives.
      */
-    void roomActivity(final int theRow, final int theCol) {
+    public int getMyLive() {
+        return myPlayer.getLives();
+    }
 
-        if (myMaze.roomHasKey(theRow, theCol)) {
-            Character.Inventory.setMyKeyCount(Character.Inventory.getMyKeyCount() + 1);
-        } else if (myMaze.getOccupant(theRow, theCol).equals("bandit")) {
-            //activate bandit question set
-            ArrayList<Question> banditQ =  myMaze.getMon().setQuestion("bandit", myPlayerClass, myQuestions, getQuestionIndex());
-        } else if (myMaze.getOccupant(theRow, theCol).equals("guard")) {
-            //activate guard question set
-            ArrayList<Question> guardQ = myMaze.getMon().setQuestion("guard", myPlayerClass, myQuestions, getQuestionIndex());
-        } else if (myMaze.getOccupant(theRow, theCol).equals("gateKeeper")) {
-            //activate gateKeeper question set
-            ArrayList<Question> gatekeeperQ = myMaze.getMon().setQuestion("gatekeeper", myPlayerClass, myQuestions, getQuestionIndex());
-        } else if (myMaze.getOccupant(theRow, theCol).equals("hintPass")) {
-            //add hintpass to inventory
-            Character.Inventory.setMyHintpassCount(Character.Inventory.getMyHintpassCount() + 1);
-            myMaze.setOccupant(theRow, theCol, null);
+    /**
+     *  getMyPlayer.
+     * @return  myPlayer.
+     */
+    //-----------player info-----------------
+    public Character getMyPlayer() {
+        return myPlayer;
+    }
+
+    /**
+     *  decrease live.
+     */
+    public void decMyLive() {
+        if (myPlayer.getLives() == 1) {
+            myPlayer.decreaseLives();
+            myView.showGameOver(myPlayer);
+        } else {
+            myPlayer.decreaseLives();
         }
     }
-    //-----------display-----------------
-    public String maze2String() {
-        return myMaze.m2String();
+
+    /**
+     *  set current position.
+     */
+    //-----------player control/direction-----------------
+    public void setCurrentP() {
+        myMaze.setOccupant(myMaze.getRowPos(), myMaze.getColPos(), "P");
     }
 
-    //1 is placeholder in getMonsterType
-    void getQuestion() {
-
-        myMaze.getMon().setQuestion(myMaze.roomCheckOc(getPlayerRow(), getPlayerCol()), myPlayerClass, myQuestions, getQuestionIndex());
+    /**
+     *  move left.
+     */
+    public void moveLeft() {
+        final int tempRow = myMaze.getRowPos();
+        final int tempCol = myMaze.getColPos();
+        myMaze.roomSetEmpty(tempRow, tempCol);
+        myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() - 1);
     }
 
-    int getQuestionIndex() {
+    /**
+     *  move right.
+     */
+    public void moveRight() {
+        final int tempRow = myMaze.getRowPos();
+        final int tempCol = myMaze.getColPos();
+        myMaze.roomSetEmpty(tempRow, tempCol);
+        myMaze.setPCurrent(myMaze.getRowPos(), myMaze.getColPos() + 1);
+    }
+
+    /**
+     *  move up.
+     */
+    public void moveUp() {
+        final int tempRow = myMaze.getRowPos();
+        final int tempCol = myMaze.getColPos();
+        myMaze.roomSetEmpty(tempRow, tempCol);
+        myMaze.setPCurrent(myMaze.getRowPos()-1, myMaze.getColPos());
+    }
+
+    /**
+     *  move down.
+     */
+    public void moveDown() {
+        final int tempRow = myMaze.getRowPos();
+        final int tempCol = myMaze.getColPos();
+        myMaze.roomSetEmpty(tempRow, tempCol);
+        myMaze.setPCurrent(myMaze.getRowPos()+1, myMaze.getColPos());
+    }
+
+    /**
+     *  method to activate room activity based on the room location of row/col.
+     */
+    public void roomActivity() {
+        if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()) == "K") {
+            Character.Inventory.setMyKeyCount(Character.Inventory.getMyKeyCount() + 1);
+        } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()) == "bandit") {
+            //activate bandit question set
+            monEncounter(banditQ, "bandit");
+        } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()) == "guard") {
+            //activate guard question set
+            monEncounter(guardQ, "guard");
+        } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()) == "E") {
+            for (int i = 0; i < 3; i++) {
+                monEncounter(gatekeeperQ, "gatekeeper");
+            }
+            Character.Inventory.setMyHintpassCount(Character.Inventory.getMyHintpassCount() + 1);
+            myPlayer.setMyLives(myPlayer.getLives() + 1);
+            for (int i = 0; i < 4; i++) {
+                monEncounter(gatekeeperQ, "boss");
+            }
+        }
+    }
+
+    /**
+     *  encounter monster.
+     * @param theMonQ   monster question list.
+     * @param theMonType    monster type.
+     */
+    private void monEncounter(final ArrayList<Question> theMonQ, final String theMonType) {
+        int index = getQuestionIndex(theMonQ);
+        Question currentQ = getQuestion(theMonQ);
+        int correct = myView.showQuestion(currentQ, myPlayer);
+        if (correct == 2) {
+            correct = myView.showHintpassUse(currentQ, myPlayer);
+            if (correct == 0) {
+                decMyLive();
+                correct = myView.showHintpassUse(currentQ, myPlayer);
+            }
+        }
+        while (correct == 0) {
+            decMyLive();
+            correct = myView.showQuestion(currentQ, myPlayer);
+        }
+        theMonQ.remove(index);
+        hintPassChance(theMonType);
+    }
+
+    /**
+     *  hint pass chance.
+     * @param theMonType    monster type.
+     */
+    private void hintPassChance(final String theMonType) {
+        if (myMaze.getMon().hintPassChance(theMonType)) {
+            myView.showMonEnd(theMonType);
+            Character.Inventory.setMyHintpassCount(Character.Inventory.getMyHintpassCount() + 1);
+        }
+    }
+
+    /**
+     *  set question.
+     */
+    public void setQuestion() {
+        myQuestions = new QuestionDatabase();
+        myMaze.getMon().setQuestion("bandit", myView.getCategory(), myQuestions);
+        banditQ = myQuestions.getQuestionList();
+        myMaze.getMon().setQuestion("guard", myView.getCategory(), myQuestions);
+        guardQ = myQuestions.getQuestionList();
+        myMaze.getMon().setQuestion("gatekeeper", myView.getCategory(), myQuestions);
+        gatekeeperQ = myQuestions.getQuestionList();
+        System.out.println(banditQ);
+        System.out.println(guardQ);
+        System.out.println(gatekeeperQ);
+    }
+
+    /**
+     *  get question
+     * @param theMonsterQ   monster question list.
+     * @return  question.
+     */
+    private Question getQuestion(final ArrayList<Question> theMonsterQ) {
+        return myMaze.getMon().getQuestion(theMonsterQ);
+    }
+
+    /**
+     *  get question index.
+     * @param monsterQ  monster question list.
+     * @return  question index.
+     */
+    int getQuestionIndex(final ArrayList<Question> monsterQ) {
         myRandom = new Random();
-        return myRandom.nextInt(myQuestions.getQuestionList().size());
+        return myRandom.nextInt(monsterQ.size());
     }
 
-    boolean isCorrect(final String theUserAnswer) {
-        final String answer = myQuestions.getAnswer(getQuestionIndex());
-        return theUserAnswer.equals(answer);
+    /**
+     *  boss fight.
+     * @return  boolean.
+     */
+    public boolean doBossFight() {
+        boolean fight = false;
+        if (myMaze.getColPos() == myMaze.getExitCol() && myMaze.getRowPos() == myMaze.getExitRow()) {
+            fight = true;
+        }
+        return fight;
     }
 }
