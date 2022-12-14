@@ -263,22 +263,22 @@ public final class GameModel {
         return fight;
     }
 
-    public void loadLastGame() {
-        try{
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream("f.txt"));
-            myMaze.loadMaze(in);
-            in.close();
-        }catch(Exception e){System.out.println(e);}
-    }
-
-    public void saveGame() throws IOException {
-        //try {
-        FileOutputStream fout = new FileOutputStream("f.txt");
-        ObjectOutputStream out=new ObjectOutputStream(fout);
-        //myMaze = new Maze(4, 7, 6, 2, 1, 4);
-        myMaze.saveMaze(out);
-        //myPlayer.savePlayer(out);
-        System.out.println("game saved");
-        //} catch(Exception ex){System.out.println("error saving");}
-    }
+//    public void loadLastGame() {
+//        try{
+//            ObjectInputStream in = new ObjectInputStream(new FileInputStream("f.txt"));
+//            myMaze.loadMaze(in);
+//            in.close();
+//        }catch(Exception e){System.out.println(e);}
+//    }
+//
+//    public void saveGame() throws IOException {
+//        //try {
+//        FileOutputStream fout = new FileOutputStream("f.txt");
+//        ObjectOutputStream out=new ObjectOutputStream(fout);
+//        //myMaze = new Maze(4, 7, 6, 2, 1, 4);
+//        myMaze.saveMaze(out);
+//        //myPlayer.savePlayer(out);
+//        System.out.println("game saved");
+//        //} catch(Exception ex){System.out.println("error saving");}
+//    }
 }

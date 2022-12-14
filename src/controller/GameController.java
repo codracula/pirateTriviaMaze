@@ -27,7 +27,7 @@ public class GameController {
                 break;
             case 2:
                 System.out.println("Load game");
-                myModel.loadLastGame();
+                myModel.myMaze.loadLastGame();
                 break;
             case 3:
                 myView.showOptionMenu();
@@ -74,7 +74,7 @@ public class GameController {
         } else if (action == 'I') {
             myView.showInventory(myModel.myPlayer);
         } else if (action == 'S') {
-            myModel.saveGame();
+            myModel.myMaze.saveGame();
         }
     }
 

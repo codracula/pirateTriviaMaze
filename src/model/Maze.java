@@ -389,45 +389,52 @@ public final class Maze {
 
     public void saveMaze(ObjectOutputStream theOut) throws IOException{
 
-//        theOut.writeObject(myMaze);
-//        theOut.writeObject(myRowCount);
-//        theOut.writeObject(myColCount);
-//        theOut.writeObject(myCurrentCol);
-//        theOut.writeObject(myCurrentRow);
+
+       // theOut.writeObject(myRowCount);
+        //theOut.writeObject(myColCount);
+        theOut.writeObject(myCurrentCol);
+        theOut.writeObject(myCurrentRow);
 //        theOut.writeObject(myPlayerSpawnCol);
 //        theOut.writeObject(myPlayerSpawnRow);
-
-        theOut.writeObject(myCurrentRow);
-        theOut.writeObject(myCurrentCol);
         theOut.writeObject(myExitRow);
         theOut.writeObject(myExitCol);
         theOut.writeObject(myMaze);
         theOut.writeObject(myMon);
-        theOut.writeObject(myQuestion);
-
-
+//        theOut.writeObject(myQuestion);
         theOut.flush();
         theOut.close();
     }
 
 
     public void loadMaze(ObjectInputStream theIn) throws IOException, ClassNotFoundException {;
-
+      //  myRowCount = (int) theIn.readObject();
+        //myColCount = (int) theIn.readObject();
         myCurrentCol = (int) theIn.readObject();
         myCurrentRow = (int) theIn.readObject();
         myExitRow = (int) theIn.readObject();
         myExitCol = (int) theIn.readObject();
         myMaze = (Room[][]) theIn.readObject();
         myMon = (Monsters) theIn.readObject();
-        myQuestion = (Question) theIn.readObject();
+        //myQuestion = (Question) theIn.readObject();
     }
-//    public void loadLastGame() {
-//        try{
-//            ObjectInputStream in = new ObjectInputStream(new FileInputStream("f.txt"));
-//            loadMaze(in);
-//            in.close();
-//        }catch(Exception e){System.out.println(e);}
-//    }
+    public void loadLastGame() {
+        try{
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("f.txt"));
+            loadMaze(in);
+            in.close();
+        }catch(Exception e){System.out.println(e);}
+    }
+
+        public void saveGame() throws IOException {
+        //try {
+            FileOutputStream fout = new FileOutputStream("f.txt");
+            ObjectOutputStream out=new ObjectOutputStream(fout);
+        //myMaze = new Maze(4, 7, 6, 2, 1, 4);
+            saveMaze(out);
+        //myPlayer.savePlayer(out);
+            System.out.println("game saved");
+        //} catch(Exception ex){System.out.println("error saving");}
+    }
 
 //    /**
 //     *  print maze to string.
