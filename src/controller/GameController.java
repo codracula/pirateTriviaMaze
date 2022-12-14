@@ -1,56 +1,36 @@
 package controller;
-import java.util.Scanner;
-import model.GameModel;
-import model.Maze;
-import model.UserFunctions;
 
+import java.io.IOException;
+import java.util.Scanner;
+
+import model.*;
+import view.GameView;
 
 public class GameController {
     private final Scanner nScan = new Scanner(System.in);
-    private GameModel myModel;
-    private Maze myMaze;
-    public GameController(GameModel theModel) {
-        //myMaxKeyCount = 4;
+    private final GameModel myModel;
+    private final GameView myView;
+    private String characterClass;
 
-        //TODO by Steve
-        //use getplayer name and getplayer class method to update myPlayerName, myPlayerClass
-        //before initialize Character class.
-
-        //added by Juno
-       // myPlayer = new Character(myLive, myPlayerClass);
+    public GameController(GameModel theModel, GameView theView) {
         myModel = theModel;
-        promptTitle();
-        menu();
+        myView = theView;
+    }
 
-    }
-    public void promptTitle() {
-        System.out.println("Welcome to Trivia Maze!");
-        System.out.println("=================================");
-        System.out.println("Please select an option by entering an integer.");
-        System.out.println("1) Start game");
-        System.out.println("2) Load game");
-        System.out.println("3) Options");
-        System.out.println("4) Quit \n");
-    }
     public void menu() {
-
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
-
+        int choice = nScan.nextInt();
         switch (choice) {
             case 1:
-                startGame();
-                System.out.println(myModel.maze2String());
+                myView.showStart();
+                setPlayerClass();
+                //System.out.println(myModel.maze2String());
                 break;
             case 2:
                 System.out.println("Load game");
-                UserFunctions.loadLastGame();
+                myModel.loadLastGame();
                 break;
             case 3:
-                System.out.println("Options Menu");
-                System.out.println("=================================");
-                System.out.println("1) Stop music");
-                System.out.println("2) Play music \n");
+                myView.showOptionMenu();
                 optionMenu();
                 break;
             case 4:
@@ -61,106 +41,98 @@ public class GameController {
                 System.out.println("Not a valid option.");
         }
     }
-    public void optionMenu() {
+
+    private void optionMenu() {
 
         int choice = nScan.nextInt();
         switch (choice) {
             case 1:
-                UserFunctions.stopMusic();
+                //myUF.stopMusic();
                 break;
             case 2:
-                UserFunctions.playMusic();
+                //myUF.playMusic();
                 break;
             default:
                 System.out.println("Not a valid option.");
         }
     }
-    public void startGame() {
-        System.out.print("Let's get started!" + "\n" + "What is your name: ");
-        myModel.setMyPlayerName(nScan.nextLine());
-        System.out.println("Alright " + myModel.getMyPlayerName() + ", choose a class:");
-        playerClassSelect();
+
+    private void setPlayerClass() {
+        characterClass = myView.showCharacterClasses();
     }
-    public void playerClassSelect() {
 
-        boolean myFlag;
-        myFlag = false;
-
-        while(!myFlag) {
-        System.out.println("Merchant");
-        System.out.println("Sailor");
-        System.out.println("Headhunter \n");
-        System.out.println("Please type in the class you want to play as. \n");
-
-        myModel.setMyPlayerClass(nScan.nextLine());
-
-            switch (myModel.getMyPlayerClass().toLowerCase()) {
-
-                case "merchant":
-                    System.out.println("You've chosen a merchant class, be prepared for arithmetic quest");
-                    myFlag = true;
-                    break;
-                case "sailor":
-                    System.out.println("You're now a sailor..YARRRRR'");
-                    myFlag = true;
-                    break;
-                case "headhunter":
-                    System.out.println("You are now a headhunter");
-                    myFlag = true;
-                    break;
-            }
-
-            System.out.println("Let's begin the adventure!");
-
-        }
-    }
-    public void movePlayer(){
-        char myDirection;
-
-        System.out.println("Choose which direction you would like to move");
-        System.out.println("D) Down");
-        System.out.println("R) Right");
-        System.out.println("U) Up");
-        System.out.println("L) Left");
-
-        Scanner scan = new Scanner(System.in);
-        myDirection = scan.next().charAt(0);
-
-        if(myDirection == 'D'){
-            System.out.println("Move down (D)");
-            myModel. moveDown();
-            System.out.println("Row: "+myModel.getPlayerRow());
-            System.out.println("Col: "+myModel.getPlayerCol());
-
-
-        }
-        if(myDirection == 'R'){
-            System.out.println("Move Right (R)");
-            myModel. moveRight();
-            System.out.println("Row: "+myModel.getPlayerRow());
-            System.out.println("Col: "+myModel.getPlayerCol());
-
-        }
-        if(myDirection == 'U'){
-            System.out.println("Move Up (U)");
+    public void movePlayer() throws IOException {
+        char action = myView.showMoves(myModel.getMyMaze());
+        if (action == 'D') {
+            myModel.moveDown();
+        } else if (action == 'R') {
+            myModel.moveRight();
+        } else if (action == 'U') {
             myModel.moveUp();
-            System.out.println("Row: "+myModel.getPlayerRow());
-            System.out.println("Col: "+myModel.getPlayerCol());
-
-
-        }
-        if(myDirection == 'L'){
-            System.out.println("Move Left (L)");
+        } else if (action == 'L') {
             myModel.moveLeft();
-            System.out.println("Row: "+myModel.getPlayerRow());
-            System.out.println("Col: "+myModel.getPlayerCol());
-            System.out.println(myModel.maze2String());
+        } else if (action == 'I') {
+            myView.showInventory(myModel.myPlayer);
+        } else if (action == 'S') {
+            myModel.saveGame();
         }
     }
 
+    public void setUp() {
+        myView.showTitleScreen();
+        menu();
+        myModel.setQuestion();
+    }
 
+    public void playGame() throws IOException {
+        setUp();
+        while (myModel.myPlayer.getKeyCount() != 4) {
+            traverse();
+        }
+        canExit();
+        while (!myModel.doBossFight()) {
+            traverse();
+        }
+        myView.winnerWinnerChickenDinner(myModel.getMyPlayer());
 
-    public void setMyMaze(Maze myMaze) {
-        this.myMaze = myMaze;
+    }
+
+    private void traverse() throws IOException {
+        myView.showMaze(myModel.myMaze);
+        movePlayer();
+        myView.showRoom(myModel.myMaze.getRoom(myModel.getPlayerRow(), myModel.getPlayerCol()));
+        myModel.roomActivity();
+        myModel.setCurrentP();
+    }
+
+    private void canExit() {
+        myView.canExit();
+        myModel.getExit();
+    }
+
+    private void loseRestart() throws IOException {
+        char choice = myView.showGameOver(myModel.getMyPlayer());
+        if (choice == 'y' || choice == 'Y') {
+            setUp();
+            playGame();
+        } else {
+            System.exit(1);
+        }
+    }
+
+    private void winRestart() {
+        char choice = myView.winnerWinnerChickenDinner(myModel.getMyPlayer());
+        if(choice == 'Y' || choice == 'y') {
+            resetStats();
+        } else {
+            System.exit(1);
+        }
+    }
+
+    private void resetStats() {
+        myModel.myPlayer.setHintpassCount(0);
+        myModel.myPlayer.setKeyCount(0);
+        myModel.myPlayer.setMyLives(3);
     }
 }
+

@@ -1,8 +1,11 @@
 package model;
 
+import java.io.*;
+import model.*;
 import java.util.Random;
 
 public final class Maze {
+    static Maze maze;
     /**
      *  reusable random object.
      */
@@ -10,11 +13,11 @@ public final class Maze {
     /**
      *  number of rows for the maze.
      */
-    private final  int myRowCount;
+    private int myRowCount;
     /**
      *  number of column for the maze.
      */
-    private final int myColCount;
+    private int myColCount;
     /**
      *  current row position.
      */
@@ -46,11 +49,13 @@ public final class Maze {
     /**
      *  initialize monster class.
      */
-    private final Monsters myMon;
+    private Monsters myMon;
     /**
      *  initialized key count.
      */
-    private int myKeyCount;
+    private final int myKeyCount;
+
+    private Question myQuestion;
 
     /** constructor to build the maze.
      *
@@ -64,7 +69,7 @@ public final class Maze {
     public Maze(final int theRow, final int theCol, final int theMonsterA, final int theMonsterB,
                 final int theMonsterC, final int theKeyCount) {
 
-        myRowCount = theRow;
+        myRowCount = theRow;/////////////////////////////////////////////////////////////////////////////////////////////////////////////
         myColCount = theCol;
         myKeyCount = theKeyCount;
         mazeGenerate();
@@ -83,14 +88,6 @@ public final class Maze {
         genPlayerSpawn();
         genKey();
 //        genExit();
-    }
-
-    public int getMyCurrentCol() {
-        return myCurrentCol;
-    }
-
-    public int getMyCurrentRow(){
-        return myCurrentRow;
     }
 
     /**
@@ -140,17 +137,9 @@ public final class Maze {
                 myMaze[ranRow][ranCol].setOccupant("P");
                 myPlayerSpawnRow = ranRow;
                 myPlayerSpawnCol = ranCol;
-                System.out.println();
-                setPCurrent(myPlayerSpawnRow, myPlayerSpawnCol);
-                System.out.println("SPAWNROW: "+myPlayerSpawnRow);
-                System.out.println("SPAWNCOL: "+myPlayerSpawnCol);
-                System.out.println("CURPLAYERROW: "+myCurrentRow);
-                System.out.println("CURPLAYERCOL: "+myCurrentCol);
+                setPCurrent(ranRow, ranCol);
                 player2Spawn--;
-
-
             }
-
 
         }
     }
@@ -207,7 +196,14 @@ public final class Maze {
      * @param theRow    the row position.
      * @param theCol    the col position.
      */
-    public void setPCurrent(final int theRow, final int theCol) {
+//    void setPCurrent(final int theRow, final int theCol) {
+//        if (theRow > 0 && theCol > 0) {
+//            myCurrentRow = theRow;
+//            myCurrentCol = theCol;
+//        }
+//    }
+
+    void setPCurrent(final int theRow, final int theCol) {
         if (theRow >= 0 && theRow < myRowCount
                 && theCol >= 0 && theCol < myColCount) {
             myCurrentRow = theRow;
@@ -235,7 +231,6 @@ public final class Maze {
     }
 
     //-----------key count to first populate the maze
-
     /**
      *  get the key count.
      * @return  key count.
@@ -253,12 +248,24 @@ public final class Maze {
     }
 
     /**
+     *  check if the parameters are in the range of the maze.
+     * @param theRow    row position
+     * @param theCol    col position
+     */
+    private void checkRoomRange(final int theRow, final int theCol) {
+        if (theRow < 0 && theRow >= myRowCount
+                || theCol < 0 && theCol >= myColCount) {
+            throw new IllegalArgumentException("Numbers not in range");
+        }
+    }
+    /**
      *  set occupant for the given room position.
      * @param theRow    row position.
      * @param theCol    col position.
      * @param theOccupant   set the occupant String.
      */
-    public void setOccupant(final int theRow, final int theCol, final String theOccupant) {
+    void setOccupant(final int theRow, final int theCol, final String theOccupant) {
+        checkRoomRange(theRow, theCol);
         myMaze[theRow][theCol].setOccupant(theOccupant);
     }
 
@@ -269,6 +276,7 @@ public final class Maze {
      * @return  return the occupant of the room.
      */
     String getOccupant(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].getOccupant();
     }
 
@@ -291,6 +299,7 @@ public final class Maze {
      * @return  occupant of the given room.
      */
     String roomCheckOc(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].getOccupant();
     }
 
@@ -301,60 +310,160 @@ public final class Maze {
      * @return  boolean true if the room is empty.
      */
     boolean roomCheckEmpty(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].isEmpty();
     }
+
+    /**
+     *  check if the given room has been visited.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     * @return  boolean true if the room has been visited.
+     */
     boolean roomCheckVisit(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].getVisited();
     }
+
+    /**
+     *  set the room to true once visited.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     */
     void roomSetVisit(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         myMaze[theRow][theCol].setVisited();
     }
-    public void roomSetEmpty(final int theRow, final int theCol) {
+
+    /**
+     *  set the room to empty.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     */
+    void roomSetEmpty(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
     }
+
+    /**
+     *  check room if has key.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     * @return  return true if the room has key.
+     */
     boolean roomHasKey(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].hasKey();
     }
+
+    /**
+     *  remove key from the room and reduce keyCount.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     */
     void roomRemoveKey(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
-        myKeyCount--;
     }
+
+    /**
+     *  print occupant of the room.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     * @return  room's occupant string.
+     */
     String room2String(final int theRow, final int theCol) {
+        checkRoomRange(theRow, theCol);
         return myMaze[theRow][theCol].toString();
     }
-    public String m2String() {
-        final StringBuilder sb = new StringBuilder();
-        final String breakLine = "___________________________________________\n";
-        final String breakRoom = "|     |     |     |     |     |     |     |\n";
-        for (Room[] rooms : myMaze) {
 
-            sb.append(breakLine);
-            sb.append(breakRoom);
-            sb.append("|  ");
-            for (Room room : rooms) {
-
-                if (room.getOccupant() == null) {
-                    sb.append(" ");
-                } else if (room.getOccupant().equals("bandit")) {
-                    sb.append("B");
-                } else if (room.getOccupant().equals("guard")) {
-                    sb.append("G");
-                } else if (room.getOccupant().equals("gateKeeper")) {
-                    sb.append("R");
-                } else {
-                    sb.append(room.getOccupant().toString());
-                }
-                sb.append("  |  ");
-            }
-            sb.append("\n");
-            sb.append(breakRoom);
-        }
-        sb.append(breakLine);
-        sb.append("P = player, E = exit, B = bandit, G = guard, R = gatekeeper, K = key\n");
-
-        return sb.toString();
+    public Room[][] getMaze() {
+        return myMaze;
     }
+
+    public Room getRoom(final int theRow, final int theCol) {
+        return myMaze[theRow][theCol];
+    }
+
+    public void saveMaze(ObjectOutputStream theOut) throws IOException{
+
+//        theOut.writeObject(myMaze);
+//        theOut.writeObject(myRowCount);
+//        theOut.writeObject(myColCount);
+//        theOut.writeObject(myCurrentCol);
+//        theOut.writeObject(myCurrentRow);
+//        theOut.writeObject(myPlayerSpawnCol);
+//        theOut.writeObject(myPlayerSpawnRow);
+
+        theOut.writeObject(myCurrentRow);
+        theOut.writeObject(myCurrentCol);
+        theOut.writeObject(myExitRow);
+        theOut.writeObject(myExitCol);
+        theOut.writeObject(myMaze);
+        theOut.writeObject(myMon);
+        theOut.writeObject(myQuestion);
+
+
+        theOut.flush();
+        theOut.close();
+    }
+
+
+    public void loadMaze(ObjectInputStream theIn) throws IOException, ClassNotFoundException {;
+
+        myCurrentCol = (int) theIn.readObject();
+        myCurrentRow = (int) theIn.readObject();
+        myExitRow = (int) theIn.readObject();
+        myExitCol = (int) theIn.readObject();
+        myMaze = (Room[][]) theIn.readObject();
+        myMon = (Monsters) theIn.readObject();
+        myQuestion = (Question) theIn.readObject();
+    }
+//    public void loadLastGame() {
+//        try{
+//            ObjectInputStream in = new ObjectInputStream(new FileInputStream("f.txt"));
+//            loadMaze(in);
+//            in.close();
+//        }catch(Exception e){System.out.println(e);}
+//    }
+
+//    /**
+//     *  print maze to string.
+//     * @return  the whole maze string output.
+//     */
+//    public String m2String() {
+//        final StringBuilder sb = new StringBuilder();
+//        final String breakLine = "___________________________________________\n";
+//        final String breakRoom = "|     |     |     |     |     |     |     |\n";
+//        for (Room[] rooms : myMaze) {
+//
+//            sb.append(breakLine);
+//            sb.append(breakRoom);
+//            sb.append("|  ");
+//            for (Room room : rooms) {
+//
+//                if (room.getOccupant() == null) {
+//                    sb.append(" ");
+//                } else if (room.getOccupant().equals("bandit")) {
+//                    sb.append("B");
+//                } else if (room.getOccupant().equals("guard")) {
+//                    sb.append("G");
+//                } else if (room.getOccupant().equals("gateKeeper")) {
+//                    sb.append("R");
+//                } else {
+//                    sb.append(room.getOccupant().toString());
+//                }
+//                sb.append("  |  ");
+//            }
+//            sb.append("\n");
+//            sb.append(breakRoom);
+//        }
+//        sb.append(breakLine);
+//        sb.append("P = player, E = exit, B = bandit, G = guard, R = gatekeeper, K = key\n");
+//
+//        return sb.toString();
+//    }
 
 }

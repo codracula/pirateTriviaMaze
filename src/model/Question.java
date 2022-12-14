@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author Juno L.
+ */
 public class Question {
 
     final private String myCategory;
@@ -12,6 +15,14 @@ public class Question {
     final private String myChoices;
     final private String myAnswer;
 
+    /**
+     *
+     * @param theCategory
+     * @param theDifficulty
+     * @param theQuestion
+     * @param theChoices
+     * @param theAnswer
+     */
     public Question(final String theCategory, final int theDifficulty, final String theQuestion, final String theChoices, final String theAnswer){
         myCategory = theCategory;
         myDifficulty = theDifficulty;
@@ -20,19 +31,31 @@ public class Question {
         myAnswer = theAnswer;
     }
 
+    /**
+     * @return myCategory of questions to be asked
+     */
     public String getMyCategory() {
         return myCategory;
     }
 
+    /**
+     * @return myDifficulty of questions to be asked 1-3
+     */
     public int getMyDifficulty() {
         return myDifficulty;
     }
 
+    /**
+     * @return the question to be asked
+     */
     public String getMyQuestion() {
         return myQuestion;
     }
 
-    //converts String MyChoices to an Array List and returns it
+    /**
+     * converts String of myChoices to an arrayList
+     * @return arrayList of myChoice strings separated by commas
+     */
     public ArrayList<String> setChoices() {
         //String mySplitChoices = myChoices.replaceAll("\\s", "");
         String[] elements = myChoices.split(",");
@@ -44,27 +67,17 @@ public class Question {
         return choiceArray;
     }
 
+    /**
+     * @return String of choices (4 multiple choice)
+     */
     public String getMyChoices() {
         return myChoices;
     }
 
+    /**
+     * @return answer to current question
+     */
     public String getMyAnswer() {
         return myAnswer;
     }
-
-    public String toString() {
-        //System.out.println("Category: " + myCategory);
-        System.out.println("Difficulty: " + myDifficulty);
-        System.out.println("Question: " + myQuestion);
-        System.out.println("Choices: ");
-        ArrayList<String> choices = setChoices();
-        for (int i = 0; i < 4; i++) {
-            System.out.println((i + 1) + ": " + choices.get(i));
-        }
-        //System.out.println("Answer: " + myAnswer);
-        System.out.println();
-        return null;
-    }
-
-
 }

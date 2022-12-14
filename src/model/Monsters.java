@@ -1,16 +1,18 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Random;
 
-public class Monsters {
+public class Monsters implements Serializable {
     private List<String> myMonsterType;
     private int myM_AmaxCount;
     private int myM_BmaxCount;
     private int myM_CmaxCount;
     private List myMList;
+    private Random rand = new Random();
 
     public Monsters(final int theM_A, final int theM_B, final int theM_C){
         myM_AmaxCount = theM_A;
@@ -18,7 +20,6 @@ public class Monsters {
         myM_CmaxCount = theM_C;
         populateMonster();
         generateList();
-
     }
 
     private void populateMonster(){
@@ -40,49 +41,37 @@ public class Monsters {
             myMList.add(myMonsterType.get(2));
         }
         Collections.shuffle(myMList);
-//        System.out.println(myMList);
-
     }
 
-    protected List<String> getmList(){
+    List<String> getmList(){
         return myMList;
     }
 
-    protected String getMonsterType(final int theType) {
-        return (String) myMonsterType.get(theType);
-    }
-
-    //set parameter monType to String for now in order to tell which monType
-    //probably change in future
-    //need to get category information from title screen as well, hardcoded for now
-    protected ArrayList<Question> setQuestion(final String theMonType, final String theCategory,
-                                              final QuestionDatabase theQuestion, final int theIndex) {
-
+    void setQuestion(final String theMonType, final String theCategory,
+                                    final QuestionDatabase theQuestion) {
         switch (theMonType) {
             case "bandit" -> theQuestion.setQuestionList(theCategory, 1);
             case "guard" -> theQuestion.setQuestionList(theCategory, 2);
             case "gatekeeper" -> theQuestion.setQuestionList(theCategory, 3);
         }
-        theQuestion.getQuestionList().get(theIndex).toString();
-
-        //asks question and takes in user input
-        //probably should move somewhere else later
-        ArrayList<String> choices = theQuestion.getChoices(theIndex);
-        Scanner console = new Scanner(System.in);
-        System.out.println("Enter your answer as a number");
-        int userAnswer = console.nextInt();
-        if (choices.get(userAnswer - 1).equals(theQuestion.getAnswer(theIndex))) {
-            System.out.println("Yay, you're correct!");
-            //correct++;
-        } else {
-            System.out.println("Boo, you're wrong!");
-            System.out.println("The answer is " + theQuestion.getAnswer(theIndex));
-            //wrong++;
-        }
-
-        //don't remove this tho
-        theQuestion.removeQuestion(theIndex);
-        return theQuestion.getQuestionList();
+        //return theQuestion.getQuestionList();
     }
 
+    public Question getQuestion(final ArrayList<Question> theQuestionList) {
+        int random = rand.nextInt(theQuestionList.size());
+        return theQuestionList.get(random);
+    }
+
+    boolean hintPassChance(final String theMonType) {
+        boolean hintPassChance = false;
+        switch (theMonType) {
+            case "bandit" ->
+                    hintPassChance = rand.nextInt(100) <= 100; //10% chance
+            case "guard" ->
+                    hintPassChance = rand.nextInt(100) <= 20;
+            case "gatekeeper" ->
+                    hintPassChance = rand.nextInt(100) <= 30;
+        }
+        return hintPassChance;
+    }
 }

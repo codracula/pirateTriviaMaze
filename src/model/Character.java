@@ -5,45 +5,33 @@ import java.util.Arrays;
 import java.util.Collections;
 public class Character {
     private static int myLives;
-    private final String myHeroType;
-    //private final Question myQuestion;
+   // private final String myHeroType;
 
-    public Character(int theLives, String theHeroType){//, Question question) {
-        myHeroType = theHeroType;
-        myLives = theLives;
-        //this.myQuestion = question;
+    public Character() {
+     //   myHeroType = "ahhh";
+        myLives = 3;
+        setHintpassCount(0);
+        setKeyCount(0);
     }
 
-    public String myHeroType() {
-        return myHeroType;
-    }
-
-    public String HeroType() {
-        return myHeroType;
-    }
+//    public String myHeroType() {
+//        return myHeroType;
+//    }
+//
+//    public String HeroType() {
+//        return myHeroType;
+//    }
 
     public void decreaseLives() {
         myLives--;
     }
 
-//    public void hasLifeline(){
-//        if(Inventory.getMyHintpassCount() == 0) {
-//            System.out.println("You do not have any hint passes available.");
-//        } else {
-//            System.out.println("You have a hintpass!");
-//            System.out.println("Splitting your choices 50/50...");
-//            System.out.println("\n");
-//            useHintpass(qu);
-//            Inventory.myHintpassCount--;
-//        }
-//    }
-
     public ArrayList<String> useHintpass(Question question) {
-        String Myanswer = question.getMyAnswer();
+        String answer = question.getMyAnswer();
         ArrayList<String> answers = question.setChoices();
         ArrayList<String> tempArray = new ArrayList<>();
-        tempArray.add(Myanswer);
-        answers.remove(Myanswer);
+        tempArray.add(answer);
+        answers.remove(answer);
         tempArray.add(answers.get(0));
         Collections.shuffle(tempArray);
         Inventory.myHintpassCount--;
@@ -54,14 +42,28 @@ public class Character {
         return myLives != 0;
     }
 
-    public String toString() {
-        //return ("Name: " + TitleScreen.getName() + ", " + "Lives: " +
-        //myLives + ", " + " Hero type: " + myHeroType);
-        return "name";
-    }
-
     public int getLives() {
         return myLives;
+    }
+
+    public int getHintpassCount() {
+        return Inventory.getMyHintpassCount();
+    }
+
+    public void setHintpassCount(final int theHintpassCount) {
+        Inventory.setMyHintpassCount(theHintpassCount);
+    }
+
+    public int getKeyCount() {
+        return Inventory.getMyKeyCount();
+    }
+
+    public void setKeyCount(final int theKeyCount) {
+        Inventory.setMyKeyCount(theKeyCount);
+    }
+
+    public void setMyLives(final int theLive) { //check??????????????????????????????????????????????
+        myLives = theLive;
     }
 
     static class Inventory {
@@ -69,8 +71,8 @@ public class Character {
         private static int myKeyCount; //how many keys does the player start with
 
         public Inventory(final int theHintpassCount, final int theKeyCount){
-            myHintpassCount = theHintpassCount;
-            myKeyCount = theKeyCount;
+            myHintpassCount = setMyHintpassCount(theHintpassCount);
+            myKeyCount = setMyKeyCount(theKeyCount);
         }
 
         public static int getMyKeyCount() {
@@ -81,13 +83,21 @@ public class Character {
         }
 
         public static int setMyHintpassCount(final int theHintpassCount) {
-            Inventory.myHintpassCount = myHintpassCount;
+            if (getMyHintpassCount() >= 0) {
+                myHintpassCount = theHintpassCount;
+            } else {
+                myHintpassCount = 0;
+            }
             return myHintpassCount;
         }
 
-        public static int setMyKeyCount(final int myKeyCount) {
-            Inventory.myKeyCount = myKeyCount;
-            return myKeyCount;
+        public static int setMyKeyCount(final int theKeyCount) {
+            if (getMyKeyCount() >= 0) {
+                myKeyCount = theKeyCount;
+            } else {
+                myKeyCount = 0;
+            }
+                return myKeyCount;
         }
 
         public String toString() {
