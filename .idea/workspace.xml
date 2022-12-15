@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bd4b562-3be8-4670-a9b1-83f05909018d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pirateTriviaMaze.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pirateTriviaMaze.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameControllerUI.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/GameModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GameModelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Maze.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Monsters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Monsters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/QuestionDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/QuestionDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UserFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GameViewUI.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +40,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "G:/My Drive/Document/CS_projects/360_finalproject/sqlite-jdbc-3.34.0.jar",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -59,10 +53,40 @@
       <recent name="unitTest" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.QuestionTest">
+  <component name="RunManager" selected="JUnit.GameModelTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="pirateTriviaMaze" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pirateTriviaMaze" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.GameModelTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MonsterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pirateTriviaMaze" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.MonsterTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -82,16 +106,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RoomJunitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RoomTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="pirateTriviaMaze" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="unitTest.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="unitTest" />
-      <option name="MAIN_CLASS_NAME" value="unitTest.RoomJunitTest" />
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.RoomTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -99,9 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.QuestionTest" />
+        <item itemvalue="JUnit.GameModelTest" />
+        <item itemvalue="JUnit.MonsterTest" />
+        <item itemvalue="JUnit.RoomTest (1)" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.RoomJunitTest" />
+        <item itemvalue="JUnit.QuestionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -126,5 +152,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/pirateTriviaMaze$MonsterTest.ic" NAME="MonsterTest Coverage Results" MODIFIED="1671070096297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/pirateTriviaMaze$GameModelTest.ic" NAME="GameModelTest Coverage Results" MODIFIED="1671072317326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>model.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/pirateTriviaMaze$RoomTest__1_.ic" NAME="RoomTest (1) Coverage Results" MODIFIED="1671069993180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>model.*</FILTER>
+    </SUITE>
   </component>
 </project>

@@ -10,51 +10,51 @@ public final class Maze {
     /**
      *  reusable random object.
      */
-    private static Random myRan;
+    static Random myRan;
     /**
      *  number of rows for the maze.
      */
-    private final  int myRowCount;
+    final  int myRowCount;
     /**
      *  number of column for the maze.
      */
-    private final int myColCount;
+    final int myColCount;
     /**
      *  current row position.
      */
-    private int myCurrentRow;
+    int myCurrentRow;
     /**
      *  current col position.
      */
-    private int myCurrentCol;
+    int myCurrentCol;
     /**
      *  exit row spawn position.
      */
-    private int myExitRow;
+    int myExitRow;
     /**
      *  exit col spawn position.
      */
-    private int myExitCol;
+    int myExitCol;
     /**
      *  player row spawn position.
      */
-    private int myPlayerSpawnRow;
+    int myPlayerSpawnRow;
     /**
      *  player col spawn position.
      */
-    private int myPlayerSpawnCol;
+    int myPlayerSpawnCol;
     /**
      *  2d array of room for the maze.
      */
-    private Room[][] myMaze;
+    Room[][] myMaze;
     /**
      *  initialize monster class.
      */
-    private final Monsters myMon;
+    final Monsters myMon;
     /**
      *  initialized key count.
      */
-    private int myKeyCount;
+    int myKeyCount;
 
     /** constructor to build the maze.
      *
@@ -204,6 +204,16 @@ public final class Maze {
             System.out.println("either row or col is out of bound");
         }
     }
+
+    /**
+     *  helper method to set player location.
+     * @param theRow    row position.
+     * @param theCol    col position.
+     */
+    public void setPlayerLocation(int theRow, int theCol){
+        myMaze[theRow][theCol].setOccupant("P");
+        setPCurrent(theRow, theCol);
+    }
     //----------maze dimension
 
     /**
@@ -338,16 +348,6 @@ public final class Maze {
         myMaze[theRow][theCol].setEmpty();
     }
 
-    /**
-     *  check room if has key.
-     * @param theRow    row position.
-     * @param theCol    col position.
-     * @return  return true if the room has key.
-     */
-    boolean roomHasKey(final int theRow, final int theCol) {
-        checkRoomRange(theRow, theCol);
-        return myMaze[theRow][theCol].hasKey();
-    }
 
     /**
      *  remove key from the room and reduce keyCount.

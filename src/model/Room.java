@@ -29,14 +29,6 @@ public class Room {
     }
 
     /**
-     *  check if the room has the key.
-     * @return true if the room has the key.
-     */
-    boolean hasKey() {
-        return myIsEmpty == true? true: false;
-    }
-
-    /**
      *  get occupant from the room.
      * @return  occupant in the room.
      */

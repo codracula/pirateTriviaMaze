@@ -82,21 +82,6 @@ public final class GameModel {
     }
 
     /**
-     *  getExit col position.
-     * @return  exit col position.
-     */
-    public int getExitCol() {
-        return myMaze.getExitCol();
-    }
-
-    /**
-     *  getExit row position.
-     * @return  exit row position.
-     */
-    public int getExitRow() {
-        return myMaze.getExitRow();
-    }
-    /**
      *  get player row position
      * @return row position
      */
@@ -110,14 +95,6 @@ public final class GameModel {
      */
     public int getPlayerCol() {
         return myMaze.getColPos();
-    }
-
-    /**
-     *  getMyLive
-     * @return  lives.
-     */
-    public int getMyLive() {
-        return myPlayer.getLives();
     }
 
     /**

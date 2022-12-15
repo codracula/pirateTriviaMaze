@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 public class Character {
-    private static int myLives;
+    static int myLives;
    // private final String myHeroType;
 
     public Character() {

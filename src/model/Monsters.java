@@ -14,23 +14,23 @@ public class Monsters {
     /**
      *  monster type list.
      */
-    private List<String> myMonsterType;
+    protected List<String> myMonsterType;
     /**
      *  monster A max count.
      */
-    private int myM_AmaxCount;
+    protected int myM_AmaxCount;
     /**
      *  monster B max count.
      */
-    private int myM_BmaxCount;
+    protected int myM_BmaxCount;
     /**
      *  monster c max count.
      */
-    private int myM_CmaxCount;
+    protected int myM_CmaxCount;
     /**
      *  monster list.
      */
-    private List myMList;
+    protected List myMList;
     /**
      *  static random.
      */
@@ -54,7 +54,7 @@ public class Monsters {
     /**
      *  populate monsters.
      */
-    private void populateMonster(){
+    protected void populateMonster(){
         myMonsterType = new ArrayList();
         myMonsterType.add("bandit");
         myMonsterType.add("guard");
@@ -64,7 +64,7 @@ public class Monsters {
     /**
      *  generate all monsters in a list.
      */
-    private void generateList(){
+    protected void generateList(){
         myMList = new ArrayList<String>(myMonsterType.size());
         for (int i = myM_AmaxCount; i > 0; i--) {
             myMList.add(myMonsterType.get(0));
