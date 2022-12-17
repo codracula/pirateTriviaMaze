@@ -68,9 +68,19 @@ public final class Maze {
     public Maze(final int theRow, final int theCol, final int theMonsterA, final int theMonsterB,
                 final int theMonsterC, final int theKeyCount) {
 
+        checkPosInt(theRow);
+        checkPosInt(theCol);
+        checkPosInt(theKeyCount);
         myRowCount = theRow;
         myColCount = theCol;
-        myKeyCount = theKeyCount;
+
+        checkPosInt(theMonsterA);
+        checkPosInt(theMonsterB);
+        checkPosInt(theMonsterC);
+
+        if (theKeyCount >= 0 && theKeyCount <= (theRow * theCol)) {
+            myKeyCount = theKeyCount;
+        }
         mazeGenerate();
         myRan = new Random();
         myMon = new Monsters(theMonsterA, theMonsterB, theMonsterC);
@@ -100,7 +110,7 @@ public final class Maze {
             final int ranRow = myRan.nextInt(myRowCount);
             final int ranCol = myRan.nextInt(myColCount);
             if (myMaze[ranRow][ranCol].isEmpty()) {
-                myMaze[ranRow][ranCol].setOccupant((String) myMon.getmList().get(monLeft - 1));
+                myMaze[ranRow][ranCol].setOccupant(myMon.getmList().get(monLeft - 1));
                 monLeft--;
             }
         }
@@ -204,32 +214,6 @@ public final class Maze {
             System.out.println("either row or col is out of bound");
         }
     }
-    //----------maze dimension
-
-    /**
-     *  get maze row dimension.
-     * @return  row dimension of the maze.
-     */
-    int getMazeRow() {
-        return myRowCount;
-    }
-
-    /**
-     *  get maze col dimension.
-     * @return  col dimension of the maze.
-     */
-    int getMazeCol() {
-        return myColCount;
-    }
-
-    //-----------key count to first populate the maze
-    /**
-     *  get the key count.
-     * @return  key count.
-     */
-    int getKeyCount() {
-        return myKeyCount;
-    }
 
     /**
      *  get monster class.
@@ -285,49 +269,6 @@ public final class Maze {
     }
 
     /**
-     *  check room for occupant.
-     * @param theRow    row position of the room.
-     * @param theCol    col position of the room.
-     * @return  occupant of the given room.
-     */
-    String roomCheckOc(final int theRow, final int theCol) {
-        checkRoomRange(theRow, theCol);
-        return myMaze[theRow][theCol].getOccupant();
-    }
-
-    /**
-     *  check if the given room position is empty.
-     * @param theRow    row position.
-     * @param theCol    col position.
-     * @return  boolean true if the room is empty.
-     */
-    boolean roomCheckEmpty(final int theRow, final int theCol) {
-        checkRoomRange(theRow, theCol);
-        return myMaze[theRow][theCol].isEmpty();
-    }
-
-    /**
-     *  check if the given room has been visited.
-     * @param theRow    row position.
-     * @param theCol    col position.
-     * @return  boolean true if the room has been visited.
-     */
-    boolean roomCheckVisit(final int theRow, final int theCol) {
-        checkRoomRange(theRow, theCol);
-        return myMaze[theRow][theCol].getVisited();
-    }
-
-    /**
-     *  set the room to true once visited.
-     * @param theRow    row position.
-     * @param theCol    col position.
-     */
-    void roomSetVisit(final int theRow, final int theCol) {
-        checkRoomRange(theRow, theCol);
-        myMaze[theRow][theCol].setVisited();
-    }
-
-    /**
      *  set the room to empty.
      * @param theRow    row position.
      * @param theCol    col position.
@@ -336,39 +277,6 @@ public final class Maze {
         checkRoomRange(theRow, theCol);
         myMaze[theRow][theCol].setOccupant(null);
         myMaze[theRow][theCol].setEmpty();
-    }
-
-    /**
-     *  check room if has key.
-     * @param theRow    row position.
-     * @param theCol    col position.
-     * @return  return true if the room has key.
-     */
-    boolean roomHasKey(final int theRow, final int theCol) {
-        checkRoomRange(theRow, theCol);
-        return myMaze[theRow][theCol].hasKey();
-    }
-
-    /**
-     *  remove key from the room and reduce keyCount.
-     * @param theRow    row position.
-     * @param theCol    col position.
-     */
-    void roomRemoveKey(final int theRow, final int theCol) {
-        checkRoomRange(theRow, theCol);
-        myMaze[theRow][theCol].setOccupant(null);
-        myMaze[theRow][theCol].setEmpty();
-    }
-
-    /**
-     *  print occupant of the room.
-     * @param theRow    row position.
-     * @param theCol    col position.
-     * @return  room's occupant string.
-     */
-    String room2String(final int theRow, final int theCol) {
-        checkRoomRange(theRow, theCol);
-        return myMaze[theRow][theCol].toString();
     }
 
     /**
@@ -389,5 +297,14 @@ public final class Maze {
         return myMaze[theRow][theCol];
     }
 
+    /**
+     *  helper function against negative value.
+     * @param theValue  int to check.
+     */
+    private void checkPosInt(int theValue) {
+        if (theValue < 0) {
+            throw new IllegalArgumentException("The entered value must be greater than 0.");
+        }
+    }
 
 }

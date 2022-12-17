@@ -102,16 +102,6 @@ public class Monsters {
     }
 
     /**
-     *  get question
-     * @param theQuestionList   question list.
-     * @return  question.
-     */
-    public Question getQuestion(final ArrayList<Question> theQuestionList) {
-        int random = myRand.nextInt(theQuestionList.size());
-        return theQuestionList.get(random);
-    }
-
-    /**
      *  hint pass chance
      * @param theMonType    theMonster type.
      * @return  boolean.
@@ -120,11 +110,11 @@ public class Monsters {
         boolean hintPassChance = false;
         switch (theMonType) {
             case "bandit" ->
-                    hintPassChance = myRand.nextInt(100) <= 100; //10% chance
+                    hintPassChance = myRand.nextInt(100) <= 10;
             case "guard" ->
                     hintPassChance = myRand.nextInt(100) <= 20;
             case "gatekeeper" ->
-                    hintPassChance = myRand.nextInt(100) <= 30;
+                    hintPassChance = true;
         }
         return hintPassChance;
     }

@@ -1,24 +1,40 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-public class Character {
-    private static int myLives;
-   // private final String myHeroType;
 
+/**
+ * @author Steven Le
+ */
+public final class Character implements Serializable {
+    /**
+     * Initialize myLives.
+     */
+    private static int myLives;
+
+    /**
+     * Constructor for Character.
+     */
     public Character() {
-     //   myHeroType = "ahhh";
-        myLives = 3;
+        myLives = 1 + 2;
         setHintpassCount(0);
         setKeyCount(0);
     }
 
+    /**
+     * Method to decrease lives when player answers a question wrong.
+     */
     public void decreaseLives() {
         myLives--;
     }
-
-    public ArrayList<String> useHintpass(Question question) {
+    /**
+     * Method for the use of hintpass.
+     * Splits possible choices 50-50 and returns it.
+     * @return tempArray
+     * @param question
+     */
+    public ArrayList<String> useHintpass(final Question question) {
         String answer = question.getMyAnswer();
         ArrayList<String> answers = question.setChoices();
         ArrayList<String> tempArray = new ArrayList<>();
@@ -29,40 +45,71 @@ public class Character {
         Inventory.myHintpassCount--;
         return tempArray;
     }
+    /**
+     * Boolean method to check if player is still alive.
+     * Returns true if player is alive, false if not.
+     * @return myLives
+     */
 
-    public static boolean isAlive() {
+    public boolean isAlive() {
         return myLives != 0;
     }
-
+    /**
+     * Getter method for lives. Returns amount of lives.
+     * @return myLives
+     */
     public int getLives() {
         return myLives;
     }
-
+    /**
+     * Getter method for hintpass count.
+     * Returns amount of hint passes kept inventory.
+     * @return Inventory.getMyHintpassCount()
+     */
     public int getHintpassCount() {
         return Inventory.getMyHintpassCount();
     }
-
+    /**
+     * Setter method for hintpass count.
+     * @param theHintpassCount
+     */
     public void setHintpassCount(final int theHintpassCount) {
         Inventory.setMyHintpassCount(theHintpassCount);
     }
-
+    /**
+     * Getter method for key count.
+     * Returns the number of keys kept in inventory.
+     * @return Inventory.getMyKeyCount()
+     */
     public int getKeyCount() {
         return Inventory.getMyKeyCount();
     }
-
+    /**
+     * Setter method for key count.
+     * @param theKeyCount
+     */
     public void setKeyCount(final int theKeyCount) {
         Inventory.setMyKeyCount(theKeyCount);
     }
-
+    /**
+     * Setter method for lives.
+     * @param theLive
+     */
     public void setMyLives(final int theLive) {
         myLives = theLive;
     }
 
     static class Inventory {
-        private static int myHintpassCount; //how many passes does the player start with
-        private static int myKeyCount; //how many keys does the player start with
+        /**
+         * Initializing hint pass count.
+         */
+        private static int myHintpassCount;
+        /**
+         * Initializing key count.
+         */
+        private static int myKeyCount;
 
-        public Inventory(final int theHintpassCount, final int theKeyCount){
+        Inventory(final int theHintpassCount, final int theKeyCount) {
             myHintpassCount = setMyHintpassCount(theHintpassCount);
             myKeyCount = setMyKeyCount(theKeyCount);
         }
@@ -89,11 +136,12 @@ public class Character {
             } else {
                 myKeyCount = 0;
             }
-                return myKeyCount;
+            return myKeyCount;
         }
 
         public String toString() {
-            return ("Key count: " + myKeyCount + ", " + "Hint pass count: " + myHintpassCount);
+            return ("Key count: " + myKeyCount + ", "
+                    + "Hint pass count: " + myHintpassCount);
         }
     }
 }

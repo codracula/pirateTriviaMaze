@@ -33,15 +33,15 @@ public final class GameModel {
     /**
      *  bandits list of questions.
      */
-    private ArrayList<Question> banditQ;
+    private ArrayList<Question> myBanditQ;
     /**
      *  guard's list of questions.
      */
-    private ArrayList<Question> guardQ;
+    private ArrayList<Question> myGuardQ;
     /**
      *  gatekeeper's list of questions
      */
-    private ArrayList<Question> gatekeeperQ;
+    private ArrayList<Question> myGatekeeperQ;
     /**
      *  game view.
      */
@@ -196,19 +196,22 @@ public final class GameModel {
         if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()) == "K") {
             Character.Inventory.setMyKeyCount(Character.Inventory.getMyKeyCount() + 1);
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()) == "bandit") {
-            //activate bandit question set
-            monEncounter(banditQ, "bandit");
+            monEncounter(myBanditQ);
+            hintPassChance("bandit");
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()) == "guard") {
-            //activate guard question set
-            monEncounter(guardQ, "guard");
+            for (int i = 0; i < 2; i++) {
+                monEncounter(myGuardQ);
+            }
+            hintPassChance("guard");
         } else if (myMaze.getOccupant(getPlayerRow(), getPlayerCol()) == "E") {
             for (int i = 0; i < 3; i++) {
-                monEncounter(gatekeeperQ, "gatekeeper");
+                monEncounter(myGatekeeperQ);
             }
+            hintPassChance("gatekeeper");
             Character.Inventory.setMyHintpassCount(Character.Inventory.getMyHintpassCount() + 1);
             myPlayer.setMyLives(myPlayer.getLives() + 1);
             for (int i = 0; i < 4; i++) {
-                monEncounter(gatekeeperQ, "boss");
+                monEncounter(myGatekeeperQ);
             }
         }
     }
@@ -216,10 +219,8 @@ public final class GameModel {
     /**
      *  encounter monster.
      * @param theMonQ   monster question list.
-     * @param theMonType    monster type.
      */
-    private void monEncounter(final ArrayList<Question> theMonQ, final String theMonType) {
-        int index = getQuestionIndex(theMonQ);
+    private void monEncounter(final ArrayList<Question> theMonQ) {
         Question currentQ = getQuestion(theMonQ);
         int correct = myView.showQuestion(currentQ, myPlayer);
         if (correct == 2) {
@@ -229,12 +230,12 @@ public final class GameModel {
                 correct = myView.showHintpassUse(currentQ, myPlayer);
             }
         }
-        while (correct == 0) {
-            decMyLive();
+        while (correct == 0 || correct == 3) {
+            if (correct == 0) {
+                decMyLive();
+            }
             correct = myView.showQuestion(currentQ, myPlayer);
         }
-        theMonQ.remove(index);
-        hintPassChance(theMonType);
     }
 
     /**
@@ -254,23 +255,24 @@ public final class GameModel {
     public void setQuestion() {
         myQuestions = new QuestionDatabase();
         myMaze.getMon().setQuestion("bandit", myView.getCategory(), myQuestions);
-        banditQ = myQuestions.getQuestionList();
+        myBanditQ = myQuestions.getQuestionList();
         myMaze.getMon().setQuestion("guard", myView.getCategory(), myQuestions);
-        guardQ = myQuestions.getQuestionList();
+        myGuardQ = myQuestions.getQuestionList();
         myMaze.getMon().setQuestion("gatekeeper", myView.getCategory(), myQuestions);
-        gatekeeperQ = myQuestions.getQuestionList();
-        System.out.println(banditQ);
-        System.out.println(guardQ);
-        System.out.println(gatekeeperQ);
+        myGatekeeperQ = myQuestions.getQuestionList();
+
     }
 
     /**
      *  get question
-     * @param theMonsterQ   monster question list.
+     * @param theMonsterQ  monster question list.
      * @return  question.
      */
-    private Question getQuestion(final ArrayList<Question> theMonsterQ) {
-        return myMaze.getMon().getQuestion(theMonsterQ);
+    public Question getQuestion(final ArrayList<Question> theMonsterQ) {
+        int index = getQuestionIndex(theMonsterQ);
+        Question currentQ = theMonsterQ.get(index);
+        theMonsterQ.remove(index);
+        return currentQ;
     }
 
     /**

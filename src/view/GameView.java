@@ -11,14 +11,33 @@ import java.util.Scanner;
 
 public class GameView {
 
-    private final Scanner console = new Scanner(System.in);
-    private String characterClass;
-    private String playerName;
-    private int qCorrect;
-    private int qWrong;
+    /**
+     * allows for user input
+     */
+    private final Scanner myConsole = new Scanner(System.in);
+    /**
+     * initialize the character class that user chooses in the beginning
+     */
+    private String myCharacterClass;
+    /**
+     * initialize the name of the user
+     */
+    private String myPlayerName;
+    /**
+     * initialize the number of correct answers
+     */
+    private int myCorrectQ;
+    /**
+     * initialize the number of wrong answers
+     */
+    private int myWrongQ;
 
+    /**
+     * displays the intro as well as the menu
+     */
     public void showTitleScreen() {
         showIntro();
+        showStory();
         System.out.println("=================================");
         System.out.println("Please select an option by entering an integer.");
         System.out.println("1) Start game");
@@ -27,20 +46,31 @@ public class GameView {
         System.out.println("4) Quit \n");
     }
 
+    /**
+     * prints out the menu options
+     */
     public void showOptionMenu() {
         System.out.println("Options Menu");
         System.out.println("=================================");
         System.out.println("1) Stop music");
-        System.out.println("2) Play music \n");
+        System.out.println("2) Play music");
+        System.out.println("3) Back to main menu \n");
     }
 
-    public void showStart() {
+    /**
+     * gets the user's name and asks for class choice
+     */
+    public void showSelection() {
         System.out.print("Let's get started!" + "\n" + "What is your name: ");
-        playerName = console.nextLine();
+        myPlayerName = myConsole.nextLine();
         System.out.println();
-        System.out.println("Alright " + playerName + ", choose a class:");
+        System.out.println("Alright " + myPlayerName + ", choose a class:");
     }
 
+    /**
+     * shows class options and gets user's choice
+     * @return the characterClass the user chooses
+     */
     public String showCharacterClasses() {
         boolean myFlag;
         myFlag = false;
@@ -51,8 +81,8 @@ public class GameView {
             System.out.println("Headhunter: Clever and witty \n");
             System.out.println("Please type in the class you want to play as. \n");
 
-            characterClass = console.nextLine();
-            switch (characterClass.toLowerCase()) {
+            myCharacterClass = myConsole.nextLine();
+            switch (myCharacterClass.toLowerCase()) {
                 case "merchant":
                     System.out.println("You've chosen a merchant class, be prepared for arithmetic quest");
                     myFlag = true;
@@ -68,23 +98,20 @@ public class GameView {
             }
             System.out.println("Let's begin the adventure!");
         }
-        return characterClass;
+        return myCharacterClass;
     }
 
-    private void showInstructions() {
-        System.out.println("Traverse through two mazes to get to the boss!");
-        System.out.println("Find the 4 keys scattered throughout the maze in order to progress");
-        System.out.println("Be careful of bandits, guards and gatekeepers");
-        System.out.println("They'll try to thwart your progress by asking questions");
-    }
-
+    /**
+     * gets the category from the characterClass
+     * @return a string of the category which is determined by characterClass
+     */
     public String getCategory() {
         String category = "";
-        if (Objects.equals(characterClass, "Merchant")) {
+        if (Objects.equals(myCharacterClass, "Merchant")) {
             category = "Arithmetic";
-        } else if (Objects.equals(characterClass, "Sailor")) {
+        } else if (Objects.equals(myCharacterClass, "Sailor")) {
             category = "Geography";
-        } else if (Objects.equals(characterClass, "Headhunter")) {
+        } else if (Objects.equals(myCharacterClass, "Headhunter")) {
             category = "Riddle";
         } else {
             category = "";
@@ -92,6 +119,11 @@ public class GameView {
         return category;
     }
 
+    /**
+     * shows options for movement if possible and gets user input
+     * @param theMaze the maze being traversed
+     * @return char action that is the user's choice of movement
+     */
     public char showMoves(final Maze theMaze) {
         System.out.println("Which action would you like to take?");
         if (theMaze.getRowPos() != 3) { //made getRowPos public
@@ -106,16 +138,28 @@ public class GameView {
         if (theMaze.getColPos() != 0) {
             System.out.println("A) Left");
         }
-        char action = console.next().charAt(0);
+
+        System.out.println("K) Stop music");
+        System.out.println("L) Play music");
+
+        char action = myConsole.next().charAt(0);
         return action;
     }
 
+    /**
+     * displays character information
+     * @param theCharacter the game representation of the user
+     */
     private void showCharacterInfo(final Character theCharacter) {
-        System.out.println("Name: " + playerName);
-        System.out.println("Class: " + characterClass);
+        System.out.println("Name: " + myPlayerName);
+        System.out.println("Class: " + myCharacterClass);
         System.out.println("Lives: " + theCharacter.getLives());
     }
 
+    /**
+     * displays the maze in an ascii fashion
+     * @param theMaze the maze being traversed
+     */
     public void showMaze(final Maze theMaze) {
         final StringBuilder sb = new StringBuilder();
         final String breakLine = "___________________________________________\n";
@@ -148,6 +192,10 @@ public class GameView {
         System.out.println(sb.toString());
     }
 
+    /**
+     * displays the contents of the room
+     * @param theRoom the current room the user is in or intends to go in
+     */
     public void showRoom(final Room theRoom) {
         System.out.println();
         if (Objects.equals(theRoom.getOccupant(), "bandit")) {
@@ -174,6 +222,10 @@ public class GameView {
         System.out.println();
     }
 
+    /**
+     * shows the result of a successful monster encounter
+     * @param theMonType the type of monster that was encountered
+     */
     public void showMonEnd(final String theMonType) {
         if (theMonType.equals("bandit") || theMonType.equals("guard")) {
             System.out.println("The monster drops a hint pass while running away");
@@ -186,16 +238,22 @@ public class GameView {
             System.out.println("");
             System.out.println("You gained a hint pass and a life!");
             System.out.println();
-        } else if (theMonType.equals("boss")) {
-            System.out.println("You walk past the gatekeeper and enter the portal");
+            System.out.println("You go past the gatekeeper and enter the portal");
+            myConsole.nextLine();
+            System.out.println("press enter to go through");
             showPortal();
+            System.out.println();
+            System.out.println("You've never gotten this far in the game before, you're not sure what to expect");
             System.out.println("You see a figure looming");
             System.out.println("It's the actual boss");
             showBoss();
-            System.out.println();
         }
     }
 
+    /**
+     * displays the inventory of the user
+     * @param thePlayer the game representation of the user
+     */
     public void showInventory(final Character thePlayer) {
         System.out.println();
         System.out.println("Number of keys: " + thePlayer.getKeyCount());
@@ -203,11 +261,22 @@ public class GameView {
         System.out.println("Lives: " + thePlayer.getLives());
     }
 
+    /**
+     * displays when the user can exit the maze
+     */
     public void canExit() {
         System.out.println("You found all four keys!");
         System.out.println("The exit has appeared. Find the way out!");
     }
 
+    /**
+     * displays the question to be asked and gets the user's answer
+     * @param theQuestion the question being asked
+     * @param thePlayer the user
+     * @return a numerical representation of the possible outcomes
+     * correct = 0 user answered incorrectly
+     * correct = 1 user answered correctly
+     */
     public int showQuestion(final Question theQuestion, final Character thePlayer) {
         System.out.println(theQuestion.getMyQuestion());
         ArrayList<String> choices = theQuestion.setChoices();
@@ -217,11 +286,11 @@ public class GameView {
         System.out.println("5: Use a hint pass, you have " + thePlayer.getHintpassCount() + " remaining");
         int correct = 0;
         System.out.println("Enter your answer as a number");
-        int userAnswer = console.nextInt();
+        int userAnswer = myConsole.nextInt();
         if (userAnswer == 5) {
             correct = 2;
         } else {
-            correct = showCorrect(theQuestion, choices, userAnswer, thePlayer);
+            correct = showCorrect(theQuestion, choices, userAnswer);
         }
         return correct;
     }
@@ -230,6 +299,12 @@ public class GameView {
     //1 = correct answer
     //2 = used hint pass
     //3 = no hint passes to use
+    /**
+     * displays what happens if user uses a hintpass
+     * @param theQuestion the question being asked
+     * @param thePlayer the user
+     * @return a numerical value representing a scenario
+     */
     public int showHintpassUse(final Question theQuestion, final Character thePlayer) {
         int correct = 0;
         if (thePlayer.getHintpassCount() == 0) {
@@ -246,36 +321,52 @@ public class GameView {
                 System.out.println((i + 1) + ": " + hintPassChoices.get(i));
             }
             System.out.println("Enter your answer as a number");
-            int userAnswer = console.nextInt();
-            correct = showCorrect(theQuestion, hintPassChoices, userAnswer, thePlayer);
+            int userAnswer = myConsole.nextInt();
+            correct = showCorrect(theQuestion, hintPassChoices, userAnswer);
         }
         return correct;
     }
 
-    private int showCorrect(final Question theQuestion, final ArrayList<String> theChoices, final int theUserAnswer, final Character thePlayer) {
+    /**
+     * displays if user's answer was correct or not
+     * @param theQuestion the question being asked
+     * @param theChoices the multiple choices
+     * @param theUserAnswer user's answer as an in
+     * @return a numerical value representing if the user was correct or not
+     */
+    private int showCorrect(final Question theQuestion, final ArrayList<String> theChoices, final int theUserAnswer) {
         int correct = 0;
         if (theChoices.get(theUserAnswer - 1).equals(theQuestion.getMyAnswer())) {
             System.out.println("Yay, you're correct!");
             correct = 1;
-            qCorrect++;
+            myCorrectQ++;
         } else {
-            System.out.println("Boo, you're wrong! -1 life, you have " + thePlayer.getLives() + " left");
+            System.out.println("Boo you're wrong! -1 life");
             System.out.println("Try again");
-            qWrong++;
+            myWrongQ++;
         }
         System.out.println();
         return correct;
     }
 
+    /**
+     * displays the summary of user's achievements in game
+     * @param thePlayer
+     */
     private void showSummary(final Character thePlayer) {
-        System.out.println("Name: " + playerName);
-        System.out.println("Class: " + characterClass);
+        System.out.println("Name: " + myPlayerName);
+        System.out.println("Class: " + myCharacterClass);
         System.out.println("Keys collected: " + thePlayer.getKeyCount());
-        System.out.println("Correct answers: " + qCorrect);
-        System.out.println("Incorrect answers: " + qWrong);
+        System.out.println("Correct answers: " + myCorrectQ);
+        System.out.println("Incorrect answers: " + myWrongQ);
     }
 
-    public char showGameOver(final Character thePlayer) {
+    /**
+     * displays game over, both good and bad endings
+     * @param thePlayer the user
+     * @return char representing if the user wishes to continue playing
+     */
+    public void showGameOver(final Character thePlayer) {
         if (thePlayer.getLives() == 0) {
             System.out.println("⠀  ⠀   (\\__/)");
             System.out.println("       (•ㅅ•)      Game over.");
@@ -287,17 +378,75 @@ public class GameView {
             System.out.println("    ｜( 王 ﾉ〈   (\\__/)");
             System.out.println("     /ﾐ`ー―彡\\  (•ㅅ•)");
             System.out.println("    / ╰    ╯  \\ /    \\>");
+            System.out.println();
+            System.out.println("Guess you won't be going home any time soon");
         } else {
-            System.out.println("Against all odds you have bested the maze and the boss.");
-            System.out.println("Congratulations!"+ "\n");
+            System.out.println("The boss looks at you in a way you can' quite place");
+            System.out.println("Before you can react, the portal surges behind you and engulfs you");
+            System.out.println("When you manage to open your eyes, you find yourself back in your room");
+            System.out.println();
+            System.out.println("Against all odds you have bested the game and returned home to your soft bed");
+            System.out.println("Congratulations!");
+            System.out.println();
+            System.out.println("   ||");
+            System.out.println("   ||                   ||");
+            System.out.println("||/||___                ||");
+            System.out.println("|| /`   )____________||_/|");
+            System.out.println("||/___ //_/_/_/_/_/_/||/ |");
+            System.out.println("||(___)/_/_/_/_/_/_/_||  |");
+            System.out.println("||     |_|_|_|_|_|_|_|| /|");
+            System.out.println("||     | | | | | | | ||/||");
+            System.out.println("||~~~~~~~~~~~~~~~~~~~||");
+            System.out.println("||                   ||  ");
+            System.out.println();
+            System.out.println("You've returned back to your room, everything is as you left it");
+            System.out.println("Your project code is still blinking on your computer");
+            System.out.println("Going over to your desk, you turn off your computer and opt for your bed instead");
+            System.out.println("After all, you worked pretty hard. You deserve a rest");
         }
-        showSummary(thePlayer);
         System.out.println("=================================\n");
-        System.out.println("Would you like to begin again?\nEnter Y for yes or any other char to exit the game.");
-        return console.next().charAt(0);
+        showSummary(thePlayer);
+        System.exit(0);
     }
 
-    private void showTitlePic() {
+    /**
+     * displays story
+     */
+    private void showStory() {
+        System.out.println();
+        System.out.println(".");
+        System.out.println(".");
+        System.out.println(".");
+        System.out.println("Before the game fully starts you shut it off");
+        System.out.println("As much as you'd love to play, you have far too much work to do");
+        System.out.println("You try to blink away the sleepiness as best you could");
+        System.out.println("After all, you had to turn in your project soon and the deadline was coming up");
+        System.out.println("But as you try to keep coding, your eyes grow heavier and heavier until they close");
+        System.out.println("press enter to continue");
+        myConsole.nextLine();
+        showPortal();
+        System.out.println("You wake up to the harsh abrasion of stone against your skin");
+        System.out.println("Confused, you open your eyes, you don't recognize your surroundings right away");
+        System.out.println("Rather than your normally cluttered room, it appears you're in a pirate's lair");
+        System.out.println("Realizations slowly dawns on you as it's an environment you've seen before");
+        System.out.println("It looks like you're inside your favorite game Pirates of the Euclideans");
+        System.out.println("press enter to continue");
+        myConsole.nextLine();
+        System.out.println("As you look for a way out, you notice a message on the wall");
+        System.out.println("------------------------------------------------------------------------");
+        System.out.println("For you who does too much work and no play");
+        System.out.println("You will not be able to return to your world unless you beat this world");
+        System.out.println("Seek out the four keys to reveal the exit");
+        System.out.println("Traverse through the pirate's lair, but be wary of its dwellers");
+        System.out.println("------------------------------------------------------------------------");
+        System.out.println();
+        showFlag();
+    }
+
+    /**
+     * displays a cool pirate flag in ascii
+     */
+    private void showFlag() {
         System.out.println("888888888888888888888888888888888888888888888888888888888888");
         System.out.println("888888888888888888888888888888888888888888888888888888888888");
         System.out.println("8888888888888888888888888P" + "\"  \"" + "9888888888888888888888888888");
@@ -314,6 +463,9 @@ public class GameView {
         System.out.println("8888888888888888888888888888888888888888888888888Ojo 9888888");
     }
 
+    /**
+     * displays an ascii art bandit
+     */
     private void showBandit() {
         System.out.println("    ####");
         System.out.println("  ########");
@@ -336,6 +488,9 @@ public class GameView {
         System.out.println("(___||___)");
     }
 
+    /**
+     * displays an ascii art guard
+     */
     private void showGuard() {
         System.out.println("        .#####.");
         System.out.println("       |_____|");
@@ -360,6 +515,9 @@ public class GameView {
         System.out.println("     .oooO Oooo.");
     }
 
+    /**
+     * displays an ascii art gatekeeper
+     */
     private void showGatekeeper() {
         System.out.println("       _____ ");
         System.out.println("      / ~~~ \\ ");
@@ -379,7 +537,11 @@ public class GameView {
         System.out.println("      (__|__)");
     }
 
+    /**
+     * displays an ascii art of the boss
+     */
     private void showBoss() {
+        System.out.println();
         System.out.println("                 _____   ");
         System.out.println("              .-\" .-. \"-.");
         System.out.println("            _/ '=(0.0)=' \\_ ");
@@ -393,8 +555,14 @@ public class GameView {
         System.out.println("   /  _.' /  __(`~~~~`)__   ");
         System.out.println("  //\"\\\\,-'-\"`   `~~~~\\\\~~`\"-. ");
         System.out.println(" //  /`\"              `      `\\   ");
+        System.out.println();
+        System.out.println("Hold on, I won't let you go just yet!");
+        System.out.println("You've got a good noggin,");
     }
 
+    /**
+     * displays an ascii art of the portal exit
+     */
     private void showPortal() {
         System.out.println("             .,-:;//;:=,");
         System.out.println("         . :H@@@MM@M#H/.,+%;,");
@@ -418,6 +586,9 @@ public class GameView {
         System.out.println("               =++%%%%+/:-.");
     }
 
+    /**
+     * displays ascii art of the intro scene
+     */
     private void showIntro() {
         System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣧⠀⠀⠀⠀");
         System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣄⠀⠀⢀⣿⣤⡄⠀⠀");
@@ -455,7 +626,7 @@ public class GameView {
         System.out.println("");
         System.out.println("Welcome to Pirates of Euclideans");
         System.out.println("Press enter to continue");
-        console.nextLine();
+        myConsole.nextLine();
     }
 
 }

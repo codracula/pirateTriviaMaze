@@ -9,9 +9,13 @@ import java.util.*;
  */
 public class QuestionDatabase {
 
+    /**
+     * initialize arrayList of questions
+     */
     private final ArrayList<Question> myQuestionList = new ArrayList<>(); // Naming conventinos!!
 
     /**
+     * connects to sqlite
      * @return Connection to database
      */
     private Connection connect() {
@@ -44,7 +48,7 @@ public class QuestionDatabase {
     }
 
     /**
-     *
+     * puts database question sinto an arraylist
      * @param theCategory: category of questions to be selected
      * @param theDifficulty: difficult 1-3 of question (depends on mon type)
      * @return a List of Questions given the parameters
@@ -72,56 +76,11 @@ public class QuestionDatabase {
     }
 
     /**
+     * returns arraylist of questions
      * @return a list of Questions given the parameters in setQuestionList
      */
     public ArrayList<Question> getQuestionList() {
         return myQuestionList;
     }
-
-//    /**
-//     * removes
-//     * @param theIndex: relevant index of the List of Questions
-//     */
-//    public void removeQuestion(final int theIndex) {
-//        myQuestionList.remove(theIndex);
-//    }
-//
-//    /**
-//     * @param theIndex: relevant index of the List of Questions
-//     * @return the category of
-//     */
-//    public String getCategory(final int theIndex) {
-//        return myQuestionList.get(theIndex).getMyCategory();
-//    }
-//
-//    public int getDifficulty(final int theIndex) {
-//        return myQuestionList.get(theIndex).getMyDifficulty();
-//    }
-//
-//    //returns just the question as a string
-//    public String getQuestion(final int theIndex) {
-//        return myQuestionList.get(theIndex).getMyQuestion();
-//    }
-//
-//    //returns the question object that contains question, choices, etc
-//    public Question getQuestionSet(final int theIndex) {
-//        return myQuestionList.get(theIndex);
-//    }
-//
-//    /**
-//     * @param theIndex: relevant index of the List of Questions
-//     * @return choices of the current question in the form of ArrayList
-//     */
-//    public ArrayList<String> getChoices(final int theIndex) {
-//        return myQuestionList.get(theIndex).setChoices();
-//    }
-//
-//    /**
-//     * @param theIndex: relevant index of the List of Questions
-//     * @return the answer of the current question given by theIndex
-//     */
-//    public String getAnswer(final int theIndex) {
-//        return myQuestionList.get(theIndex).getMyAnswer();
-//    }
 
 }

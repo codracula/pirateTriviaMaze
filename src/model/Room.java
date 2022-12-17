@@ -84,13 +84,4 @@ public class Room {
         myIsEmpty = false;
     }
 
-    /**
-     *  return to a string.
-     * @return  room's occupant to string.
-     */
-    @Override
-    public String toString() {
-        return myOccupant;
-    }
-
 }
