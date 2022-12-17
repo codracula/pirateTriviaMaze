@@ -1,33 +1,65 @@
 package controller;
 
+import model.GameModel;
+import view.GameView;
+
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-import model.*;
-import view.GameView;
-
 public class GameController {
-    private final Scanner nScan = new Scanner(System.in);
-    private final GameModel myModel;
-    private final GameView myView;
-    private String characterClass;
 
+    /**
+     * initializing audio file
+     */
+    File music = new File("C:/Users/Steven/IdeaProjects/finalmaze/audio.wav");
+    /**
+     * initializing clip
+     */
+    private static Clip myAudio;
+
+    /**
+     * accepts user input
+     */
+    private final Scanner myScan = new Scanner(System.in);
+    /**
+     * initializes the GameModel
+     */
+    private final GameModel myModel;
+    /**
+     * initializes GameView
+     */
+    private final GameView myView;
+    /**
+     * initialize characterClass
+     */
+    private String myCharacterClass;
+
+    /**
+     * constructor for GameController and sets model and view
+     * @param theModel the GameModel
+     * @param theView the GameView
+     */
     public GameController(GameModel theModel, GameView theView) {
         myModel = theModel;
         myView = theView;
     }
 
-    public void menu() {
-        int choice = nScan.nextInt();
+    /**
+     * takes in user input for menu choices
+     */
+    public void menu() throws IOException, ClassNotFoundException {
+        int choice = myScan.nextInt();
         switch (choice) {
             case 1:
-                myView.showStart();
+                myView.showSelection();
                 setPlayerClass();
                 //System.out.println(myModel.maze2String());
                 break;
             case 2:
                 System.out.println("Load game");
-                myModel.myMaze.loadLastGame();
+                //UserFunctions.loadLastGame();
                 break;
             case 3:
                 myView.showOptionMenu();
@@ -42,49 +74,84 @@ public class GameController {
         }
     }
 
-    private void optionMenu() {
+    /**
+     * takes user input for option menu choices
+     */
+    private void optionMenu() throws IOException, ClassNotFoundException {
 
-        int choice = nScan.nextInt();
+        int choice = myScan.nextInt();
         switch (choice) {
             case 1:
-                //myUF.stopMusic();
+                myView.showOptionMenu();
+                stopMusic();
+                optionMenu();
                 break;
             case 2:
-                //myUF.playMusic();
+                myView.showOptionMenu();
+                playMusic();
+                optionMenu();
+                break;
+            case 3:
+                myView.showTitleScreen();
+                menu();
                 break;
             default:
                 System.out.println("Not a valid option.");
         }
     }
 
+    /**
+     * sets the characterClass from view to controller
+     */
     private void setPlayerClass() {
-        characterClass = myView.showCharacterClasses();
+        myCharacterClass = myView.showCharacterClasses();
     }
 
-    public void movePlayer() throws IOException {
+    /**
+     * moves the player around the maze and allows for the player to stop and play music.
+     * @return moveable, if player is able to move in that direction
+     */
+    public boolean movePlayer() {
         char action = myView.showMoves(myModel.getMyMaze());
-        if (action == 'D') {
+        boolean moveable = true;
+        if (action == 'S' || action == 's') {
             myModel.moveDown();
-        } else if (action == 'R') {
+        } else if (action == 'D' || action == 'd') {
             myModel.moveRight();
-        } else if (action == 'U') {
+        } else if (action == 'W' || action == 'w') {
             myModel.moveUp();
-        } else if (action == 'L') {
+        } else if (action == 'A' || action == 'a') {
             myModel.moveLeft();
-        } else if (action == 'I') {
-            myView.showInventory(myModel.myPlayer);
-        } else if (action == 'S') {
-            myModel.myMaze.saveGame();
+        } else if (action == '~') {
+            myModel.myPlayer.setMyLives(100);
+        } else if (action == 'K' || action == 'k') {
+            stopMusic();
+        } else if (action == 'L' || action == 'l') {
+            playMusic();
+        } else {
+            System.out.println("Invalid input, please try again");
+            moveable = false;
+            while (!moveable) {
+                moveable = movePlayer();
+            }
         }
+        return moveable;
     }
 
-    public void setUp() {
+    /**
+     * initiates the intro sequence before the maze
+     */
+    public void setUp() throws IOException, ClassNotFoundException {
+        playMusicNow();
         myView.showTitleScreen();
         menu();
         myModel.setQuestion();
     }
 
-    public void playGame() throws IOException {
+    /**
+     * plays the game while player is alive
+     */
+    public void playGame() throws IOException, ClassNotFoundException {
         setUp();
         while (myModel.myPlayer.getKeyCount() != 4) {
             traverse();
@@ -93,11 +160,15 @@ public class GameController {
         while (!myModel.doBossFight()) {
             traverse();
         }
-        myView.winnerWinnerChickenDinner(myModel.getMyPlayer());
-
+        myView.showGameOver(myModel.getMyPlayer());
     }
 
-    private void traverse() throws IOException {
+    /**
+     *shows player moving throughout the game
+     * as well as any encounters in the room
+     */
+    private void traverse() {
+        myView.showInventory(myModel.getMyPlayer());
         myView.showMaze(myModel.myMaze);
         movePlayer();
         myView.showRoom(myModel.myMaze.getRoom(myModel.getPlayerRow(), myModel.getPlayerCol()));
@@ -105,34 +176,64 @@ public class GameController {
         myModel.setCurrentP();
     }
 
+    /**
+     * if player has 4 keys, generates exit
+     */
     private void canExit() {
         myView.canExit();
         myModel.getExit();
     }
+    /**
+     * Stops music if music is playing.
+     */
+    public void stopMusic() {
+        try {
+            if (myAudio.isActive()) {
+                System.out.print("Stopping music...\n");
+                myAudio.stop();
+            } else {
+                System.out.println("There is no music playing.");
+            }
+        } catch (NullPointerException e) {
+            System.out.println("There is no music playing currently");
 
-    private void loseRestart() throws IOException {
-        char choice = myView.showGameOver(myModel.getMyPlayer());
-        if (choice == 'y' || choice == 'Y') {
-            setUp();
-            playGame();
-        } else {
-            System.exit(1);
+        }
+
+    }
+    /**
+     * Play music on start.
+     */
+    public void playMusicNow() {
+        try {
+            if (music.exists()) {
+                System.out.print("Playing music... \n");
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(music);
+                myAudio = AudioSystem.getClip();
+                myAudio.open(audioInput);
+                FloatControl gainControl =
+                        (FloatControl) myAudio.getControl(FloatControl.Type.MASTER_GAIN);
+                gainControl.setValue(-23.0f);
+                myAudio.start();
+                myAudio.loop(Clip.LOOP_CONTINUOUSLY);
+            } else {
+                System.out.println("An error has occurred.");
+            }
+
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /**
+     * Plays music if music is not active.
+     */
+    public void playMusic() {
+        if (myAudio.isActive()) {
+            System.out.println("Music is already playing.");
+
+        }else{
+            playMusicNow();
         }
     }
 
-    private void winRestart() {
-        char choice = myView.winnerWinnerChickenDinner(myModel.getMyPlayer());
-        if(choice == 'Y' || choice == 'y') {
-            resetStats();
-        } else {
-            System.exit(1);
-        }
-    }
-
-    private void resetStats() {
-        myModel.myPlayer.setHintpassCount(0);
-        myModel.myPlayer.setKeyCount(0);
-        myModel.myPlayer.setMyLives(3);
-    }
 }
 

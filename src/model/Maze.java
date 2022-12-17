@@ -1,11 +1,12 @@
 package model;
 
-import java.io.*;
-import model.*;
 import java.util.Random;
 
+/**
+ *  Maze class
+ * @author  Jeep Naarkom
+ */
 public final class Maze {
-    static Maze maze;
     /**
      *  reusable random object.
      */
@@ -13,11 +14,11 @@ public final class Maze {
     /**
      *  number of rows for the maze.
      */
-    private int myRowCount;
+    private final  int myRowCount;
     /**
      *  number of column for the maze.
      */
-    private int myColCount;
+    private final int myColCount;
     /**
      *  current row position.
      */
@@ -49,13 +50,11 @@ public final class Maze {
     /**
      *  initialize monster class.
      */
-    private Monsters myMon;
+    private final Monsters myMon;
     /**
      *  initialized key count.
      */
-    private final int myKeyCount;
-
-    private Question myQuestion;
+    private int myKeyCount;
 
     /** constructor to build the maze.
      *
@@ -69,7 +68,7 @@ public final class Maze {
     public Maze(final int theRow, final int theCol, final int theMonsterA, final int theMonsterB,
                 final int theMonsterC, final int theKeyCount) {
 
-        myRowCount = theRow;/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        myRowCount = theRow;
         myColCount = theCol;
         myKeyCount = theKeyCount;
         mazeGenerate();
@@ -87,7 +86,6 @@ public final class Maze {
         genMon();
         genPlayerSpawn();
         genKey();
-//        genExit();
     }
 
     /**
@@ -196,12 +194,6 @@ public final class Maze {
      * @param theRow    the row position.
      * @param theCol    the col position.
      */
-//    void setPCurrent(final int theRow, final int theCol) {
-//        if (theRow > 0 && theCol > 0) {
-//            myCurrentRow = theRow;
-//            myCurrentCol = theCol;
-//        }
-//    }
 
     void setPCurrent(final int theRow, final int theCol) {
         if (theRow >= 0 && theRow < myRowCount
@@ -379,98 +371,23 @@ public final class Maze {
         return myMaze[theRow][theCol].toString();
     }
 
+    /**
+     *  get 2d array of rooms
+     * @return  myMaze
+     */
     public Room[][] getMaze() {
         return myMaze;
     }
 
+    /**
+     *  get room from coordinates
+     * @param theRow    the row position.
+     * @param theCol    the col position.
+     * @return  room.
+     */
     public Room getRoom(final int theRow, final int theCol) {
         return myMaze[theRow][theCol];
     }
 
-    public void saveMaze(ObjectOutputStream theOut) throws IOException{
-
-
-       // theOut.writeObject(myRowCount);
-        //theOut.writeObject(myColCount);
-        theOut.writeObject(myCurrentCol);
-        theOut.writeObject(myCurrentRow);
-//        theOut.writeObject(myPlayerSpawnCol);
-//        theOut.writeObject(myPlayerSpawnRow);
-        theOut.writeObject(myExitRow);
-        theOut.writeObject(myExitCol);
-        theOut.writeObject(myMaze);
-        theOut.writeObject(myMon);
-//        theOut.writeObject(myQuestion);
-        theOut.flush();
-        theOut.close();
-    }
-
-
-    public void loadMaze(ObjectInputStream theIn) throws IOException, ClassNotFoundException {;
-      //  myRowCount = (int) theIn.readObject();
-        //myColCount = (int) theIn.readObject();
-        myCurrentCol = (int) theIn.readObject();
-        myCurrentRow = (int) theIn.readObject();
-        myExitRow = (int) theIn.readObject();
-        myExitCol = (int) theIn.readObject();
-        myMaze = (Room[][]) theIn.readObject();
-        myMon = (Monsters) theIn.readObject();
-        //myQuestion = (Question) theIn.readObject();
-    }
-    public void loadLastGame() {
-        try{
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream("f.txt"));
-            loadMaze(in);
-            in.close();
-        }catch(Exception e){System.out.println(e);}
-    }
-
-        public void saveGame() throws IOException {
-        //try {
-            FileOutputStream fout = new FileOutputStream("f.txt");
-            ObjectOutputStream out=new ObjectOutputStream(fout);
-        //myMaze = new Maze(4, 7, 6, 2, 1, 4);
-            saveMaze(out);
-        //myPlayer.savePlayer(out);
-            System.out.println("game saved");
-        //} catch(Exception ex){System.out.println("error saving");}
-    }
-
-//    /**
-//     *  print maze to string.
-//     * @return  the whole maze string output.
-//     */
-//    public String m2String() {
-//        final StringBuilder sb = new StringBuilder();
-//        final String breakLine = "___________________________________________\n";
-//        final String breakRoom = "|     |     |     |     |     |     |     |\n";
-//        for (Room[] rooms : myMaze) {
-//
-//            sb.append(breakLine);
-//            sb.append(breakRoom);
-//            sb.append("|  ");
-//            for (Room room : rooms) {
-//
-//                if (room.getOccupant() == null) {
-//                    sb.append(" ");
-//                } else if (room.getOccupant().equals("bandit")) {
-//                    sb.append("B");
-//                } else if (room.getOccupant().equals("guard")) {
-//                    sb.append("G");
-//                } else if (room.getOccupant().equals("gateKeeper")) {
-//                    sb.append("R");
-//                } else {
-//                    sb.append(room.getOccupant().toString());
-//                }
-//                sb.append("  |  ");
-//            }
-//            sb.append("\n");
-//            sb.append(breakRoom);
-//        }
-//        sb.append(breakLine);
-//        sb.append("P = player, E = exit, B = bandit, G = guard, R = gatekeeper, K = key\n");
-//
-//        return sb.toString();
-//    }
 
 }

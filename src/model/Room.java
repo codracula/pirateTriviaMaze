@@ -1,8 +1,10 @@
 package model;
 
-import java.io.Serializable;
-
-public class Room implements Serializable {
+/**
+ *  Room class
+ * @author Jeep Naarkom
+ */
+public class Room {
     /**
      *  variable to store if is visited.
      */
@@ -11,10 +13,7 @@ public class Room implements Serializable {
      *  variable to store if the room is empty.
      */
     private boolean myIsEmpty;
-    /**
-     *  variable to store if key is in the room.
-     */
-    private boolean myHasKey;
+
     /**
      *  variable to store thing inside the room.
      */
@@ -30,18 +29,10 @@ public class Room implements Serializable {
     }
 
     /**
-     *  set boolean if the room has key.
-     * @param theBool   set true if the room has key
-     */
-    void setKey(final boolean theBool) {
-        myHasKey = theBool;
-    }
-
-    /**
      *  check if the room has the key.
      * @return true if the room has the key.
      */
-    boolean hasKey() {//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    boolean hasKey() {
         return myIsEmpty == true? true: false;
     }
 
@@ -91,15 +82,6 @@ public class Room implements Serializable {
     public void setOccupant(final String theName) {
         myOccupant = theName;
         myIsEmpty = false;
-    }
-
-    /**
-     *  return to a string.
-     * @return  room's occupant to string.
-     */
-    @Override
-    public String toString() {
-        return myOccupant;
     }
 
 }

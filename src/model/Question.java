@@ -57,7 +57,6 @@ public class Question {
      * @return arrayList of myChoice strings separated by commas
      */
     public ArrayList<String> setChoices() {
-        //String mySplitChoices = myChoices.replaceAll("\\s", "");
         String[] elements = myChoices.split(",");
         for (int i = 0; i < elements.length; i++) {
             elements[i] = elements[i].trim();
