@@ -44,6 +44,10 @@ public class Monsters {
      */
     public Monsters(final int theM_A, final int theM_B, final int theM_C){
         myRand = new Random();
+
+        checkPosInt(theM_A);
+        checkPosInt(theM_B);
+        checkPosInt(theM_C);
         myM_AmaxCount = theM_A;
         myM_BmaxCount = theM_B;
         myM_CmaxCount = theM_C;
@@ -127,5 +131,12 @@ public class Monsters {
                     hintPassChance = myRand.nextInt(100) <= 30;
         }
         return hintPassChance;
+    }
+
+    private void checkPosInt(int theValue) {
+        if (theValue < 0) {
+            System.out.println ("The entered value must be greater than 0.");
+            theValue = 0;
+        }
     }
 }

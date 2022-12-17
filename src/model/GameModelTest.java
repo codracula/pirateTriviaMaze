@@ -4,6 +4,8 @@ package model;
 import org.junit.jupiter.api.Test;
 import view.GameView;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameModelTest {
@@ -21,10 +23,7 @@ class GameModelTest {
         assertEquals(0, model.myMaze.myMon.myM_CmaxCount, "not equal");
         assertEquals(4, model.myMaze.myCurrentRow, "not equal");
         assertEquals(7, model.myMaze.myCurrentCol, "not equal");
-//        assertEquals(7, model.myMaze.myColCount, "not equal");
 
-//        assertTrue(room.isEmpty(), "room is not empty");
-//        assertFalse(room.getVisited(), "room has been visited");
     }
     @Test
     void testGetMyMaze() {  //done
@@ -193,39 +192,84 @@ class GameModelTest {
         model13.moveRight();
         assertTrue(model13.myMaze.roomCheckEmpty(model13.myMaze.myCurrentRow, model13.myMaze.myCurrentRow), "key is not picked up");
 
-
     }
 
     @Test
     void testMonEncounter() {
+//        GameView view = new GameView();
+//        GameModel model13 = new GameModel(view);
+//        QuestionDatabase myQuestionData = new QuestionDatabase();
+//        Character myPlayer = new Character();
+//        ArrayList<Question> myBanditQ;
+//        model13.myMaze.getMon().setQuestion("bandit", "Geography", myQuestionData);
+//        myBanditQ = myQuestionData.getQuestionList();
+//        model13.monEncounter(myBanditQ);
+//        int correct = 0;
+//        if (correct == 2) {
+//            int oldCount = myPlayer.getHintpassCount();
+//            model13.monEncounter(myBanditQ);
+//            assertTrue(oldCount - 1 == myPlayer.getHintpassCount()); //show that a hint pass was used
+//        } else if (correct == 0) {
+//            int oldCount = myPlayer.getLives();
+//            assertTrue(oldCount - 1 == myPlayer.getLives());
+//        }
     }
 
     @Test
     void testHintPassChance() {
+//        GameView view = new GameView();
+//        GameModel model14 = new GameModel(view);
+//
+//        assertTrue(model14.myMaze.getMon().hintPassChance("gatekeeper"));
     }
 
     @Test
     void testSetQuestion() {
+        GameView view = new GameView();
+        GameModel model15 = new GameModel(view);
+        QuestionDatabase myQuestionData = new QuestionDatabase();
+
+        ArrayList<Question> myBanditQ;
+        model15.myMaze.getMon().setQuestion("bandit", "Geography", myQuestionData);
+        myBanditQ = myQuestionData.getQuestionList();
+        assertTrue(myBanditQ.size() > 0);
+    }
+
+    @Test
+    void testGetQuestion() {
+//        GameView view = new GameView();
+//        GameModel model16 = new GameModel(view);
+//        QuestionDatabase myQuestionData = new QuestionDatabase();
+//
+//        myQuestionData.setQuestionList("Test", 0);
+//        ArrayList<Question> monsterQ = myQuestionData.getQuestionList();
+//        int beforeLength = monsterQ.size();
+//        assertEquals("Test", model16.getQuestion(monsterQ).getMyAnswer());
+//        assertTrue(beforeLength - 1 == monsterQ.size(), "question removed");
     }
 
     @Test
     void testGetQuestionIndex() {
-
+//        GameView view = new GameView();
+//        GameModel model17 = new GameModel(view);
+//        QuestionDatabase myQuestionData = new QuestionDatabase();
+//
+//
+//        myQuestionData.setQuestionList("Test", 0);
+//        ArrayList<Question> monsterQ = myQuestionData.getQuestionList();
+//        int index = model17.getQuestionIndex(monsterQ);
+//        assertTrue(index <= monsterQ.size());
     }
 
     @Test
     void testDoBossFight() {
+        GameView view = new GameView();
+        GameModel model17 = new GameModel(view);
 
-    }
-
-    static void setPlayerAndClearRooms(GameModel theModel, int theRow, int theCol){
-        theModel.myMaze.setPlayerLocation(2,2);
-        int col = theModel.getPlayerCol();
-        int row = theModel.getPlayerRow();
-        //clear room around player position
-        theModel.myMaze.roomSetEmpty(col - 1, row);
-        theModel.myMaze.roomSetEmpty(col + 1, row);
-        theModel.myMaze.roomSetEmpty(col, row - 1);
-        theModel.myMaze.roomSetEmpty(col, row + 1);
+        if (model17.myMaze.getColPos() == model17.myMaze.getExitCol() && model17.myMaze.getRowPos() == model17.myMaze.getExitRow()) {
+            assertTrue(model17.doBossFight(), "player is at exit and ready for boss fight");
+        } else {
+            assertFalse(model17.doBossFight(), "player is not at exit, not ready for boss fight");
+        }
     }
 }
