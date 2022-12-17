@@ -13,7 +13,7 @@ public class GameController {
     /**
      * initializing audio file
      */
-    File music = new File("C:/Users/Steven/IdeaProjects/finalmaze/audio.wav");
+    private File myMusic = new File("C:/Users/Steven/IdeaProjects/finalmaze/audio.wav");
     /**
      * initializing clip
      */
@@ -205,9 +205,9 @@ public class GameController {
      */
     public void playMusicNow() {
         try {
-            if (music.exists()) {
+            if (myMusic.exists()) {
                 System.out.print("Playing music... \n");
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(music);
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(myMusic);
                 myAudio = AudioSystem.getClip();
                 myAudio.open(audioInput);
                 FloatControl gainControl =
